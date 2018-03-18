@@ -67,6 +67,20 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!-- GWT Maven Plugin -->
+			<plugin>
+				<groupId>net.ltgt.gwt.maven</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<configuration>
+					<moduleName>
+						com.github.gwtboot.samples.basic.BasicGwtEntryPoint
+					</moduleName>
+					<!-- Spring Boot only: put the compile result under public directory -->
+					<launcherDir>${project.build.directory}/classes/public
+					</launcherDir>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>
