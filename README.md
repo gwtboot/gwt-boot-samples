@@ -138,4 +138,6 @@ Run it on:
 http://localhost:8081/basic
 ```
 
-That's it, now you can develop your web app with GWT easily and fast! Enjoy! 
+Just reload your web app and GWT SuperDev mode will transpile your
+Java code to JavaScript on the fly. That's it, now you can develop 
+your web app with GWT incrementally and fast! Enjoy! 
