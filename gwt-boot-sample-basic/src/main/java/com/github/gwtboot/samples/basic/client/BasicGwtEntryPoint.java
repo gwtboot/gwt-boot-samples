@@ -38,6 +38,6 @@ public class BasicGwtEntryPoint implements EntryPoint {
 			logger.info("Hello World!");
 		});
 
-		RootPanel.get("mainPanel").add(button);
+		RootPanel.get("helloButton").add(button);
 	}
 }
