@@ -99,3 +99,27 @@ public class YourEntryPoint implements EntryPoint {
 In [gwt-boot-sample-basic](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic) 
 you can take a look at the basic example in GWT.
 
+Now you are ready to start your GWT basic sample app for the first time.
+
+# Starting GWT in SuperDev Mode
+
+The application _gwt-boot-sample-basic_ uses Spring Boot to deliver the HTML host
+file. This can be done with other Servlet app as well.
+
+## Step 1 - Run Spring Boot App to deliver the Host HTML File
+
+Just right mouse click on _BasicSpringBootApplication_ in your IDE of
+your choice and run it. In Maven you can run following command:
+
+```java
+mvn spring-boot:run
+```
+
+## Step 2 - Run GWT Code Server to automatically compile the code
+
+Run the GWT Code Server in SuperDev mode to be able to compile the 
+Java code to JavaScript code on the reload in the web browser.
+
+```java
+mvn gwt:codeserver
+```
