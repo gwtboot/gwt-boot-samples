@@ -36,7 +36,7 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
    </build>
 ```
 
-## Step 2 - Create a GWT Module Descriptor "module.gwt.xml"
+## Step 2 - Create a GWT Module Descriptor _module.gwt.xml_
 
 Create a GWT module descriptor at _src/main_ directory. In this file
 you describe the _EntryPoint_ class which is similar to Java Main class
@@ -69,7 +69,7 @@ will access the div with _id="mainPanel"_.
 </html>
 ```
 
-## Step 4 - Create your Java Entry Point "Main" Class
+## Step 4 - Create your Java Entry Point _Main_ Class
 
 The EntryPoint is the first class which will be executed. 
 In this example it will exchange the _"helloButton"_ with a
