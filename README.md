@@ -12,18 +12,18 @@ starter dependencies. To be able to compile to JavaScript you
 need to add gwt-maven-plugin and add your GWT module name.
 
 ```xml
-    <parent>
-		<groupId>com.github.gwtboot</groupId>
-		<artifactId>gwt-boot-starter-parent</artifactId>
-		<version>1.0.0</version>
-	</parent>
-	<dependencies>
-    	<dependency>
-    		<groupId>com.github.gwtboot</groupId>
-    		<artifactId>gwt-boot-starter</artifactId>
-    	</dependency>
-    </dependencies>
-    <build>
+   <parent>
+      <groupId>com.github.gwtboot</groupId>
+      <artifactId>gwt-boot-starter-parent</artifactId>
+      <version>1.0.0</version>
+   </parent>
+   <dependencies>
+      <dependency>
+         <groupId>com.github.gwtboot</groupId>
+         <artifactId>gwt-boot-starter</artifactId>
+      </dependency>
+   </dependencies>
+   <build>
         <plugins>
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
@@ -66,7 +66,7 @@ will access the div with _id="mainPanel"_.
 		src="basic/basic.nocache.js" async=""></script>
 </head>
 <body>
-    <div id="helloButton" />
+    	<div id="helloButton" />
 </body>
 </html>
 ```
