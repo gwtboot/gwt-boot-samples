@@ -137,3 +137,5 @@ Run it on:
 ```java
 http://localhost:8081/basic
 ```
+
+That's it, now you can develop your web app with GWT easily and fast! Enjoy! 
