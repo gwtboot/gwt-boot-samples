@@ -26,6 +26,7 @@
 	<set-property name="gwt.logging.logLevel" value="INFO"/>
 	<set-property name="gwt.logging.enabled" value="TRUE"/>
 
+	<!-- Entry Point class to start with -->
 	<entry-point
 		class="com.github.gwtboot.samples.basic.client.BasicGwtEntryPoint"/>
 </module>
