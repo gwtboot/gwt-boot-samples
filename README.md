@@ -82,14 +82,14 @@ import com.google.gwt.core.client.*;
 import com.google.gwt.user.client.ui.*;
 
 public class YourEntryPoint implements EntryPoint {
-	@Override
-	public void onModuleLoad() {
-		Button button = new Button("Click me");
-		button.addClickHandler(clickEvent -> {
-			Window.alert("Hello World!");
-		});
-		RootPanel.get("helloButton").add(button);
-	}
+   @Override
+   public void onModuleLoad() {
+      Button button = new Button("Click me");
+      button.addClickHandler(clickEvent -> { 
+         Window.alert("Hello World!"); 
+      });
+      RootPanel.get("helloButton").add(button);
+   }
 }
 
 ```
