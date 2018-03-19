@@ -129,3 +129,11 @@ You can just generate the module once and after that just run:
 ```java
 mvn gwt:codeserver
 ```
+
+## Step 3 - Run the App in your Browser
+
+Run it on:
+
+```java
+http://localhost:8081/basic
+```
