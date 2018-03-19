@@ -9,7 +9,7 @@ your project.
 
 Just create a simple Maven Project. Add the parent project and the 
 starter dependencies. To be able to compile to JavaScript you
-need to add gwt-maven-plugin and add your GWT module name.
+need to add _gwt-maven-plugin_ and add your GWT module name.
 
 ```xml
    <parent>
@@ -38,8 +38,8 @@ need to add gwt-maven-plugin and add your GWT module name.
 
 ## Step 2 - Create a GWT Module Descriptor "module.gwt.xml"
 
-Create a GWT module descriptor at src/main directory. In this file
-you describe the EntryPoint class which is similar to Java Main class
+Create a GWT module descriptor at _src/main_ directory. In this file
+you describe the _EntryPoint_ class which is similar to Java Main class
 and method.
 
 ```xml
@@ -72,7 +72,7 @@ will access the div with _id="mainPanel"_.
 ## Step 4 - Create your Java Entry Point "Main" Class
 
 The EntryPoint is the first class which will be executed. 
-In this example it will exchange the "mainPanel" with a
+In this example it will exchange the _"helloButton"_ with a
 Button.
 
 ```java
