@@ -94,4 +94,6 @@ public class YourEntryPoint implements EntryPoint {
 
 ```
 
+In [gwt-boot-sample-basic](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic) 
+you can take a look at the basic example in GWT.
 
