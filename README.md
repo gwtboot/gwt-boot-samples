@@ -119,6 +119,7 @@ mvn spring-boot:run
 
 Run the GWT Code Server in SuperDev mode to be able to compile the 
 Java code to JavaScript code on the reload in the web browser.
+In Maven you can run following command:
 
 ```java
 mvn gwt:codeserver
