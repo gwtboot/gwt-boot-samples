@@ -24,18 +24,16 @@ need to add gwt-maven-plugin and add your GWT module name.
       </dependency>
    </dependencies>
    <build>
-        <plugins>
-            <plugin>
-                <groupId>net.ltgt.gwt.maven</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <configuration>
-                    <moduleName>
-                        hello.YourEntryPoint
-                    </moduleName>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+      <plugins>
+         <plugin>
+            <groupId>net.ltgt.gwt.maven</groupId>
+            <artifactId>gwt-maven-plugin</artifactId>
+            <configuration>
+               <moduleName>hello.YourEntryPoint</moduleName>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
 ```
 
 ## Step 2 - Create a GWT Module Descriptor "module.gwt.xml"
@@ -46,8 +44,8 @@ and method.
 
 ```xml
 <module rename-to="basic">
-	<inherits name="com.google.gwt.user.User"/>
-	<entry-point class="hello.client.YourEntryPoint"/>
+   <inherits name="com.google.gwt.user.User"/>
+   <entry-point class="hello.client.YourEntryPoint"/>
 </module>
 ```
 
@@ -60,13 +58,13 @@ will access the div with _id="mainPanel"_.
 ```html
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<title>Demo GWT Webapp</title>
-	<script type="text/javascript" language="javascript"
-		src="basic/basic.nocache.js" async=""></script>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <title>Demo GWT Webapp</title>
+   <script type="text/javascript" language="javascript" 
+      src="basic/basic.nocache.js" async=""></script>
 </head>
 <body>
-    	<div id="helloButton" />
+   <div id="helloButton"/>
 </body>
 </html>
 ```
