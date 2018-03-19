@@ -40,7 +40,9 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
 
 Create a GWT module descriptor at _src/main_ directory. In this file
 you describe the _EntryPoint_ class which is similar to Java Main class
-and method.
+and method. Module rename-to="basic" means that the JavaScript will
+be compiled to the script _basic/basic.nocache.js_. This JavaScript
+can be imported in the host HTML file on the next step.
 
 ```xml
 <module rename-to="basic">
