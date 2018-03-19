@@ -74,10 +74,11 @@
 				<artifactId>gwt-maven-plugin</artifactId>
 				<configuration>
 					<moduleName>
-						com.github.gwtboot.samples.basic.BasicGwtEntryPoint
+						com.github.gwtboot.sample.basic.BasicGwtEntryPoint
 					</moduleName>
 					<!-- Spring Boot only: put the compile result under public directory -->
-					<launcherDir>${project.build.directory}/classes/public
+					<launcherDir>
+						${project.build.directory}/classes/public
 					</launcherDir>
 				</configuration>
 			</plugin>

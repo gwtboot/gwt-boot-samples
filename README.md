@@ -117,9 +117,15 @@ mvn spring-boot:run
 
 ## Step 2 - Run GWT Code Server to automatically compile the code
 
-Run the GWT Code Server in SuperDev mode to be able to compile the 
-Java code to JavaScript code on the reload in the web browser.
-In Maven you can run following command:
+First generate the GWT Module Descriptor and then run the GWT Code Server 
+in SuperDev mode to be able to compile the Java code to JavaScript code 
+on reload in the web browser. In Maven you can run following command:
+
+```java
+mvn gwt:generate-module gwt:codeserver
+```
+
+You can just generate the module once and after that just run:
 
 ```java
 mvn gwt:codeserver
