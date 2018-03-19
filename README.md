@@ -54,7 +54,7 @@ can be imported in the host HTML file on the next step.
 
 In this HTML file your generated JavaScript will run. The JavaScript
 can access the HTML file. In this example the generated JavaScript
-will access the div with _id="mainPanel"_. 
+will access the div with _id="helloButton"_. 
 
 ```html
 <html>
