@@ -29,7 +29,7 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
             <groupId>net.ltgt.gwt.maven</groupId>
             <artifactId>gwt-maven-plugin</artifactId>
             <configuration>
-               <moduleName>hello.YourEntryPoint</moduleName>
+               <moduleName>hello.YourModule</moduleName>
             </configuration>
          </plugin>
       </plugins>
