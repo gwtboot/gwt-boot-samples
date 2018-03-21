@@ -20,13 +20,13 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
    <dependencyManagement>
       <dependencies>
          <dependency>
-   		    <groupId>com.github.gwtboot</groupId>
-   		    <artifactId>gwt-boot-starter-with-spring-boot</artifactId>
-   		    <version>VERSION</version>
-   			<type>pom</type>
-   			<scope>import</scope>
-   	     </dependency>
-   	  </dependencies>
+            <groupId>com.github.gwtboot</groupId>
+            <artifactId>gwt-boot-starter-with-spring-boot</artifactId>
+            <version>VERSION</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+      </dependencies>
    </dependencyManagement>
    <dependencies>
       <dependency>
