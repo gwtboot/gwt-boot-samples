@@ -159,7 +159,7 @@ mvn gwt:codeserver
 Run it on:
 
 ```java
-http://localhost:8081/basic
+http://localhost:8888/basic
 ```
 
 Just reload your web app and GWT SuperDev mode will transpile your
