@@ -30,6 +30,9 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
             <artifactId>gwt-maven-plugin</artifactId>
             <configuration>
                <moduleName>hello.YourModule</moduleName>
+               <startupUrls>
+                  <url>/basic/</url>
+               </startupUrls>
             </configuration>
          </plugin>
       </plugins>
@@ -52,8 +55,8 @@ can be imported in the host HTML file on the next step.
 
 ## Step 3 - Create a Host HTML File where your JavaScript can run
 
-In this HTML file your generated JavaScript will run. The JavaScript
-can access the HTML file. In this example the generated JavaScript
+In this HTML file, located at _hello/public_, your generated JavaScript will run. 
+This JavaScript can access the HTML file. In this example the generated JavaScript
 will access the div with _id="helloButton"_. 
 
 ```html
@@ -62,7 +65,7 @@ will access the div with _id="helloButton"_.
    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
    <title>Demo GWT Webapp</title>
    <script type="text/javascript" language="javascript" 
-      src="basic/basic.nocache.js" async=""></script>
+      src="basic.nocache.js" async=""></script>
 </head>
 <body>
    <div id="helloButton"/>
@@ -102,32 +105,23 @@ Now you are ready to start your GWT basic sample app for the first time.
 
 # Starting GWT in SuperDev Mode
 
-The application _gwt-boot-sample-basic_ uses Spring Boot to deliver the HTML host
-file. This can be done with other Servlet app as well.
+The application _gwt-boot-sample-basic_ uses integrated Jetty server from GWT to 
+deliver the HTML host file. This can be done with other Servlet app as well.
 
-## Step 1 - Run Spring Boot App to deliver the Host HTML File
+## Step 1 - Run GWT DevMode to automatically compile the code
 
-Just right mouse click on _BasicSpringBootApplication_ in your IDE of
-your choice and run it. In Maven you can run following command:
-
-```java
-mvn spring-boot:run
-```
-
-## Step 2 - Run GWT Code Server to automatically compile the code
-
-First generate the GWT Module Descriptor and then run the GWT Code Server 
+First generate the GWT Module Descriptor and then run the GWT Dev Mode 
 in SuperDev mode to be able to compile the Java code to JavaScript code 
 on reload in the web browser. In Maven you can run following command:
 
 ```java
-mvn gwt:generate-module gwt:codeserver
+mvn gwt:generate-module gwt:devmode
 ```
 
 You can just generate the module once and after that just run:
 
 ```java
-mvn gwt:codeserver
+mvn gwt:devmode
 ```
 
 ## Step 3 - Run the App in your Browser
@@ -135,7 +129,7 @@ mvn gwt:codeserver
 Run it on:
 
 ```java
-http://localhost:8081/basic
+http://localhost:8888/basic
 ```
 
 Just reload your web app and GWT SuperDev mode will transpile your
