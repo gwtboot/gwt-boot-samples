@@ -30,5 +30,6 @@
 
 	<modules>
 		<module>gwt-boot-sample-basic</module>
+		<module>gwt-boot-sample-basic-with-spring-boot</module>
 	</modules>
 </project>
