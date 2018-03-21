@@ -1,7 +1,7 @@
-# GWT Boot Samples
+# GWT Boot Samples for Spring Boot
 
 Here you can find some samples on how you can use the GWT Boot Starters in 
-your project.
+your Spring Boot project.
 
 # Quick Start
 
@@ -17,22 +17,40 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
       <artifactId>gwt-boot-starter-parent</artifactId>
       <version>VERSION</version>
    </parent>
+   <dependencyManagement>
+      <dependencies>
+         <dependency>
+   		    <groupId>com.github.gwtboot</groupId>
+   		    <artifactId>gwt-boot-starter-with-spring-boot</artifactId>
+   		    <version>VERSION</version>
+   			<type>pom</type>
+   			<scope>import</scope>
+   	     </dependency>
+   	  </dependencies>
+   </dependencyManagement>
    <dependencies>
       <dependency>
          <groupId>com.github.gwtboot</groupId>
-         <artifactId>gwt-boot-starter</artifactId>
+         <artifactId>gwt-boot-starter-with-spring-boot</artifactId>
       </dependency>
    </dependencies>
    <build>
       <plugins>
          <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+         </plugin>
+         <plugin>
             <groupId>net.ltgt.gwt.maven</groupId>
             <artifactId>gwt-maven-plugin</artifactId>
             <configuration>
                <moduleName>hello.YourModule</moduleName>
-               <startupUrls>
-                  <url>/basic/</url>
-               </startupUrls>
+               <launcherDir>
+                  ${project.build.directory}/classes/public
+               </launcherDir>
+               <webappDirectory>
+                  ${project.build.directory}/classes/public
+               </webappDirectory>
             </configuration>
          </plugin>
       </plugins>
@@ -57,7 +75,7 @@ can be imported in the host HTML file on the next step.
 
 ## Step 3 - Create a Host HTML File where your JavaScript can run
 
-In this HTML file, located at _hello/public_, your generated JavaScript will run. 
+In this HTML file, located at _public_, your generated JavaScript will run. 
 This JavaScript can access the HTML file. In this example the generated JavaScript
 will access the div with _id="helloButton"_. 
 
@@ -67,7 +85,7 @@ will access the div with _id="helloButton"_.
    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
    <title>Demo GWT Webapp</title>
    <script type="text/javascript" language="javascript" 
-      src="basic.nocache.js" async=""></script>
+      src="basic/basic.nocache.js" async=""></script>
 </head>
 <body>
    <div id="helloButton"/>
@@ -100,39 +118,48 @@ public class YourEntryPoint implements EntryPoint {
 
 ```
 
-In [gwt-boot-sample-basic](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic) 
+In [gwt-boot-sample-basic-with-spring-boot](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic-with-spring-boot) 
 you can take a look at the basic example in GWT.
 
 Now you are ready to start your GWT basic sample app for the first time.
 
-# Starting GWT in SuperDev Mode
+# Starting GWT in SuperDev Mode with Spring Boot
 
-The application _[gwt-boot-sample-basic](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic)_ 
-uses integrated Jetty server from GWT to deliver the HTML host file. 
+The application _[gwt-boot-sample-basic-with-spring-boot](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic-with-spring-boot)_ 
+uses Spring Boot to deliver the HTML host file. 
 This can be done with other Servlet app as well.
 
-## Step 1 - Run GWT DevMode to automatically compile the code
+## Step 1 - Run Spring Boot App to deliver the Host HTML File
 
-First generate the GWT Module Descriptor and then run the GWT Dev Mode 
+Just right mouse click on _BasicSpringBootApplication_ in your IDE of
+your choice and run it. In Maven you can run following command:
+
+```java
+mvn spring-boot:run
+```
+
+## Step 2 - Run GWT Code Server to automatically compile the code
+
+First generate the GWT Module Descriptor and then run the GWT Code Server 
 in SuperDev mode to be able to compile the Java code to JavaScript code 
 on reload in the web browser. In Maven you can run following command:
 
 ```java
-mvn gwt:generate-module gwt:devmode
+mvn gwt:generate-module gwt:codeserver
 ```
 
 You can just generate the module once and after that just run:
 
 ```java
-mvn gwt:devmode
+mvn gwt:codeserver
 ```
 
-## Step 2 - Run the App in your Browser
+## Step 3 - Run the App in your Browser
 
 Run it on:
 
 ```java
-http://localhost:8888/basic
+http://localhost:8081/basic
 ```
 
 Just reload your web app and GWT SuperDev mode will transpile your
