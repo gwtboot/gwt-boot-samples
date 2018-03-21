@@ -33,6 +33,18 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<description>GWT Boot Sample - Basic with Spring Boot</description>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.github.gwtboot</groupId>
+				<artifactId>gwt-boot-starter-with-spring-boot</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<!-- GWT Starter Core - Basic with Spring Boot -->
 		<dependency>
@@ -43,6 +55,7 @@
 
 	<build>
 		<plugins>
+			<!-- Spring Boot Maven Plugin -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -56,6 +69,12 @@
 					<moduleName>
 						com.github.gwtboot.sample.basic.Basic
 					</moduleName>
+					<launcherDir>
+						${project.build.directory}/classes/public
+					</launcherDir>
+					<webappDirectory>
+						${project.build.directory}/classes/public
+					</webappDirectory>
 				</configuration>
 			</plugin>
 		</plugins>

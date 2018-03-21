@@ -51,7 +51,7 @@ can be imported in the host HTML file on the next step.
 ```xml
 <module rename-to="basic">
    <inherits name="com.github.gwtboot.starter.Starter"/>
-   <entry-point class='com.github.gwtboot.sample.basic.client.BasicGwtEntryPoint'/>
+   <entry-point class='hello.client.YourEntryPoint'/>
 </module>
 ```
 
