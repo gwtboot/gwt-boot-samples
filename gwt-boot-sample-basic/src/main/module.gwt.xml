@@ -20,4 +20,8 @@
 <module rename-to="basic">
 	<!-- GWT Boot stuffs -->
 	<inherits name="com.github.gwtboot.starter.Starter"/>
+
+	<!-- Entry Point -->
+	<entry-point
+		class='com.github.gwtboot.sample.basic.client.BasicGwtEntryPoint'/>
 </module>
