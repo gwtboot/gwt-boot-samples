@@ -19,5 +19,5 @@
 -->
 <module rename-to="basic">
 	<!-- GWT Boot stuffs -->
-	<inherits name="com.github.gwtboot.starter.Starter"/>
+	<inherits name="com.github.gwtboot.starter.StarterWithSpringBoot"/>
 </module>
