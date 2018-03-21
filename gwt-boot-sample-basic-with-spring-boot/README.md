@@ -14,20 +14,9 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
 ```xml
    <parent>
       <groupId>com.github.gwtboot</groupId>
-      <artifactId>gwt-boot-starter-parent</artifactId>
+      <artifactId>gwt-boot-starter-parent-with-spring-boot</artifactId>
       <version>VERSION</version>
    </parent>
-   <dependencyManagement>
-      <dependencies>
-         <dependency>
-            <groupId>com.github.gwtboot</groupId>
-            <artifactId>gwt-boot-starter-with-spring-boot</artifactId>
-            <version>VERSION</version>
-            <type>pom</type>
-            <scope>import</scope>
-         </dependency>
-      </dependencies>
-   </dependencyManagement>
    <dependencies>
       <dependency>
          <groupId>com.github.gwtboot</groupId>
@@ -37,20 +26,10 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
    <build>
       <plugins>
          <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-         </plugin>
-         <plugin>
             <groupId>net.ltgt.gwt.maven</groupId>
             <artifactId>gwt-maven-plugin</artifactId>
             <configuration>
                <moduleName>hello.YourModule</moduleName>
-               <launcherDir>
-                  ${project.build.directory}/classes/public
-               </launcherDir>
-               <webappDirectory>
-                  ${project.build.directory}/classes/public
-               </webappDirectory>
             </configuration>
          </plugin>
       </plugins>
