@@ -27,22 +27,27 @@
 		<artifactId>gwt-boot-starter-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>gwt-boot-sample-basic</artifactId>
+	<artifactId>gwt-boot-sample-basic-with-spring-boot</artifactId>
 	<packaging>jar</packaging>
-	<name>gwt-boot-samples-basic</name>
+	<name>gwt-boot-samples-basic-with-spring-boot</name>
 	<version>1.0.0-SNAPSHOT</version>
-	<description>GWT Boot Sample - Basic</description>
+	<description>GWT Boot Sample - Basic with Spring Boot</description>
 
 	<dependencies>
-		<!-- GWT Starter Core - Basic -->
+		<!-- GWT Starter Core - Basic with Spring Boot -->
 		<dependency>
 			<groupId>com.github.gwtboot</groupId>
-			<artifactId>gwt-boot-starter</artifactId>
+			<artifactId>gwt-boot-starter-with-spring-boot</artifactId>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
 			<!-- GWT Maven Plugin -->
 			<plugin>
 				<groupId>net.ltgt.gwt.maven</groupId>
@@ -51,9 +56,6 @@
 					<moduleName>
 						com.github.gwtboot.sample.basic.Basic
 					</moduleName>
-					<startupUrls>
-						<url>/basic/</url>
-					</startupUrls>
 				</configuration>
 			</plugin>
 		</plugins>
