@@ -2,7 +2,7 @@
 
 Here you can find some samples on how you can use the GWT Boot Starters in 
 your project. If you are looking for GWT Boot Starter for Spring Boot
-check this out: [gwt-boot-sample-basic-with-spring-boot](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic-with-spring-boot/README.md) 
+check this out: [gwt-boot-sample-basic-with-spring-boot](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic-with-spring-boot) 
 
 # Quick Start
 
