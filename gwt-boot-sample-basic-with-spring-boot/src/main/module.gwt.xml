@@ -23,5 +23,5 @@
 
 	<!-- Entry Point -->
 	<entry-point
-		class='com.github.gwtboot.sample.basic.client.BasicGwtEntryPoint'/>
+		class='BasicGwtEntryPoint'/>
 </module>
