@@ -47,7 +47,7 @@ can be imported in the host HTML file on the next step.
 
 ```xml
 <module rename-to="basic">
-   <inherits name="com.github.gwtboot.starter.Starter"/>
+   <inherits name="com.github.gwtboot.starter.StarterWithSpringBoot"/>
    <entry-point class='hello.client.YourEntryPoint'/>
 </module>
 ```
