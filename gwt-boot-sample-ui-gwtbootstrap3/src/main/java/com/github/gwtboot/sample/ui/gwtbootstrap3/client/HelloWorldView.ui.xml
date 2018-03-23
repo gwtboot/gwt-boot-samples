@@ -6,55 +6,64 @@
 >
 
 	<ui:style>
-		.margin-right {
-			margin-right: 10px;
+		.margin {
+			margin-top: 20px;
+			margin-left: 20px;
+			margin-right: 20px;
 		}
 	</ui:style>
 
-	<b:Row>
-		<b:Column size="MD_12">
+	<g:ScrollPanel>
+		<b:Container fluid="true" addStyleNames="{style.margin}">
 			<b:Row>
-				<!-- Filter Panel -->
-				<b:Panel>
-					<b:PanelHeader>
-						<b:Heading size="H4" text="Filter"/>
-					</b:PanelHeader>
-					<b:PanelBody>
-						<b:Container fluid="true">
-							<b:Form type="HORIZONTAL">
-								<b:FieldSet>
-									<b:FormGroup>
-										<b:FormLabel for="basic3" text="Food"/>
-										<g:FlowPanel>
-											<select:MultipleSelect b:id="basic3"
-																   ui:field="foodMultipleSelect">
-												<select:Option text="Mustard"/>
-												<select:Option text="Ketchup"/>
-												<select:Option text="Relish"/>
-											</select:MultipleSelect>
-										</g:FlowPanel>
-									</b:FormGroup>
-								</b:FieldSet>
-							</b:Form>
-						</b:Container>
-					</b:PanelBody>
-				</b:Panel>
+				<b:Column size="MD_12">
+					<b:Row>
+						<!-- Filter Panel -->
+						<b:Panel>
+							<b:PanelHeader>
+								<b:Heading size="H4" text="Filter"/>
+							</b:PanelHeader>
+							<b:PanelBody>
+								<b:Container>
+									<b:Form type="HORIZONTAL">
+										<b:FieldSet>
+											<b:FormGroup>
+												<b:FormLabel for="basic3"
+															 text="Food"/>
+												<g:FlowPanel>
+													<select:MultipleSelect
+														b:id="basic3"
+														ui:field="foodMultipleSelect">
+														<select:Option
+															text="Mustard"/>
+														<select:Option
+															text="Ketchup"/>
+														<select:Option
+															text="Relish"/>
+													</select:MultipleSelect>
+												</g:FlowPanel>
+											</b:FormGroup>
+										</b:FieldSet>
+									</b:Form>
+								</b:Container>
+							</b:PanelBody>
+						</b:Panel>
 
-				<!-- Content Panel -->
-				<b:Panel>
-					<b:PanelHeader>
-						<b:Heading size="H3" text="Test"/>
-					</b:PanelHeader>
-					<b:PanelBody>
-						<b:PanelBody ui:field="panelBody1">
-						</b:PanelBody>
-						<b:ButtonToolBar>
-							<b:Button type="SUCCESS" text="Test"
-									  ui:field="refreshButton"></b:Button>
-						</b:ButtonToolBar>
-					</b:PanelBody>
-				</b:Panel>
+						<!-- Content Panel -->
+						<b:Panel>
+							<b:PanelHeader>
+								<b:Heading size="H3" text="Test"/>
+							</b:PanelHeader>
+							<b:PanelBody>
+								<b:ButtonToolBar>
+									<b:Button type="SUCCESS" text="Test Button"
+											  ui:field="refreshButton"></b:Button>
+								</b:ButtonToolBar>
+							</b:PanelBody>
+						</b:Panel>
+					</b:Row>
+				</b:Column>
 			</b:Row>
-		</b:Column>
-	</b:Row>
+		</b:Container>
+	</g:ScrollPanel>
 </ui:UiBinder> 
