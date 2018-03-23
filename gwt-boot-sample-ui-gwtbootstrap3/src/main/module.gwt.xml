@@ -17,7 +17,7 @@
  | specific language governing permissions and limitations
  | under the License.
 -->
-<module rename-to="basic">
+<module rename-to="gwtbootstrap3">
 	<!-- GWT Boot stuffs -->
 	<inherits name="com.github.gwtboot.starter.GwtBootstrap3Starter"/>
 

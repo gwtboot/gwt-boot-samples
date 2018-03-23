@@ -52,7 +52,7 @@
 						com.github.gwtboot.sample.ui.gwtbootstrap3.GwtBootstrap3
 					</moduleName>
 					<startupUrls>
-						<url>/basic/</url>
+						<url>/gwtbootstrap3/</url>
 					</startupUrls>
 				</configuration>
 			</plugin>
