@@ -1,6 +1,6 @@
 # GWT Boot Samples
 
-https://travis-ci.org/gwtboot/gwt-boot-samples.svg?branch=master
+[![Build Status](https://travis-ci.org/gwtboot/gwt-boot-samples.svg?branch=master)](https://travis-ci.org/gwtboot/gwt-boot-samples)
 
 Here you can find some samples on how you can use the GWT Boot Starters in 
 your project. If you are looking for GWT Boot Starter for Spring Boot
