@@ -49,7 +49,7 @@
 				<artifactId>gwt-maven-plugin</artifactId>
 				<configuration>
 					<moduleName>
-						com.github.gwtboot.sample.ui.gwtbootstrap3.Basic
+						com.github.gwtboot.sample.ui.gwtbootstrap3.GwtBootstrap3
 					</moduleName>
 					<startupUrls>
 						<url>/basic/</url>

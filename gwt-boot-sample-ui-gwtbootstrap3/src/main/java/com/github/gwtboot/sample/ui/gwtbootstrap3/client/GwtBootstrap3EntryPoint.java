@@ -20,15 +20,16 @@ package com.github.gwtboot.sample.ui.gwtbootstrap3.client;
 
 import java.util.logging.Logger;
 
+import org.gwtbootstrap3.client.ui.Button;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 
-public class BasicGwtEntryPoint implements EntryPoint {
+public class GwtBootstrap3EntryPoint implements EntryPoint {
 
 	private static Logger logger = Logger
-			.getLogger(BasicGwtEntryPoint.class.getName());
+			.getLogger(GwtBootstrap3EntryPoint.class.getName());
 
 	@Override
 	public void onModuleLoad() {
