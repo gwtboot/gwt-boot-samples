@@ -20,8 +20,15 @@ package com.github.gwtboot.sample.ui.gwtbootstrap3.client;
 
 import java.util.logging.Logger;
 
+import org.gwtbootstrap3.client.ui.Button;
+import org.gwtbootstrap3.extras.notify.client.ui.Notify;
+import org.gwtbootstrap3.extras.select.client.ui.MultipleSelect;
+
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -36,7 +43,19 @@ public class HelloWorldView extends Composite {
 	private static HelloWorldViewUiBinder uiBinder = GWT
 			.create(HelloWorldViewUiBinder.class);
 
+	@UiField
+	Button showButton;
+
+	@UiField
+	MultipleSelect foodMultipleSelect;
+
 	public HelloWorldView() {
 		initWidget(uiBinder.createAndBindUi(this));
+	}
+
+	@UiHandler("showButton")
+	void handleShowButtonClick(ClickEvent e) {
+		foodMultipleSelect.getSelectedItems()
+				.forEach(item -> Notify.notify(item.toString()));
 	}
 }

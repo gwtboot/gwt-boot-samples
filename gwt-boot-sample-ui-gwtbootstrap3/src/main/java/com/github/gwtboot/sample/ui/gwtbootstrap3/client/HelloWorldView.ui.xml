@@ -50,12 +50,13 @@
 						<!-- Content Panel -->
 						<b:Panel>
 							<b:PanelHeader>
-								<b:Heading size="H3" text="Test"/>
+								<b:Heading size="H3" text="Show Food"/>
 							</b:PanelHeader>
 							<b:PanelBody>
 								<b:ButtonToolBar>
-									<b:Button type="SUCCESS" text="Test Button"
-											  ui:field="refreshButton"></b:Button>
+									<b:Button type="SUCCESS"
+											  text="Please show me your choices"
+											  ui:field="showButton"></b:Button>
 								</b:ButtonToolBar>
 							</b:PanelBody>
 						</b:Panel>
