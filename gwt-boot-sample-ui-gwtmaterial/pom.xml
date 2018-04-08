@@ -56,7 +56,7 @@
 					</startupUrls>
 					<compilerArgs>
 						<compilerArg>-logLevel</compilerArg>
-						<compilerArg>DEBUG</compilerArg>
+						<compilerArg>INFO</compilerArg>
 					</compilerArgs>
 				</configuration>
 			</plugin>
