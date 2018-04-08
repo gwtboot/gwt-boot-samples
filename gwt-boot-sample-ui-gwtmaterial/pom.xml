@@ -21,17 +21,41 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.github.gwtboot</groupId>
-	<artifactId>gwt-boot-samples</artifactId>
+	<parent>
+		<!-- Using gwt-boot-starter-parent -->
+		<groupId>com.github.gwtboot</groupId>
+		<artifactId>gwt-boot-starter-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>gwt-boot-sample-ui-gwtmaterial</artifactId>
+	<packaging>jar</packaging>
+	<name>gwt-boot-sample--ui-gwtmaterial</name>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>gwt-boot-samples</name>
-	<description>GWT Boot Samples</description>
+	<description>GWT Boot Sample - GWTMaterial</description>
 
-	<modules>
-		<module>gwt-boot-sample-basic</module>
-		<module>gwt-boot-sample-basic-with-spring-boot</module>
-		<module>gwt-boot-sample-ui-gwtbootstrap3</module>
-		<module>gwt-boot-sample-ui-gwtmaterial</module>
-	</modules>
+	<dependencies>
+		<!-- GWT Starter UI GWTMaterial -->
+		<dependency>
+			<groupId>com.github.gwtboot</groupId>
+			<artifactId>gwt-boot-starter-ui-gwtmaterial</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- GWT Maven Plugin -->
+			<plugin>
+				<groupId>net.ltgt.gwt.maven</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<configuration>
+					<moduleName>
+						com.github.gwtboot.sample.ui.gwtmaterial.GwtMaterial
+					</moduleName>
+					<startupUrls>
+						<url>/gwtmaterial/</url>
+					</startupUrls>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
