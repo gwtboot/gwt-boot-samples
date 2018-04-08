@@ -54,6 +54,10 @@
 					<startupUrls>
 						<url>/gwtmaterial/</url>
 					</startupUrls>
+					<compilerArgs>
+						<compilerArg>-logLevel</compilerArg>
+						<compilerArg>DEBUG</compilerArg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 		</plugins>
