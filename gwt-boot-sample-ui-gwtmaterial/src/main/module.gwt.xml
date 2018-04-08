@@ -23,5 +23,5 @@
 
 	<!-- Entry Point -->
 	<entry-point
-		class='com.github.gwtboot.sample.ui.gwtbootstrap3.client.GwtMaterialEntryPoint'/>
+		class='com.github.gwtboot.sample.ui.gwtmaterial.client.GwtMaterialEntryPoint'/>
 </module>
