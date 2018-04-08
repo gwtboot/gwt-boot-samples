@@ -18,12 +18,20 @@
  */
 package com.github.gwtboot.sample.ui.gwtmaterial.client;
 
+import java.util.logging.Logger;
+
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class GwtMaterialEntryPoint implements EntryPoint {
 
+	private static Logger logger = Logger
+			.getLogger(GwtMaterialEntryPoint.class.getName());
+
 	@Override
 	public void onModuleLoad() {
+		HelloWorldView helloWorldView = new HelloWorldView();
 
+		RootPanel.get("mainPanel").add(helloWorldView);
 	}
 }
