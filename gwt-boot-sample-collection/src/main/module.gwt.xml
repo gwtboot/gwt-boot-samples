@@ -19,7 +19,8 @@
 -->
 <module rename-to="collection">
 	<!-- GWT Boot stuffs -->
-	<inherits name="com.github.gwtboot.starter.GwtBootstrap3Starter"/>
+	<inherits name="com.github.gwtboot.starter.RestyGwtStarter"/>
+	<inherits name="com.github.gwtboot.starter.GinStarter"/>
 
 	<!-- Entry Point -->
 	<entry-point
