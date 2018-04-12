@@ -23,12 +23,12 @@ import com.google.gwt.user.client.Window;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
-@JsType(namespace = JsPackage.GLOBAL, name = "MyJavaScriptHello")
-public class MyJavaScriptHello {
+@JsType(namespace = JsPackage.GLOBAL, name = "Tomato")
+public class Tomato {
 
 	public String name;
 
-	public MyJavaScriptHello(String name) {
+	public Tomato(String name) {
 		this.name = name;
 	}
 

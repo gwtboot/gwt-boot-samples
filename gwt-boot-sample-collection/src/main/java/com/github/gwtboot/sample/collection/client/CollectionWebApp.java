@@ -32,7 +32,7 @@ public class CollectionWebApp {
 	private static Logger logger = Logger
 			.getLogger(CollectionWebApp.class.getName());
 
-	private static final String MYFUNCTION_URL = "myfunction.js";
+	private static final String TOMATO_JS_URL = "tomato.js";
 
 	private Apple apple;
 
@@ -40,14 +40,18 @@ public class CollectionWebApp {
 
 	@Inject
 	public CollectionWebApp(Apple apple) {
-		// Call to JavaScript "myfunction.js"
-		injectMyFunctionScript();
+		this.apple = apple;
 
+		// Call apple two times
 		callApple();
+		callApple();
+
+		// Call to JavaScript "tomato.js"
+		injectTomatoScript();
 	}
 
-	private void injectMyFunctionScript() {
-		ScriptInjector.fromUrl(MYFUNCTION_URL)
+	private void injectTomatoScript() {
+		ScriptInjector.fromUrl(TOMATO_JS_URL)
 				.setCallback(new Callback<Void, Exception>() {
 					@Override
 					public void onFailure(Exception reason) {
@@ -57,7 +61,7 @@ public class CollectionWebApp {
 					@Override
 					public void onSuccess(Void result) {
 						logger.info(
-								"MyFunction.js loaded successfully and executed!");
+								"tomato.js loaded successfully and executed!");
 					}
 
 				}).setRemoveTag(true).setWindow(ScriptInjector.TOP_WINDOW)
@@ -72,7 +76,7 @@ public class CollectionWebApp {
 		} else {
 			apple.x = 10;
 			apple.y = 10;
-			logger.info("Apple Sum the second and so on: " + apple.sum());
+			logger.info("Apple Sum the second: " + apple.sum());
 		}
 	}
 
