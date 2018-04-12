@@ -21,18 +21,45 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.github.gwtboot</groupId>
-	<artifactId>gwt-boot-samples</artifactId>
+	<parent>
+		<artifactId>gwt-boot-samples</artifactId>
+		<groupId>com.github.gwtboot</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>gwt-boot-sample-collection</artifactId>
+	<packaging>jar</packaging>
+	<name>gwt-boot-sample-collection</name>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>gwt-boot-samples</name>
-	<description>GWT Boot Samples</description>
+	<description>GWT Boot Sample - Collection RestyGWT Test Mockito Gin etc.
+	</description>
 
-	<modules>
-		<module>gwt-boot-sample-basic</module>
-		<module>gwt-boot-sample-basic-with-spring-boot</module>
-		<module>gwt-boot-sample-collection</module>
-		<module>gwt-boot-sample-ui-gwtbootstrap3</module>
-		<module>gwt-boot-sample-ui-gwtmaterial</module>
-	</modules>
+	<dependencies>
+		<!-- GWT Starters -->
+		<dependency>
+			<groupId>com.github.gwtboot</groupId>
+			<artifactId>gwt-boot-starter-restygwt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.gwtboot</groupId>
+			<artifactId>gwt-boot-starter-test</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- GWT Maven Plugin -->
+			<plugin>
+				<groupId>net.ltgt.gwt.maven</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<configuration>
+					<moduleName>
+						com.github.gwtboot.sample.collection.Collection
+					</moduleName>
+					<startupUrls>
+						<url>/basic/</url>
+					</startupUrls>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
