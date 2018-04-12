@@ -43,6 +43,14 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.gwtboot</groupId>
+			<artifactId>gwt-boot-starter-gin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.gwtboot</groupId>
+			<artifactId>gwt-boot-starter-gwteventbinder</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.gwtboot</groupId>
 			<artifactId>gwt-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
