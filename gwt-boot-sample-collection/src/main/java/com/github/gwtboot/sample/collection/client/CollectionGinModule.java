@@ -18,24 +18,11 @@
  */
 package com.github.gwtboot.sample.collection.client;
 
-import java.util.logging.Logger;
+import com.google.gwt.inject.client.AbstractGinModule;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-
-public class CollectionEntryPoint implements EntryPoint {
-
-	private static Logger logger = Logger
-			.getLogger(CollectionEntryPoint.class.getName());
-
-	// Create Gin Injector
-	private final CollectionGinjector injector = GWT
-			.create(CollectionGinjector.class);
+public class CollectionGinModule extends AbstractGinModule {
 
 	@Override
-	public void onModuleLoad() {
-		// Get the Webapp
-		injector.collectionWebApp();
+	protected void configure() {
 	}
-
 }

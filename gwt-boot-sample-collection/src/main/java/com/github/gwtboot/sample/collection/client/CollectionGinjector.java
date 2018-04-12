@@ -18,24 +18,14 @@
  */
 package com.github.gwtboot.sample.collection.client;
 
-import java.util.logging.Logger;
+import com.google.gwt.inject.client.GinModules;
+import com.google.gwt.inject.client.Ginjector;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
+@GinModules(CollectionGinModule.class)
+public interface CollectionGinjector extends Ginjector {
 
-public class CollectionEntryPoint implements EntryPoint {
-
-	private static Logger logger = Logger
-			.getLogger(CollectionEntryPoint.class.getName());
-
-	// Create Gin Injector
-	private final CollectionGinjector injector = GWT
-			.create(CollectionGinjector.class);
-
-	@Override
-	public void onModuleLoad() {
-		// Get the Webapp
-		injector.collectionWebApp();
-	}
+	// We only need the first class to be loaded
+	// The rest can be done through @Singleton
+	CollectionWebApp collectionWebApp();
 
 }

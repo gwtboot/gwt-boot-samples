@@ -18,24 +18,18 @@
  */
 package com.github.gwtboot.sample.collection.client;
 
-import java.util.logging.Logger;
+import javax.inject.Singleton;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
-public class CollectionEntryPoint implements EntryPoint {
+@Singleton
+@JsType(namespace = JsPackage.GLOBAL, name = "Apple", isNative = true)
+public class Apple {
 
-	private static Logger logger = Logger
-			.getLogger(CollectionEntryPoint.class.getName());
+	public int x;
 
-	// Create Gin Injector
-	private final CollectionGinjector injector = GWT
-			.create(CollectionGinjector.class);
+	public int y;
 
-	@Override
-	public void onModuleLoad() {
-		// Get the Webapp
-		injector.collectionWebApp();
-	}
-
+	public native int sum();
 }

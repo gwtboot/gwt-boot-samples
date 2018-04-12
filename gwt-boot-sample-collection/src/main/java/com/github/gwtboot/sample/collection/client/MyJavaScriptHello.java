@@ -18,24 +18,26 @@
  */
 package com.github.gwtboot.sample.collection.client;
 
-import java.util.logging.Logger;
+import com.google.gwt.user.client.Window;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
-public class CollectionEntryPoint implements EntryPoint {
+@JsType(namespace = JsPackage.GLOBAL, name = "MyJavaScriptHello")
+public class MyJavaScriptHello {
 
-	private static Logger logger = Logger
-			.getLogger(CollectionEntryPoint.class.getName());
+	public String name;
 
-	// Create Gin Injector
-	private final CollectionGinjector injector = GWT
-			.create(CollectionGinjector.class);
+	public MyJavaScriptHello(String name) {
+		this.name = name;
+	}
 
-	@Override
-	public void onModuleLoad() {
-		// Get the Webapp
-		injector.collectionWebApp();
+	public String sayHello() {
+		return "Hello " + this.name;
+	}
+
+	public void click() {
+		Window.alert("Hello, I'm GWT JsInterop!\nThanks for clicking: " + name);
 	}
 
 }
