@@ -22,15 +22,17 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>gwt-boot-samples</artifactId>
+		<!-- Using gwt-boot-starter-parent -->
 		<groupId>com.github.gwtboot</groupId>
+		<artifactId>gwt-boot-starter-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>gwt-boot-sample-collection</artifactId>
 	<packaging>jar</packaging>
 	<name>gwt-boot-sample-collection</name>
 	<version>1.0.0-SNAPSHOT</version>
-	<description>GWT Boot Sample - Collection RestyGWT Test Mockito Gin etc.
+	<description>
+		GWT Boot Sample - Collection RestyGWT Test Mockito Gin etc.
 	</description>
 
 	<dependencies>
@@ -42,6 +44,7 @@
 		<dependency>
 			<groupId>com.github.gwtboot</groupId>
 			<artifactId>gwt-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
