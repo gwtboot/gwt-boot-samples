@@ -67,7 +67,7 @@
 						com.github.gwtboot.sample.collection.Collection
 					</moduleName>
 					<startupUrls>
-						<url>/basic/</url>
+						<url>/collection/</url>
 					</startupUrls>
 				</configuration>
 			</plugin>
