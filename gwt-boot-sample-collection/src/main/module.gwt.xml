@@ -22,6 +22,7 @@
 	<inherits name="com.github.gwtboot.starter.RestyGwtStarter"/>
 	<inherits name="com.github.gwtboot.starter.GinStarter"/>
 	<inherits name="com.github.gwtboot.starter.GwtBootstrap3Starter"/>
+	<inherits name="com.github.gwtboot.starter.GwtEventBinderStarter"/>
 
 	<!-- Entry Point -->
 	<entry-point

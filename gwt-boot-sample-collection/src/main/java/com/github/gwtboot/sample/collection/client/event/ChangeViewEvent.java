@@ -16,18 +16,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.github.gwtboot.sample.collection.client;
+package com.github.gwtboot.sample.collection.client.event;
 
-import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.SimpleEventBus;
-import com.google.gwt.inject.client.AbstractGinModule;
-import com.google.inject.Singleton;
+import com.google.web.bindery.event.shared.binder.GenericEvent;
 
-public class CollectionGinModule extends AbstractGinModule {
+public class ChangeViewEvent extends GenericEvent {
 
-	@Override
-	protected void configure() {
-		// Bind the SimpleEventBus as Singleton
-		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
+	private String widgetName;
+
+	public ChangeViewEvent() {
 	}
+
+	public ChangeViewEvent(String widgetName) {
+		this.widgetName = widgetName;
+	}
+
+	public String getWidgetName() {
+		return widgetName;
+	}
+
+	public void setWidgetName(String widgetName) {
+		this.widgetName = widgetName;
+	}
+
 }

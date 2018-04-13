@@ -28,13 +28,17 @@ import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 import org.gwtbootstrap3.extras.select.client.ui.MultipleSelect;
 
 import com.github.gwtboot.sample.collection.client.Banana;
+import com.github.gwtboot.sample.collection.client.event.ChangeViewEvent;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.binder.EventBinder;
+import com.google.web.bindery.event.shared.binder.EventHandler;
 
 @Singleton
 public class HelloWorldView extends Composite {
@@ -42,11 +46,18 @@ public class HelloWorldView extends Composite {
 	private static Logger logger = Logger
 			.getLogger(HelloWorldView.class.getName());
 
+	// UI Binder
 	interface HelloWorldViewUiBinder extends UiBinder<Widget, HelloWorldView> {
 	}
-
 	private static HelloWorldViewUiBinder uiBinder = GWT
 			.create(HelloWorldViewUiBinder.class);
+
+	// GWT EventBinder
+	interface HelloWorldViewEventBinder extends EventBinder<HelloWorldView> {
+	}
+
+	private final HelloWorldViewEventBinder eventBinder = GWT
+			.create(HelloWorldViewEventBinder.class);
 
 	@UiField
 	Button showButton;
@@ -58,12 +69,17 @@ public class HelloWorldView extends Composite {
 
 	private int bananaCount;
 
+	private final EventBus eventBus;
+
 	@Inject
-	public HelloWorldView(Banana banana) {
+	public HelloWorldView(Banana banana, EventBus eventBus) {
 		logger.info("HelloWorldView creating.");
 		this.banana = banana;
+		this.eventBus = eventBus;
 
 		initWidget(uiBinder.createAndBindUi(this));
+
+		eventBinder.bindEventHandlers(this, eventBus);
 
 		// Call banana three times
 		for (int i = 0; i < 3; i++) {
@@ -85,6 +101,8 @@ public class HelloWorldView extends Composite {
 		} else {
 			notify("No banana, no food.");
 		}
+
+		eventBus.fireEvent(new ChangeViewEvent("showButton"));
 	}
 
 	void notify(String s) {
@@ -106,6 +124,14 @@ public class HelloWorldView extends Composite {
 			banana.y = 40;
 			notify("Banana Sum the third: " + banana.sum());
 		}
+	}
+
+	@EventHandler
+	void onChangeViewed(ChangeViewEvent event) {
+		logger.info("ChangeViewEvent triggered: " + event.getWidgetName()
+				+ " - Source: " + event.getSource());
+		notify("ChangeViewEvent triggered: " + event.getWidgetName()
+				+ " - Source: " + event.getSource());
 	}
 
 }
