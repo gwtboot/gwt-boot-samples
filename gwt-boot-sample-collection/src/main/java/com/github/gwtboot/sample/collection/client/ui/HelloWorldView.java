@@ -37,8 +37,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.web.bindery.event.shared.binder.EventBinder;
-import com.google.web.bindery.event.shared.binder.EventHandler;
 
 @Singleton
 public class HelloWorldView extends Composite {
@@ -51,13 +49,6 @@ public class HelloWorldView extends Composite {
 	}
 	private static HelloWorldViewUiBinder uiBinder = GWT
 			.create(HelloWorldViewUiBinder.class);
-
-	// GWT EventBinder
-	interface HelloWorldViewEventBinder extends EventBinder<HelloWorldView> {
-	}
-
-	private final HelloWorldViewEventBinder eventBinder = GWT
-			.create(HelloWorldViewEventBinder.class);
 
 	@UiField
 	Button showButton;
@@ -72,15 +63,14 @@ public class HelloWorldView extends Composite {
 	private final EventBus eventBus;
 
 	@Inject
-	public HelloWorldView(Banana banana, EventBus eventBus) {
+	public HelloWorldView(Banana banana, EventBus eventBus,
+			HelloWorldViewEventHandler helloWorldViewEventHandler) {
 		logger.info("HelloWorldView creating.");
 		this.banana = banana;
 		this.eventBus = eventBus;
 
 		// UI Binder
 		initWidget(uiBinder.createAndBindUi(this));
-		// GWT EventBinder
-		eventBinder.bindEventHandlers(this, eventBus);
 
 		// Call banana three times
 		for (int i = 0; i < 3; i++) {
@@ -125,14 +115,6 @@ public class HelloWorldView extends Composite {
 			banana.y = 40;
 			notify("Banana Sum the third: " + banana.sum());
 		}
-	}
-
-	@EventHandler
-	void onChangeViewed(ChangeViewEvent event) {
-		logger.info("ChangeViewEvent triggered: " + event.getWidgetName()
-				+ " - Source: " + event.getSource());
-		notify("ChangeViewEvent triggered: " + event.getWidgetName()
-				+ " - Source: " + event.getSource());
 	}
 
 }

@@ -30,4 +30,5 @@ public class CollectionGinModule extends AbstractGinModule {
 		// Bind the SimpleEventBus as Singleton
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 	}
+
 }
