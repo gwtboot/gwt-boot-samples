@@ -21,6 +21,7 @@
 	<!-- GWT Boot stuffs -->
 	<inherits name="com.github.gwtboot.starter.RestyGwtStarter"/>
 	<inherits name="com.github.gwtboot.starter.GinStarter"/>
+	<inherits name="com.github.gwtboot.starter.GwtBootstrap3Starter"/>
 
 	<!-- Entry Point -->
 	<entry-point

@@ -39,6 +39,10 @@
 		<!-- GWT Starters -->
 		<dependency>
 			<groupId>com.github.gwtboot</groupId>
+			<artifactId>gwt-boot-starter-ui-gwtbootstrap3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.gwtboot</groupId>
 			<artifactId>gwt-boot-starter-restygwt</artifactId>
 		</dependency>
 		<dependency>

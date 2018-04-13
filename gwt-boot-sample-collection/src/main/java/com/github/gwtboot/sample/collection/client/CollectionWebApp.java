@@ -23,8 +23,10 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import com.github.gwtboot.sample.collection.client.ui.HelloWorldView;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.ScriptInjector;
+import com.google.gwt.user.client.ui.RootPanel;
 
 @Singleton
 public class CollectionWebApp {
@@ -34,30 +36,26 @@ public class CollectionWebApp {
 
 	private static final String TOMATO_JS_URL = "tomato.js";
 
-	private Apple apple;
+	private final HelloWorldView helloWorldView;
 
-	private Banana banana;
+	private Apple apple;
 
 	private int appleCount;
 
-	private int bananaCount;
-
 	@Inject
-	public CollectionWebApp(Apple apple, Banana banana) {
+	public CollectionWebApp(Apple apple, HelloWorldView helloWorldView) {
 		this.apple = apple;
-		this.banana = banana;
+		this.helloWorldView = helloWorldView;
 
 		// Call apple two times
 		callApple();
 		callApple();
 
-		// Call banana three times
-		for (int i = 0; i < 3; i++) {
-			callBanana();
-		}
-
 		// Call to JavaScript "tomato.js"
 		injectTomatoScript();
+
+		// Add the view to the HTML file
+		RootPanel.get("mainPanel").add(this.helloWorldView);
 	}
 
 	private void injectTomatoScript() {
@@ -89,23 +87,6 @@ public class CollectionWebApp {
 			apple.x = 10;
 			apple.y = 10;
 			logger.info("Apple Sum the second: " + apple.sum());
-		}
-	}
-
-	private void callBanana() {
-		logger.info("Calling Banana.");
-		if (bananaCount == 0) {
-			logger.info("Banana Sum the first: " + banana.sum());
-			bananaCount++;
-		} else if (bananaCount == 1) {
-			banana.x = 10;
-			banana.y = 10;
-			logger.info("Banana Sum the second: " + banana.sum());
-			bananaCount++;
-		} else {
-			banana.x = 40;
-			banana.y = 40;
-			logger.info("Banana Sum the third: " + banana.sum());
 		}
 	}
 
