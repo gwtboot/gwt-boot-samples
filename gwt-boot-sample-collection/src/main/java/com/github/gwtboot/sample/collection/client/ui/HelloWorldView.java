@@ -77,8 +77,9 @@ public class HelloWorldView extends Composite {
 		this.banana = banana;
 		this.eventBus = eventBus;
 
+		// UI Binder
 		initWidget(uiBinder.createAndBindUi(this));
-
+		// GWT EventBinder
 		eventBinder.bindEventHandlers(this, eventBus);
 
 		// Call banana three times
