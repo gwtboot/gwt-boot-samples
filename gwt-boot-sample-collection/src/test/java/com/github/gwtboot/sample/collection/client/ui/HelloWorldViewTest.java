@@ -25,6 +25,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
 import com.github.gwtboot.sample.collection.client.Banana;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwtmockito.GwtMock;
 import com.google.gwtmockito.GwtMockitoTestRunner;
 
@@ -45,9 +46,15 @@ public class HelloWorldViewTest {
 
 	private HelloWorldView view;
 
+	@Mock
+	private EventBus eventBus;
+
+	@Mock
+	private HelloWorldViewEventHandler helloWorldViewEventHandler;
+
 	@Before
 	public void setUp() throws Exception {
-		view = new HelloWorldView(banana);
+		view = new HelloWorldView(banana, eventBus, helloWorldViewEventHandler);
 		view = spy(view);
 	}
 
