@@ -73,26 +73,38 @@ public class HelloWorldView extends Composite {
 		logger.info("HelloWorldView created.");
 	}
 
+	public void setBananaCount(int bananaCount) {
+		this.bananaCount = bananaCount;
+	}
+
 	@UiHandler("showButton")
 	void handleShowButtonClick(ClickEvent e) {
-		foodMultipleSelect.getSelectedItems()
-				.forEach(item -> Notify.notify(item.toString()));
+		if (bananaCount != 0) {
+			foodMultipleSelect.getSelectedItems()
+					.forEach(item -> Notify.notify(item.toString()));
+		} else {
+			notify("No banana, no food.");
+		}
+	}
+
+	void notify(String s) {
+		Notify.notify(s);
 	}
 
 	private void callBanana() {
-		Notify.notify("Calling Banana.");
+		notify("Calling Banana.");
 		if (bananaCount == 0) {
-			Notify.notify("Banana Sum the first: " + banana.sum());
+			notify("Banana Sum the first: " + banana.sum());
 			bananaCount++;
 		} else if (bananaCount == 1) {
 			banana.x = 10;
 			banana.y = 10;
-			Notify.notify("Banana Sum the second: " + banana.sum());
+			notify("Banana Sum the second: " + banana.sum());
 			bananaCount++;
 		} else {
 			banana.x = 40;
 			banana.y = 40;
-			Notify.notify("Banana Sum the third: " + banana.sum());
+			notify("Banana Sum the third: " + banana.sum());
 		}
 	}
 
