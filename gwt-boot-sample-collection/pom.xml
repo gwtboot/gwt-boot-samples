@@ -69,10 +69,6 @@
 					<startupUrls>
 						<url>/collection/</url>
 					</startupUrls>
-					<compilerArgs>
-						<compilerArg>-logLevel</compilerArg>
-						<compilerArg>INFO</compilerArg>
-					</compilerArgs>
 				</configuration>
 			</plugin>
 		</plugins>

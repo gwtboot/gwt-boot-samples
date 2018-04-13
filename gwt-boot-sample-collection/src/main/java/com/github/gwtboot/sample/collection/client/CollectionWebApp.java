@@ -52,7 +52,6 @@ public class CollectionWebApp {
 
 	private void injectTomatoScript() {
 		logger.info("Inject tomato.js");
-		Tomato tomato = new Tomato("Test");
 
 		ScriptInjector.fromUrl(TOMATO_JS_URL)
 				.setCallback(new Callback<Void, Exception>() {
