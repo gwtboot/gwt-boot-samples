@@ -47,6 +47,7 @@ public class HelloWorldView extends Composite {
 	// UI Binder
 	interface HelloWorldViewUiBinder extends UiBinder<Widget, HelloWorldView> {
 	}
+
 	private static HelloWorldViewUiBinder uiBinder = GWT
 			.create(HelloWorldViewUiBinder.class);
 
