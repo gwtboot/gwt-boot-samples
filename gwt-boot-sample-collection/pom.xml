@@ -74,8 +74,6 @@
 						<url>/collection/</url>
 					</startupUrls>
 					<compilerArgs>
-						<arg>-logLevel</arg>
-						<arg>INFO</arg>
 						<arg>-generateJsInteropExports</arg>
 					</compilerArgs>
 					<devmodeArgs>
