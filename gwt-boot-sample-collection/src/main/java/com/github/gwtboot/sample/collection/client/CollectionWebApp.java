@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import com.github.gwtboot.sample.collection.client.extra.Apple;
 import com.github.gwtboot.sample.collection.client.ui.HelloWorldView;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.ScriptInjector;

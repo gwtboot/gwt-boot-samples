@@ -24,7 +24,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
-import com.github.gwtboot.sample.collection.client.Banana;
+import com.github.gwtboot.sample.collection.client.extra.Banana;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwtmockito.GwtMock;
 import com.google.gwtmockito.GwtMockitoTestRunner;

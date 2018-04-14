@@ -16,28 +16,34 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.github.gwtboot.sample.collection.client;
+package com.github.gwtboot.sample.collection.shared;
 
-import com.google.gwt.user.client.Window;
+public class PersonDto {
 
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsType;
+	private String name;
 
-@JsType(namespace = JsPackage.GLOBAL, name = "Tomato")
-public class Tomato {
+	private String nickname;
 
-	public String name;
+	private Boolean isInRetirement;
 
-	public Tomato(String name) {
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String sayHello() {
-		return "Hello " + this.name;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void click() {
-		Window.alert("Hello, I'm GWT JsInterop!\nThanks for clicking: " + name);
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public Boolean isInRetirement() {
+		return isInRetirement == null ? false : isInRetirement;
 	}
 
 }

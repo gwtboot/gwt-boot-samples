@@ -18,6 +18,7 @@
  */
 package com.github.gwtboot.sample.collection.client;
 
+import com.github.gwtboot.sample.collection.client.common.ServicePreparator;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 
@@ -26,6 +27,10 @@ public interface CollectionGinjector extends Ginjector {
 
 	// We only need the first class to be loaded
 	// The rest can be done through @Singleton
-	CollectionWebApp collectionWebApp();
+	CollectionWebApp getCollectionWebApp();
+
+	// We need ServicePreparator for RestyGWT
+	// Must be called before creating the UIs
+	ServicePreparator getServicePreparator();
 
 }

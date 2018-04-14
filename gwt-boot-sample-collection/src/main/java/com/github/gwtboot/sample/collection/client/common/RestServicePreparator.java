@@ -16,20 +16,39 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.github.gwtboot.sample.collection.client;
+package com.github.gwtboot.sample.collection.client.common;
 
+import java.util.logging.Logger;
+
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsType;
+import org.fusesource.restygwt.client.Defaults;
+import org.fusesource.restygwt.client.Resource;
+import org.fusesource.restygwt.client.RestServiceProxy;
+
+import com.github.gwtboot.sample.collection.client.domain.PersonClient;
 
 @Singleton
-@JsType(namespace = JsPackage.GLOBAL, name = "Apple", isNative = true)
-public class Apple {
+public class RestServicePreparator implements ServicePreparator {
 
-	public int x;
+	private static Logger logger = Logger
+			.getLogger(RestServicePreparator.class.getName());
 
-	public int y;
+	@Inject
+	private PersonClient personClient;
 
-	public native int sum();
+	public RestServicePreparator() {
+	}
+
+	@Override
+	public void prepare(String baseUrl) {
+		logger.info("Prepare for the resources for the services...");
+
+		Defaults.setDateFormat("yyyy-MM-dd");
+
+		Resource resource = new Resource(baseUrl);
+		((RestServiceProxy) personClient).setResource(resource);
+	}
+
 }

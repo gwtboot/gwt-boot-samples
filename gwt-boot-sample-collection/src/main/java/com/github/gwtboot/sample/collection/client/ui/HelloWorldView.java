@@ -27,8 +27,8 @@ import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 import org.gwtbootstrap3.extras.select.client.ui.MultipleSelect;
 
-import com.github.gwtboot.sample.collection.client.Banana;
 import com.github.gwtboot.sample.collection.client.event.ChangeViewEvent;
+import com.github.gwtboot.sample.collection.client.extra.Banana;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.shared.EventBus;

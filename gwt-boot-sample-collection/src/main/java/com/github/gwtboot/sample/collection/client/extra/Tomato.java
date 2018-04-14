@@ -16,20 +16,28 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.github.gwtboot.sample.collection.client;
+package com.github.gwtboot.sample.collection.client.extra;
 
-import javax.inject.Singleton;
+import com.google.gwt.user.client.Window;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
-@Singleton
-@JsType(namespace = JsPackage.GLOBAL, name = "Banana", isNative = true)
-public class Banana {
+@JsType(namespace = JsPackage.GLOBAL, name = "Tomato")
+public class Tomato {
 
-	public int x;
+	public String name;
 
-	public int y;
+	public Tomato(String name) {
+		this.name = name;
+	}
 
-	public native int sum();
+	public String sayHello() {
+		return "Hello " + this.name;
+	}
+
+	public void click() {
+		Window.alert("Hello, I'm GWT JsInterop!\nThanks for clicking: " + name);
+	}
+
 }

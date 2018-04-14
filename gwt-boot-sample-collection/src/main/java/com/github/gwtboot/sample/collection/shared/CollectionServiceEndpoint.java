@@ -16,31 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.github.gwtboot.sample.collection.client;
+package com.github.gwtboot.sample.collection.shared;
 
-import java.util.logging.Logger;
+public interface CollectionServiceEndpoint {
 
-import com.github.gwtboot.sample.collection.shared.CollectionServiceEndpoint;
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
+	String PERSON_FILTER_HOST = "https://demo-gwt-springboot.herokuapp.com/demogwt";
 
-public class CollectionEntryPoint implements EntryPoint {
-
-	private static Logger logger = Logger
-			.getLogger(CollectionEntryPoint.class.getName());
-
-	// Create Gin Injector
-	private final CollectionGinjector injector = GWT
-			.create(CollectionGinjector.class);
-
-	@Override
-	public void onModuleLoad() {
-		// We need to prepare the services with RestyGwt before...
-		injector.getServicePreparator()
-				.prepare(CollectionServiceEndpoint.PERSON_FILTER_HOST);
-
-		// Get the Webapp
-		injector.getCollectionWebApp();
-	}
+	String PERSON_FILTER_API = "/v1/personsFilter";
 
 }

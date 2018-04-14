@@ -16,31 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.github.gwtboot.sample.collection.client;
+package com.github.gwtboot.sample.collection.client.domain;
 
-import java.util.logging.Logger;
+import java.util.Date;
+import java.util.List;
 
-import com.github.gwtboot.sample.collection.shared.CollectionServiceEndpoint;
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
+import org.fusesource.restygwt.client.MethodCallback;
 
-public class CollectionEntryPoint implements EntryPoint {
+import com.github.gwtboot.sample.collection.shared.PersonDto;
 
-	private static Logger logger = Logger
-			.getLogger(CollectionEntryPoint.class.getName());
+public interface PersonClient {
 
-	// Create Gin Injector
-	private final CollectionGinjector injector = GWT
-			.create(CollectionGinjector.class);
+	void filterPerson(String personName, Date fromDate, Date toDate,
+			MethodCallback<List<PersonDto>> callback);
 
-	@Override
-	public void onModuleLoad() {
-		// We need to prepare the services with RestyGwt before...
-		injector.getServicePreparator()
-				.prepare(CollectionServiceEndpoint.PERSON_FILTER_HOST);
-
-		// Get the Webapp
-		injector.getCollectionWebApp();
-	}
-
+	void filterPerson(String personName,
+			MethodCallback<List<PersonDto>> callback);
 }

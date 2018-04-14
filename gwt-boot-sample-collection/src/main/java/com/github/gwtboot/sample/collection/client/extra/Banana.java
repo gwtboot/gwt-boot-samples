@@ -16,31 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.github.gwtboot.sample.collection.client;
+package com.github.gwtboot.sample.collection.client.extra;
 
-import java.util.logging.Logger;
+import javax.inject.Singleton;
 
-import com.github.gwtboot.sample.collection.shared.CollectionServiceEndpoint;
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
-public class CollectionEntryPoint implements EntryPoint {
+@Singleton
+@JsType(namespace = JsPackage.GLOBAL, name = "Banana", isNative = true)
+public class Banana {
 
-	private static Logger logger = Logger
-			.getLogger(CollectionEntryPoint.class.getName());
+	public int x;
 
-	// Create Gin Injector
-	private final CollectionGinjector injector = GWT
-			.create(CollectionGinjector.class);
+	public int y;
 
-	@Override
-	public void onModuleLoad() {
-		// We need to prepare the services with RestyGwt before...
-		injector.getServicePreparator()
-				.prepare(CollectionServiceEndpoint.PERSON_FILTER_HOST);
-
-		// Get the Webapp
-		injector.getCollectionWebApp();
-	}
-
+	public native int sum();
 }
