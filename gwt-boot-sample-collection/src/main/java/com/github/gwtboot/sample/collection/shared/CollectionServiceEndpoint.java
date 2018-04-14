@@ -20,6 +20,9 @@ package com.github.gwtboot.sample.collection.shared;
 
 public interface CollectionServiceEndpoint {
 
+	// We are using the REST API from the Demo Webapp
+	// Deployed in Heroku
+	// Github project: https://github.com/interseroh/demo-gwt-springboot
 	String PERSON_FILTER_HOST = "https://demo-gwt-springboot.herokuapp.com/demogwt";
 
 	String PERSON_FILTER_API = "/v1/personsFilter";
