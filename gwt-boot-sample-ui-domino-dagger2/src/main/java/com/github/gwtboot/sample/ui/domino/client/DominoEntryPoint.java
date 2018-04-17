@@ -20,8 +20,8 @@ package com.github.gwtboot.sample.ui.domino.client;
 
 import java.util.logging.Logger;
 
+import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldView;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.RootPanel;
 
 public class DominoEntryPoint implements EntryPoint {
 
@@ -31,7 +31,5 @@ public class DominoEntryPoint implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 		HelloWorldView helloWorldView = new HelloWorldView();
-
-		RootPanel.get("mainPanel").add(helloWorldView);
 	}
 }
