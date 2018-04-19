@@ -18,8 +18,14 @@
  */
 package com.github.gwtboot.sample.ui.domino.client;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
-@Component
-public class DominoComponent {
+@Singleton
+@Component(modules = DominoModule.class)
+public interface DominoComponent {
+
+	DominoWebApp getDominoWebApp();
+
 }

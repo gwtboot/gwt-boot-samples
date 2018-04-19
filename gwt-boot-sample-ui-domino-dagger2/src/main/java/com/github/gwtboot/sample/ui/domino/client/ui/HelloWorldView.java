@@ -20,6 +20,7 @@ package com.github.gwtboot.sample.ui.domino.client.ui;
 
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import org.dominokit.domino.ui.button.Button;
@@ -41,13 +42,14 @@ public class HelloWorldView {
 	private static Logger logger = Logger
 			.getLogger(HelloWorldView.class.getName());
 
+	@Inject
 	public HelloWorldView() {
-		Layout layout = Layout.create("TODO-List").removeLeftPanel()
-				.show(Theme.BLUE);
+		logger.info("Create HelloWorldView.");
+
+		Layout layout = Layout.create("TODO-List").removeLeftPanel().show(Theme.BLUE);
 
 		TextBox title = TextBox.create("Title").floating();
-		TextArea description = TextArea.create("Description").floating()
-				.setRows(1);
+		TextArea description = TextArea.create("Description").floating().setRows(1);
 
 		ListGroup<TodoItem> todoItemsGroup = ListGroup.create();
 		ListGroup<TodoItem> doneItemsGroup = ListGroup.create();
@@ -57,11 +59,9 @@ public class HelloWorldView {
 
 		addButton.addClickListener(evt -> {
 			if (!title.isEmpty() && !description.isEmpty()) {
-				TodoItem todoItem = new TodoItem(title.getValue(),
-						description.getValue());
+				TodoItem todoItem = new TodoItem(title.getValue(), description.getValue());
 
-				ListItem<TodoItem> listItem = todoItemsGroup
-						.createItem(todoItem, todoItem.description)
+				ListItem<TodoItem> listItem = todoItemsGroup.createItem(todoItem, todoItem.description)
 						.setHeading(todoItem.title);
 
 				IconButton doneButton = IconButton.create(Icons.ALL.check());
@@ -73,8 +73,7 @@ public class HelloWorldView {
 				});
 
 				doneButton.setButtonType(StyleType.SUCCESS);
-				doneButton.asElement().style
-						.setProperty("position", "absolute");
+				doneButton.asElement().style.setProperty("position", "absolute");
 				doneButton.asElement().style.setProperty("top", "10px");
 				doneButton.asElement().style.setProperty("right", "10px");
 
@@ -87,16 +86,12 @@ public class HelloWorldView {
 		});
 
 		layout.getContentPanel().appendChild(
-				Card.create("NEW TODO", "Add a new todo list item")
-						.appendContent(title.asElement())
-						.appendContent(description.asElement())
-						.appendContent(addButton.asElement()).asElement());
+				Card.create("NEW TODO", "Add a new todo list item").appendContent(title.asElement())
+						.appendContent(description.asElement()).appendContent(addButton.asElement()).asElement());
 
-		layout.getContentPanel().appendChild(Card.create("TODO ITEMS")
-				.appendContent(todoItemsGroup.asElement()).asElement());
+		layout.getContentPanel().appendChild(Card.create("TODO ITEMS").appendContent(todoItemsGroup.asElement()).asElement());
 
-		layout.getContentPanel().appendChild(Card.create("DONE ITEMS")
-				.appendContent(doneItemsGroup.asElement()).asElement());
+		layout.getContentPanel().appendChild(Card.create("DONE ITEMS").appendContent(doneItemsGroup.asElement()).asElement());
 	}
 
 	private class TodoItem {

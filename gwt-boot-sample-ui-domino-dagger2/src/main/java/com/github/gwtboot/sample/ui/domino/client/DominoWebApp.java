@@ -18,9 +18,18 @@
  */
 package com.github.gwtboot.sample.ui.domino.client;
 
-import dagger.Module;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
-@Module
-public class DominoModule {
+import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldView;
 
+@Singleton
+public class DominoWebApp {
+
+	private HelloWorldView helloWorldView;
+
+	@Inject
+	public DominoWebApp(HelloWorldView helloWorldView) {
+		this.helloWorldView = helloWorldView;
+	}
 }
