@@ -28,4 +28,6 @@ public interface DominoComponent {
 
 	DominoWebApp getDominoWebApp();
 
+	void inject(DominoEntryPoint dominoEntryPoint);
+
 }
