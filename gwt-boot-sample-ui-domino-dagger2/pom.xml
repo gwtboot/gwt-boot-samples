@@ -56,10 +56,6 @@
 				<groupId>net.ltgt.gwt.maven</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
 				<configuration>
-					<compilerArgs>
-						<compilerArg>-gen</compilerArg>
-						<compilerArg>/mnt/CODE/TEMP</compilerArg>
-					</compilerArgs>
 					<moduleName>
 						com.github.gwtboot.sample.ui.domino.Domino
 					</moduleName>
