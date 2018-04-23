@@ -36,6 +36,8 @@ import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.style.StyleType;
 import org.dominokit.domino.ui.themes.Theme;
 
+import static com.github.gwtboot.sample.ui.domino.client.ui.TodoClientBundle.*;
+
 @Singleton
 public class HelloWorldView {
 
@@ -46,23 +48,23 @@ public class HelloWorldView {
 	public HelloWorldView() {
 		logger.info("Create HelloWorldView.");
 
-		Layout layout = Layout.create("TODO-List").removeLeftPanel().show(Theme.BLUE);
+		Layout layout = Layout.create(CONSTANTS.appTitle()).removeLeftPanel().show(Theme.BLUE);
 
-		TextBox title = TextBox.create("Title").floating();
-		TextArea description = TextArea.create("Description").floating().setRows(1);
+		TextBox title = TextBox.create(CONSTANTS.title()).floating();
+		TextArea description = TextArea.create(CONSTANTS.description()).floating().setRows(1);
 
 		ListGroup<TodoItem> todoItemsGroup = ListGroup.create();
 		ListGroup<TodoItem> doneItemsGroup = ListGroup.create();
 
-		Button addButton = Button.createPrimary("ADD");
-		addButton.asElement().style.setProperty("min-width", "120px");
+		Button addButton = Button.createPrimary(CONSTANTS.add());
+		addButton.asElement().classList.add(BUNDLE.css().addButton());
 
 		addButton.addClickListener(evt -> {
 			if (!title.isEmpty() && !description.isEmpty()) {
 				TodoItem todoItem = new TodoItem(title.getValue(), description.getValue());
 
-				ListItem<TodoItem> listItem = todoItemsGroup.createItem(todoItem, todoItem.description)
-						.setHeading(todoItem.title);
+				ListItem<TodoItem> listItem = todoItemsGroup.createItem(todoItem, todoItem.getDescription())
+						.setHeading(todoItem.getTitle());
 
 				IconButton doneButton = IconButton.create(Icons.ALL.check());
 				doneButton.addClickListener(clickEvent -> {
@@ -73,34 +75,23 @@ public class HelloWorldView {
 				});
 
 				doneButton.setButtonType(StyleType.SUCCESS);
-				doneButton.asElement().style.setProperty("position", "absolute");
-				doneButton.asElement().style.setProperty("top", "10px");
-				doneButton.asElement().style.setProperty("right", "10px");
+				doneButton.asElement().classList.add(BUNDLE.css().doneButton());
 
 				listItem.appendContent(doneButton.asElement());
 
 				todoItemsGroup.appendItem(listItem);
 
-				Tooltip.create(doneButton.asElement(), "Mark Done");
+				Tooltip.create(doneButton.asElement(), CONSTANTS.mark_done());
 			}
 		});
 
 		layout.getContentPanel().appendChild(
-				Card.create("NEW TODO", "Add a new todo list item").appendContent(title.asElement())
+				Card.create(CONSTANTS.new_todo(), CONSTANTS.add_new_todo()).appendContent(title.asElement())
 						.appendContent(description.asElement()).appendContent(addButton.asElement()).asElement());
 
-		layout.getContentPanel().appendChild(Card.create("TODO ITEMS").appendContent(todoItemsGroup.asElement()).asElement());
+		layout.getContentPanel().appendChild(Card.create(CONSTANTS.todo_items()).appendContent(todoItemsGroup.asElement()).asElement());
 
-		layout.getContentPanel().appendChild(Card.create("DONE ITEMS").appendContent(doneItemsGroup.asElement()).asElement());
+		layout.getContentPanel().appendChild(Card.create(CONSTANTS.done_items()).appendContent(doneItemsGroup.asElement()).asElement());
 	}
 
-	private class TodoItem {
-		private String title;
-		private String description;
-
-		public TodoItem(String title, String description) {
-			this.title = title;
-			this.description = description;
-		}
-	}
 }

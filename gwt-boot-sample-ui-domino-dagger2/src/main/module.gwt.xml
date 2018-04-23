@@ -25,4 +25,5 @@
 	<!-- Entry Point -->
 	<entry-point
 		class='com.github.gwtboot.sample.ui.domino.client.DominoEntryPoint'/>
+	<set-configuration-property name="CssResource.enableGss" value="true" />
 </module>
