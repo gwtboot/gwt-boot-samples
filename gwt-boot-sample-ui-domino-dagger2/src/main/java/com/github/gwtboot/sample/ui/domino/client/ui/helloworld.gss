@@ -1,3 +1,5 @@
+/** Add css rules here for your application. */
+
 .addButton {
     min-width: 120px !important;
 }

@@ -20,7 +20,7 @@ package com.github.gwtboot.sample.ui.domino.client;
 
 import java.util.logging.Logger;
 
-import com.github.gwtboot.sample.ui.domino.client.ui.TodoClientBundle;
+import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle;
 import com.google.gwt.core.client.EntryPoint;
 
 public class DominoEntryPoint implements EntryPoint {
@@ -30,7 +30,8 @@ public class DominoEntryPoint implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		TodoClientBundle.BUNDLE.css().ensureInjected();
+		HelloWorldClientBundle.BUNDLE.css().ensureInjected();
+
 		DaggerDominoComponent.builder().build().getDominoWebApp();
 	}
 }

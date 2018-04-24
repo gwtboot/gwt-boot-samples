@@ -36,7 +36,8 @@ import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.style.StyleType;
 import org.dominokit.domino.ui.themes.Theme;
 
-import static com.github.gwtboot.sample.ui.domino.client.ui.TodoClientBundle.*;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
 
 @Singleton
 public class HelloWorldView {
