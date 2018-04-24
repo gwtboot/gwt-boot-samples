@@ -22,8 +22,6 @@
 	<inherits name="com.github.gwtboot.starter.Dagger2Starter"/>
 	<inherits name="com.github.gwtboot.starter.DominoStarter"/>
 
-	<set-configuration-property name="CssResource.enableGss" value="true"/>
-
 	<!-- Entry Point -->
 	<entry-point
 		class='com.github.gwtboot.sample.ui.domino.client.DominoEntryPoint'/>
