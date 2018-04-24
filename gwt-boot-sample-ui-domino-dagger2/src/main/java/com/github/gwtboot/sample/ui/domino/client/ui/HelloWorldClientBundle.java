@@ -31,7 +31,7 @@ public interface HelloWorldClientBundle extends ClientBundle {
 
 	interface HelloWorldConstants extends Constants {
 
-		@DefaultStringValue("TODO-List")
+		@DefaultStringValue("Todo List")
 		String appTitle();
 
 		@DefaultStringValue("Title")
@@ -40,22 +40,22 @@ public interface HelloWorldClientBundle extends ClientBundle {
 		@DefaultStringValue("Description")
 		String description();
 
-		@DefaultStringValue("ADD")
+		@DefaultStringValue("Add")
 		String add();
 
 		@DefaultStringValue("Mark Done")
 		String mark_done();
 
-		@DefaultStringValue("NEW TODO")
+		@DefaultStringValue("New Todo")
 		String new_todo();
 
 		@DefaultStringValue("Add a new todo list item")
 		String add_new_todo();
 
-		@DefaultStringValue("TODO ITEMS")
+		@DefaultStringValue("Todo Items")
 		String todo_items();
 
-		@DefaultStringValue("DONE ITEMS")
+		@DefaultStringValue("Done Items")
 		String done_items();
 	}
 
@@ -66,6 +66,6 @@ public interface HelloWorldClientBundle extends ClientBundle {
 		String doneButton();
 	}
 
-	@Source("todo.gss")
+	@Source("helloworld.gss")
 	TodoStyles css();
 }
