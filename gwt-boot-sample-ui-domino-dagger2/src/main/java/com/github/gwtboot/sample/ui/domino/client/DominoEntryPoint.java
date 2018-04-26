@@ -30,8 +30,12 @@ public class DominoEntryPoint implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
+		logger.info("Inject clientBundle");
 		HelloWorldClientBundle.BUNDLE.css().ensureInjected();
 
-		DaggerDominoComponent.builder().build().getDominoWebApp();
+		logger.info("Create component Dagger2");
+		final DominoComponent dominoComponent = DaggerDominoComponent.builder()
+				.build();
+		dominoComponent.getDominoWebApp();
 	}
 }

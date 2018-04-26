@@ -18,11 +18,14 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
+import javax.inject.Singleton;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.Constants;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 
+@Singleton
 public interface HelloWorldClientBundle extends ClientBundle {
 
 	HelloWorldClientBundle BUNDLE = GWT.create(HelloWorldClientBundle.class);
@@ -30,7 +33,6 @@ public interface HelloWorldClientBundle extends ClientBundle {
 	HelloWorldConstants CONSTANTS = GWT.create(HelloWorldConstants.class);
 
 	interface HelloWorldConstants extends Constants {
-
 		@DefaultStringValue("Todo List")
 		String appTitle();
 
@@ -59,13 +61,12 @@ public interface HelloWorldClientBundle extends ClientBundle {
 		String done_items();
 	}
 
-	interface TodoStyles extends CssResource {
-
+	interface HelloWorldCssResource extends CssResource {
 		String addButton();
 
 		String doneButton();
 	}
 
 	@Source("helloworld.gss")
-	TodoStyles css();
+	HelloWorldCssResource css();
 }
