@@ -34,8 +34,6 @@ public class DominoEntryPoint implements EntryPoint {
 		HelloWorldClientBundle.BUNDLE.css().ensureInjected();
 
 		logger.info("Create component Dagger2");
-		final DominoComponent dominoComponent = DaggerDominoComponent.builder()
-				.build();
-		dominoComponent.getDominoWebApp();
+		DaggerDominoComponent.builder().build().getDominoWebApp();
 	}
 }
