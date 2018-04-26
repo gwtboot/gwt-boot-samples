@@ -1,9 +1,62 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<!--
+ | Licensed to the Apache Software Foundation (ASF) under one
+ | or more contributor license agreements.  See the NOTICE file
+ | distributed with this work for additional information
+ | regarding copyright ownership.  The ASF licenses this file
+ | to you under the Apache License, Version 2.0 (the
+ | "License"); you may not use this file except in compliance
+ | with the License.  You may obtain a copy of the License at
+ |
+ |  http://www.apache.org/licenses/LICENSE-2.0
+ |
+ | Unless required by applicable law or agreed to in writing,
+ | software distributed under the License is distributed on an
+ | "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ | KIND, either express or implied.  See the License for the
+ | specific language governing permissions and limitations
+ | under the License.
+-->
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 			 xmlns:g="urn:import:com.google.gwt.user.client.ui"
 			 xmlns:m="urn:import:gwt.material.design.client.ui">
-	<g:ScrollPanel>
-		<m:MaterialContainer>
+	<g:HTMLPanel>
+		<m:MaterialHeader top="0">
+			<!-- NavBar -->
+			<m:MaterialNavBar activates="sideNav" ui:field="navBar"
+							  paddingLeft="20" backgroundColor="BLUE">
+				<m:MaterialNavBrand text="Starter"/>
+				<m:MaterialNavSection float="RIGHT">
+					<m:MaterialTooltip text="Starter" position="BOTTOM">
+						<m:MaterialLink iconType="WHATSHOT"
+										iconPosition="NONE"/>
+					</m:MaterialTooltip>
+					<m:MaterialTooltip text="Apps" position="BOTTOM">
+						<m:MaterialLink iconType="VIEW_MODULE"
+										iconPosition="NONE"/>
+					</m:MaterialTooltip>
+					<m:MaterialTooltip text="Notifications" position="BOTTOM">
+						<m:MaterialLink activates="sideNav"
+										iconType="NOTIFICATIONS"
+										iconPosition="NONE"/>
+					</m:MaterialTooltip>
+					<m:MaterialTooltip text="Search" position="BOTTOM">
+						<m:MaterialLink ui:field="btnSearch" iconType="SEARCH"
+										iconPosition="NONE"/>
+					</m:MaterialTooltip>
+				</m:MaterialNavSection>
+			</m:MaterialNavBar>
+
+			<!-- Search Bar -->
+			<m:MaterialNavBar ui:field="navBarSearch" backgroundColor="WHITE"
+							  visible="false">
+				<m:MaterialSearch ui:field="txtSearch" placeholder="Keyword"
+								  textColor="BLACK" active="true"/>
+			</m:MaterialNavBar>
+		</m:MaterialHeader>
+
+		<!-- Panel -->
+		<m:MaterialPanel>
 			<m:MaterialRow>
 				<m:MaterialColumn grid="s12 m4">
 					<m:MaterialTitle title="Material is the metaphor"
@@ -19,16 +72,37 @@
 				</m:MaterialColumn>
 			</m:MaterialRow>
 			<m:MaterialRow>
-				<m:MaterialButton ui:field="showButton"></m:MaterialButton>
+				<m:MaterialColumn grid="s12 m4">
+					<m:MaterialButton ui:field="showButton" text="Button"
+									  waves="LIGHT" textColor="WHITE"
+									  iconType="POLYMER" iconPosition="LEFT"/>
+					<m:MaterialButton margin="8" type="FLOATING" waves="LIGHT"
+									  size="LARGE" backgroundColor="RED"
+									  iconType="CAKE"/>
+					<m:MaterialButton margin="8" type="FLOATING" waves="LIGHT"
+									  size="LARGE" iconType="ANDROID"/>
+					<m:MaterialButton margin="8" type="FLOATING" waves="LIGHT"
+									  size="LARGE" iconType="MESSAGE"
+									  enabled="false"/>
+					<m:MaterialButton margin="8" type="FLOATING" waves="LIGHT"
+									  size="LARGE" iconType="GROUP"/>
+				</m:MaterialColumn>
 			</m:MaterialRow>
 			<m:MaterialRow>
-				<m:MaterialDropDown activator="dp-2" constrainWidth="true"
-									ui:field="foodDropDown">
-					<m:MaterialLink text="First"/>
-					<m:MaterialLink text="Second"/>
-					<m:MaterialLink text="Third"/>
-				</m:MaterialDropDown>
+				<m:MaterialColumn grid="s12 m4">
+					<!-- Activator -->
+					<m:MaterialButton text="Dropdown" iconType="ARROW_DROP_DOWN"
+									  iconPosition="RIGHT" textColor="WHITE"
+									  activates="dp-2"/>
+					<!-- My Drop Down -->
+					<m:MaterialDropDown activator="dp-2" constrainWidth="true"
+										ui:field="foodDropDown">
+						<m:MaterialLink text="First"/>
+						<m:MaterialLink text="Second"/>
+						<m:MaterialLink text="Third"/>
+					</m:MaterialDropDown>
+				</m:MaterialColumn>
 			</m:MaterialRow>
-		</m:MaterialContainer>
-	</g:ScrollPanel>
+		</m:MaterialPanel>
+	</g:HTMLPanel>
 </ui:UiBinder>
