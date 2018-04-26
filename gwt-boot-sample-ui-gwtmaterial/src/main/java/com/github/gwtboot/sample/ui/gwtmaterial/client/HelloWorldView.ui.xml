@@ -72,7 +72,7 @@
 				</m:MaterialColumn>
 			</m:MaterialRow>
 			<m:MaterialRow>
-				<m:MaterialColumn grid="s12 m4">
+				<m:MaterialColumn grid="s12 m12">
 					<m:MaterialButton ui:field="showButton" text="Button"
 									  waves="LIGHT" textColor="WHITE"
 									  iconType="POLYMER" iconPosition="LEFT"/>
@@ -89,7 +89,7 @@
 				</m:MaterialColumn>
 			</m:MaterialRow>
 			<m:MaterialRow>
-				<m:MaterialColumn grid="s12 m4">
+				<m:MaterialColumn grid="s12 m12">
 					<!-- Activator -->
 					<m:MaterialButton text="Dropdown" iconType="ARROW_DROP_DOWN"
 									  iconPosition="RIGHT" textColor="WHITE"
