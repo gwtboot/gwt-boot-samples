@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -30,6 +31,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialDropDown;
+import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialToast;
 
 public class HelloWorldView extends Composite {
 
@@ -54,6 +57,16 @@ public class HelloWorldView extends Composite {
 
 	@UiHandler("showButton")
 	void handleShowButtonClick(ClickEvent e) {
-		foodDropDown.getItems().forEach(item -> logger.info(item.toString()));
+		foodDropDown.getItems().forEach(item -> {
+			MaterialToast.fireToast(item.toString());
+			logger.info(item.toString());
+		});
+	}
+
+	@UiHandler("foodDropDown")
+	void handleDropdown(SelectionEvent<Widget> callback) {
+		MaterialToast.fireToast(
+				"Selected : " + ((MaterialLink) callback.getSelectedItem())
+						.getText());
 	}
 }
