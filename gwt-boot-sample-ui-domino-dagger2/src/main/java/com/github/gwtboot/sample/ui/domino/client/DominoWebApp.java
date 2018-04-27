@@ -31,5 +31,6 @@ public class DominoWebApp {
 	@Inject
 	public DominoWebApp(HelloWorldView helloWorldView) {
 		this.helloWorldView = helloWorldView;
+		this.helloWorldView.initElements();
 	}
 }

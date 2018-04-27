@@ -20,10 +20,12 @@ package com.github.gwtboot.sample.ui.domino.client;
 
 import javax.inject.Singleton;
 
+import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldUiBinder;
+
 import dagger.Component;
 
 @Singleton
-@Component(modules = DominoModule.class)
+@Component(modules = { DominoModule.class, HelloWorldUiBinder.class })
 public interface DominoComponent {
 
 	DominoWebApp getDominoWebApp();

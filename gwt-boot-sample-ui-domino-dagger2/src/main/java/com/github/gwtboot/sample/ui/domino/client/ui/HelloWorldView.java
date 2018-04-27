@@ -21,6 +21,7 @@ package com.github.gwtboot.sample.ui.domino.client.ui;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import org.dominokit.domino.ui.button.Button;
@@ -58,21 +59,21 @@ public class HelloWorldView {
 	Button addButton;
 
 	@Inject
-	public HelloWorldView() {
+	public HelloWorldView(TextBox titleTextBox, TextArea descriptionTextArea,
+			@Named("todoItemsListGroup") ListGroup<TodoItem> todoItemsListGroup,
+			@Named("doneItemsListGroup") ListGroup<TodoItem> doneItemsListGroup,
+			Button addButton) {
 		logger.info("Create HelloWorldView");
 
-		// Input fields
-		titleTextBox = TextBox.create(CONSTANTS.title()).floating();
-		descriptionTextArea = TextArea.create(CONSTANTS.description())
-				.floating().setRows(1);
+		this.titleTextBox = titleTextBox;
+		this.descriptionTextArea = descriptionTextArea;
+		this.todoItemsListGroup = todoItemsListGroup;
+		this.doneItemsListGroup = doneItemsListGroup;
+		this.addButton = addButton;
+	}
 
-		// Groups todoList and doneList
-		todoItemsListGroup = ListGroup.create();
-		doneItemsListGroup = ListGroup.create();
-
+	public void initElements() {
 		// Add button and listener
-		addButton = Button.createPrimary(CONSTANTS.add());
-		addButton.asElement().classList.add(BUNDLE.css().addButton());
 		addButton.addClickListener(addButtonClickEvent -> {
 			handleAddButtonClick(addButtonClickEvent);
 		});
@@ -95,7 +96,7 @@ public class HelloWorldView {
 				.appendContent(doneItemsListGroup.asElement()).asElement());
 	}
 
-	private void handleAddButtonClick(Event addButtonClickEvent) {
+	void handleAddButtonClick(Event addButtonClickEvent) {
 		// We click the addButton
 		if (!titleTextBox.isEmpty() && !descriptionTextArea.isEmpty()) {
 			// Create a new todoItem
@@ -103,23 +104,19 @@ public class HelloWorldView {
 					descriptionTextArea.getValue());
 
 			ListItem<TodoItem> listItem = todoItemsListGroup
-					.createItem(todoItem, todoItem.getDescription())
-					.setHeading(todoItem.getTitle());
+					.createItem(todoItem, todoItem.getDescription()).setHeading(todoItem.getTitle());
 
 			// Done button and listener
-			IconButton doneButton = IconButton.create(Icons.ALL.check());
-			doneButton.setButtonType(StyleType.SUCCESS);
-			doneButton.asElement().classList.add(BUNDLE.css().doneButton());
+			IconButton doneButton = createDoneButton();
 			doneButton.addClickListener(doneButtonClickEvent -> {
-				handleDoneButtonClick(doneButtonClickEvent, doneButton,
-						listItem);
+				handleDoneButtonClick(doneButtonClickEvent, doneButton, listItem);
 			});
 
 			listItem.appendContent(doneButton.asElement());
 
 			todoItemsListGroup.appendItem(listItem);
 
-			Tooltip.create(doneButton.asElement(), CONSTANTS.mark_done());
+			createTooltip(doneButton);
 
 			// Clear input fields
 			titleTextBox.setValue("");
@@ -127,7 +124,19 @@ public class HelloWorldView {
 		}
 	}
 
-	private void handleDoneButtonClick(Event doneButtonClickEvent,
+	void createTooltip(IconButton doneButton) {
+		Tooltip.create(doneButton.asElement(), CONSTANTS.mark_done());
+	}
+
+	IconButton createDoneButton() {
+		IconButton doneButton = IconButton.create(Icons.ALL.check());
+		doneButton.setButtonType(StyleType.SUCCESS);
+		doneButton.asElement().classList.add(BUNDLE.css().doneButton());
+
+		return doneButton;
+	}
+
+	void handleDoneButtonClick(Event doneButtonClickEvent,
 			IconButton doneButton, ListItem<TodoItem> listItem) {
 		// We click the doneButton
 		doneButtonClickEvent.stopPropagation();

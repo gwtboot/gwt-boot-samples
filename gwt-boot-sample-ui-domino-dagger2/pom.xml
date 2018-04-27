@@ -42,6 +42,11 @@
 			<groupId>com.github.gwtboot</groupId>
 			<artifactId>gwt-boot-starter-dagger2</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.github.gwtboot</groupId>
+			<artifactId>gwt-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
