@@ -26,7 +26,6 @@ import javax.inject.Singleton;
 
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.button.IconButton;
-import org.dominokit.domino.ui.cards.Card;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
 import org.dominokit.domino.ui.icons.Icons;
@@ -35,7 +34,6 @@ import org.dominokit.domino.ui.lists.ListGroup;
 import org.dominokit.domino.ui.lists.ListItem;
 import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.style.StyleType;
-import org.dominokit.domino.ui.themes.Theme;
 
 import elemental2.dom.Event;
 
@@ -58,11 +56,13 @@ public class HelloWorldView {
 
 	Button addButton;
 
+	Layout layout;
+
 	@Inject
 	public HelloWorldView(TextBox titleTextBox, TextArea descriptionTextArea,
 			@Named("todoItemsListGroup") ListGroup<TodoItem> todoItemsListGroup,
 			@Named("doneItemsListGroup") ListGroup<TodoItem> doneItemsListGroup,
-			Button addButton) {
+			Button addButton, Layout layout) {
 		logger.info("Create HelloWorldView");
 
 		this.titleTextBox = titleTextBox;
@@ -70,30 +70,14 @@ public class HelloWorldView {
 		this.todoItemsListGroup = todoItemsListGroup;
 		this.doneItemsListGroup = doneItemsListGroup;
 		this.addButton = addButton;
-	}
+		this.layout = layout;
 
-	public void initElements() {
+		logger.info("Button: " + addButton.toString());
+
 		// Add button and listener
-		addButton.addClickListener(addButtonClickEvent -> {
+		this.addButton.addClickListener(addButtonClickEvent -> {
 			handleAddButtonClick(addButtonClickEvent);
 		});
-
-		// Layout
-		createLayout();
-	}
-
-	private void createLayout() {
-		Layout layout = Layout.create(CONSTANTS.appTitle()).removeLeftPanel()
-				.show(Theme.BLUE);
-		layout.getContentPanel().appendChild(
-				Card.create(CONSTANTS.new_todo(), CONSTANTS.add_new_todo())
-						.appendContent(titleTextBox.asElement())
-						.appendContent(descriptionTextArea.asElement())
-						.appendContent(addButton.asElement()).asElement());
-		layout.getContentPanel().appendChild(Card.create(CONSTANTS.todo_items())
-				.appendContent(todoItemsListGroup.asElement()).asElement());
-		layout.getContentPanel().appendChild(Card.create(CONSTANTS.done_items())
-				.appendContent(doneItemsListGroup.asElement()).asElement());
 	}
 
 	void handleAddButtonClick(Event addButtonClickEvent) {

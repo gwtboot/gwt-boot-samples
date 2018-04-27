@@ -22,6 +22,7 @@ import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.button.IconButton;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
+import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,10 +62,13 @@ public class HelloWorldViewTest {
 	@Mock
 	Button addButton;
 
+	@Mock
+	Layout layout;
+
 	@Before
 	public void setUp() throws Exception {
 		helloWorldView = new HelloWorldView(titleTextBox, descriptionTextArea,
-				todoItemsListGroup, doneItemsListGroup, addButton);
+				todoItemsListGroup, doneItemsListGroup, addButton, layout);
 		helloWorldView = spy(helloWorldView);
 	}
 
