@@ -1,0 +1,12 @@
+<div>
+    <p v-bind:class='map("isDone", todo.isDone())'>
+        <input type="checkbox"
+               v-model="isDoneTodo"
+               v-bind:id="this._uid"/>
+        <label v-bind:for="this._uid">{{ todo.getText() }}</label>
+
+        <button class="btn red right" @click="removeTodo">
+            <i class="material-icons">delete</i>
+        </button>
+    </p>
+</div>
