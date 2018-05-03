@@ -1,0 +1,116 @@
+<!doctype html>
+<!--
+ | Licensed to the Apache Software Foundation (ASF) under one
+ | or more contributor license agreements.  See the NOTICE file
+ | distributed with this work for additional information
+ | regarding copyright ownership.  The ASF licenses this file
+ | to you under the Apache License, Version 2.0 (the
+ | "License"); you may not use this file except in compliance
+ | with the License.  You may obtain a copy of the License at
+ |
+ |  http://www.apache.org/licenses/LICENSE-2.0
+ |
+ | Unless required by applicable law or agreed to in writing,
+ | software distributed under the License is distributed on an
+ | "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ | KIND, either express or implied.  See the License for the
+ | specific language governing permissions and limitations
+ | under the License.
+-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,
+		user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>GWT Boot - Vue GWT Sample</title>
+
+    <!--                                           -->
+    <!-- This script loads your compiled module.   -->
+    <!-- If you add any GWT meta tags, they must   -->
+    <!-- be added before this line.                -->
+    <!--                                           -->
+    <script type="text/javascript" language="javascript" src="vuegwt.nocache.js" async=""></script>
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+<nav>
+    <div class="nav-wrapper purple">
+        <a class="brand-logo">GWT Boot - Vue GWT Sample</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="https://github.com/Axellience/vue-gwt-demo">View on Github</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>GWT Boot - Vue GWT Sample</h1>
+            <p class="flow-text">
+                This demo page displays some demos made with
+                <a href="https://github.com/Axellience/vue-gwt">Vue GWT</a>.
+                Vue GWT integrates <a href="https://vuejs.org/" target="_blank">Vue.js</a> with
+                <a href="http://www.gwtproject.org/" target="_blank">GWT</a> 2.8 using
+                <a href="https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/view"
+                   target="_blank">JsInterop</a>.
+            </p>
+            <p class="flow-text">
+                To get more details and get started take a look at our
+                <a href="https://axellience.github.io/vue-gwt/" target="_blank">Documentation</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <h4>Counter Component</h4>
+            <p class="description">
+                Vue GWT let your write <a href="https://vuejs.org/"
+                                          target="_blank">Vue.js</a> with Java controllers.
+                Bellow you will see a simple example.
+                Try clicking on the buttons to see the reactions.
+            </p>
+        </div>
+        <div class="col s12 center">
+            <div id="simpleCounterComponentContainer"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <h4>Todo List component</h4>
+            <p class="description">
+                This example is mandatory when showing a new front-end framework, so here is a Todo List written with Vue GWT.
+                <br>
+                This Todo list is composed of 2 Components:
+                <strong>TodoListComponent</strong> that manage the list of todos and
+                <strong>TodoComponent</strong> that displays a single Todo.
+            </p>
+        </div>
+        <div class="col s12 m6 push-m3 l4 push-l4">
+            <div id="todoListComponentContainer"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .isDone label {
+        text-decoration: line-through;
+    }
+
+    p.description {
+        color: #666666;
+    }
+</style>
+
+</body>
+</html>
