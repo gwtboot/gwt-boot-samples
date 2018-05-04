@@ -28,14 +28,14 @@ import java.util.logging.Logger;
 
 public class VueGwtEntryPoint implements EntryPoint {
 
-	private static Logger logger = Logger
-			.getLogger(VueGwtEntryPoint.class.getName());
+    private static Logger logger = Logger
+            .getLogger(VueGwtEntryPoint.class.getName());
 
-	@Override
-	public void onModuleLoad() {
+    @Override
+    public void onModuleLoad() {
         VueGWT.init();
 
         Vue.attach("#simpleCounterComponentContainer", CounterComponent.class);
         Vue.attach("#todoListComponentContainer", TodoListComponent.class);
-	}
+    }
 }
