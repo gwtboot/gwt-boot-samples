@@ -27,7 +27,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>gwt-boot-sample-ui-domino</artifactId>
-    <packaging>gwt-app</packaging>
+    <packaging>jar</packaging>
     <name>gwt-boot-sample-ui-domino</name>
     <version>1.0.0-SNAPSHOT</version>
     <description>GWT Boot Sample - DominoUI</description>
