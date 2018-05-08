@@ -75,6 +75,7 @@
 					</startupUrls>
 					<compilerArgs>
 						<arg>-generateJsInteropExports</arg>
+						<arg>-compileReport</arg>
 					</compilerArgs>
 					<devmodeArgs>
 						<arg>-logLevel</arg>
