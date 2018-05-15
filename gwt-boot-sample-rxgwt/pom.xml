@@ -40,6 +40,10 @@
 
 	<dependencies>
 		<!-- GWT Starter RxGWT -->
+		<!-- RxGWT cannot be mixed with other libs
+			 because it uses special GWT version and Elemento version
+			 which cannot be mixed.
+		-->
 		<dependency>
 			<groupId>com.github.gwtboot</groupId>
 			<artifactId>gwt-boot-starter-rxgwt</artifactId>
