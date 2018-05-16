@@ -18,13 +18,25 @@
  */
 package com.github.gwtboot.sample.elemento.client;
 
-import com.google.gwt.core.client.EntryPoint;
+/**
+ * Contains Css classes used in the application. The constants in this interface are not involved in
+ * any kind of code generation or GWT magic. They're just here to have them in one place.
+ */
+public interface Css {
 
-import static org.jboss.gwt.elemento.core.Elements.body;
-
-public class ElementoCoreEntryPoint implements EntryPoint {
-
-    public void onModuleLoad() {
-        body().add(QuoteGenerator.create());
-    }
+    String backgroundSecondary = "background-secondary";
+    String backgroundSuccess = "background-success";
+    String border = "border";
+    String card = "card";
+    String cardBody = "card-body";
+    String center = "center";
+    String container = "container";
+    String flexCenter = "flex-center";
+    String flexTop = "flex-top";
+    String marginRightLarge = "margin-right-large";
+    String marginTopLarge = "margin-top-large";
+    String paddingLeftLarge = "padding-left-large";
+    String paddingRightLarge = "padding-right-large";
+    String row = "row";
+    String shadow = "shadow";
 }
