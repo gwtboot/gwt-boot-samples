@@ -26,6 +26,7 @@
 		<groupId>com.github.gwtboot</groupId>
 		<artifactId>gwt-boot-starter-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath/>
 	</parent>
 	<artifactId>gwt-boot-sample-ui-gwtbootstrap3</artifactId>
 	<packaging>jar</packaging>
