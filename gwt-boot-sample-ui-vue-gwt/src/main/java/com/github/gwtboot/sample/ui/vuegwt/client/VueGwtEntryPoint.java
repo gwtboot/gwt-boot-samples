@@ -20,22 +20,17 @@ package com.github.gwtboot.sample.ui.vuegwt.client;
 
 import com.axellience.vuegwt.core.client.Vue;
 import com.axellience.vuegwt.core.client.VueGWT;
-import com.github.gwtboot.sample.ui.vuegwt.client.components.counter.CounterComponent;
-import com.github.gwtboot.sample.ui.vuegwt.client.components.todolist.TodoListComponent;
+import com.github.gwtboot.sample.ui.vuegwt.client.components.counter.CounterComponentFactory;
+import com.github.gwtboot.sample.ui.vuegwt.client.components.todolist.TodoListComponentFactory;
 import com.google.gwt.core.client.EntryPoint;
-
-import java.util.logging.Logger;
 
 public class VueGwtEntryPoint implements EntryPoint {
 
-    private static Logger logger = Logger
-            .getLogger(VueGwtEntryPoint.class.getName());
+  @Override
+  public void onModuleLoad() {
+    VueGWT.init();
 
-    @Override
-    public void onModuleLoad() {
-        VueGWT.init();
-
-        Vue.attach("#simpleCounterComponentContainer", CounterComponent.class);
-        Vue.attach("#todoListComponentContainer", TodoListComponent.class);
-    }
+    Vue.attach("#simpleCounterComponentContainer", CounterComponentFactory.get());
+    Vue.attach("#todoListComponentContainer", TodoListComponentFactory.get());
+  }
 }

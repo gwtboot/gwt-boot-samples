@@ -1,12 +1,12 @@
 <div>
-    <p v-bind:class='map("isDone", todo.isDone())'>
-        <input type="checkbox"
-               v-model="isDoneTodo"
-               v-bind:id="this._uid"/>
-        <label v-bind:for="this._uid">{{ todo.getText() }}</label>
+  <p v-bind:class='map("isDone", todo.isDone())'>
+    <input type="checkbox"
+           v-model="isDoneTodo"
+           v-bind:id="vue()._uid"/>
+    <label v-bind:for="vue()._uid">{{ todo.getText() }}</label>
 
-        <button class="btn red right" @click="removeTodo">
-            <i class="material-icons">delete</i>
-        </button>
-    </p>
+    <button class="btn red right" @click="removeTodo">
+      <i class="material-icons">delete</i>
+    </button>
+  </p>
 </div>

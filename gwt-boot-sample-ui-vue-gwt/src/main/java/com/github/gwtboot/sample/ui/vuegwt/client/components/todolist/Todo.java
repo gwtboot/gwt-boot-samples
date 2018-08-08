@@ -22,27 +22,28 @@ package com.github.gwtboot.sample.ui.vuegwt.client.components.todolist;
  * Simple Todo model.
  */
 public class Todo {
-    private String text;
-    private boolean isDone;
 
-    public Todo(String text) {
-        this.text = text;
-        this.isDone = false;
-    }
+  private String text;
+  private boolean isDone;
 
-    public String getText() {
-        return text;
-    }
+  public Todo(String text) {
+    this.text = text;
+    this.isDone = false;
+  }
 
-    public void setText(String text) {
-        this.text = text;
-    }
+  public String getText() {
+    return text;
+  }
 
-    public boolean isDone() {
-        return isDone;
-    }
+  public void setText(String text) {
+    this.text = text;
+  }
 
-    public void setDone(boolean done) {
-        isDone = done;
-    }
+  public boolean isDone() {
+    return isDone;
+  }
+
+  public void setDone(boolean done) {
+    isDone = done;
+  }
 }
