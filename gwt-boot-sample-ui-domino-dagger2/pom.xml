@@ -33,6 +33,10 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<description>GWT Boot Sample - DominoUI with Dagger2</description>
 
+	<properties>
+		<gwt-elemento.version>0.8.6</gwt-elemento.version>
+	</properties>
+
 	<dependencies>
 		<!-- GWT Starter UI DominoUI and Dagger2 -->
 		<dependency>
