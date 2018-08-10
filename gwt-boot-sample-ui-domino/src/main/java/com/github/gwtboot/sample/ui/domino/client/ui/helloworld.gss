@@ -5,7 +5,13 @@
 }
 
 .doneButton {
-    position: absolute !important;
-    top: 10px !important;
-    right: 10px !important;
+    margin-left: 10px;
+    top : -12px;
+}
+
+@media screen and (min-width: 992px) {
+    .contentMargin {
+        margin-left: 20% !important;
+        margin-right: 20% !important;
+    }
 }

@@ -18,149 +18,162 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import elemental2.dom.Event;
+import elemental2.dom.HTMLDivElement;
+import org.dominokit.domino.ui.badges.Badge;
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.button.IconButton;
 import org.dominokit.domino.ui.cards.Card;
-import org.dominokit.domino.ui.forms.TextArea;
-import org.dominokit.domino.ui.forms.TextBox;
+import org.dominokit.domino.ui.forms.*;
+import org.dominokit.domino.ui.icons.Icon;
 import org.dominokit.domino.ui.icons.Icons;
-import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
 import org.dominokit.domino.ui.lists.ListItem;
-import org.dominokit.domino.ui.popover.Tooltip;
-import org.dominokit.domino.ui.style.StyleType;
-import org.dominokit.domino.ui.themes.Theme;
+import org.dominokit.domino.ui.style.Color;
+import org.dominokit.domino.ui.style.Style;
+import org.dominokit.domino.ui.style.Styles;
+import org.jboss.gwt.elemento.core.IsElement;
 
 import java.util.logging.Logger;
 
 import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
 import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
+import static org.jboss.gwt.elemento.core.Elements.div;
 
-public class HelloWorldView {
+public class HelloWorldView implements IsElement<HTMLDivElement> {
 
     private static Logger logger = Logger
             .getLogger(HelloWorldView.class.getName());
 
-    TextBox titleTextBox;
+    private HTMLDivElement root = div().css(BUNDLE.css().contentMargin()).asElement();
 
-    TextArea descriptionTextArea;
+    private TextBox titleTextBox;
 
-    ListGroup<TodoItem> todoItemsListGroup;
+    private TextArea descriptionTextArea;
 
-    ListGroup<TodoItem> doneItemsListGroup;
+    private ListGroup<TodoItem> todoItemsListGroup;
 
-    Button addButton;
+    private ListGroup<TodoItem> doneItemsListGroup;
 
-    Layout layout;
+    private Select<String> prioritySelect;
+
+    private Button addButton;
+
+    private FieldsGrouping fieldsGrouping;
 
     public HelloWorldView() {
         logger.info("Create HelloWorldView");
 
-        this.titleTextBox = titleTextBox();
-        this.descriptionTextArea = descriptionTextArea();
-        this.todoItemsListGroup = todoItemsListGroup();
-        this.doneItemsListGroup = doneItemsListGroup();
-        this.addButton = addButton();
-        this.layout = layout();
+        fieldsGrouping = FieldsGrouping.create();
 
-        logger.info("Button: " + addButton.toString());
+        this.titleTextBox = TextBox.create(CONSTANTS.title())
+                .groupBy(fieldsGrouping)
+                .setRequired(true)
+                .setAutoValidation(true);
 
-        // Add button and listener
-        this.addButton.addClickListener(addButtonClickEvent -> {
-            handleAddButtonClick(addButtonClickEvent);
-        });
+        this.descriptionTextArea = TextArea.create(CONSTANTS.description())
+                .groupBy(fieldsGrouping)
+                .setRequired(true)
+                .setAutoValidation(true)
+                .setRows(1);
+
+        this.prioritySelect = Select.<String>create(CONSTANTS.priority())
+                .groupBy(fieldsGrouping)
+                .setRequired(true)
+                .setAutoValidation(true)
+                .addOption(SelectOption.create("High", "High"))
+                .addOption(SelectOption.create("Medium", "Medium"))
+                .addOption(SelectOption.create("Low", "Low"));
+
+        this.todoItemsListGroup = ListGroup.<TodoItem>create()
+                .setSelectable(false);
+        this.doneItemsListGroup = ListGroup.<TodoItem>create()
+                .setSelectable(false);
+
+        this.addButton = Style.of(Button.createPrimary(CONSTANTS.add()))
+                .css(BUNDLE.css().addButton())
+                .get()
+                .addClickListener(evt -> onAddButtonClick());
+
+        root.appendChild(Card.create(CONSTANTS.new_todo(), CONSTANTS.add_new_todo())
+                .appendChild(titleTextBox)
+                .appendChild(descriptionTextArea)
+                .appendChild(prioritySelect)
+                .appendContent(addButton)
+                .asElement());
+
+        root.appendChild(Card.create(CONSTANTS.todo_items())
+                .appendChild(todoItemsListGroup)
+                .asElement());
+
+        root.appendChild(Card.create(CONSTANTS.done_items())
+                .appendContent(doneItemsListGroup)
+                .asElement());
+
     }
 
-    Layout layout() {
-        Layout layout = Layout.create(CONSTANTS.appTitle()).removeLeftPanel()
-                .show(Theme.BLUE);
-        layout.getContentPanel().appendChild(
-                Card.create(CONSTANTS.new_todo(), CONSTANTS.add_new_todo())
-                        .appendContent(titleTextBox.asElement())
-                        .appendContent(descriptionTextArea.asElement())
-                        .appendContent(addButton.asElement()).asElement());
-        layout.getContentPanel().appendChild(Card.create(CONSTANTS.todo_items())
-                .appendContent(todoItemsListGroup.asElement()).asElement());
-        layout.getContentPanel().appendChild(Card.create(CONSTANTS.done_items())
-                .appendContent(doneItemsListGroup.asElement()).asElement());
 
-        logger.info("Button: " + addButton.toString());
-
-        return layout;
-    }
-
-    TextBox titleTextBox() {
-        return TextBox.create(CONSTANTS.title()).floating();
-    }
-
-    TextArea descriptionTextArea() {
-        return TextArea.create(CONSTANTS.description()).floating().setRows(1);
-    }
-
-    ListGroup<TodoItem> todoItemsListGroup() {
-        return ListGroup.create();
-    }
-
-    ListGroup<TodoItem> doneItemsListGroup() {
-        return ListGroup.create();
-    }
-
-    Button addButton() {
-        Button addButton = Button.createPrimary(CONSTANTS.add());
-        addButton.asElement().classList.add(BUNDLE.css().addButton());
-        return addButton;
-    }
-
-    void handleAddButtonClick(Event addButtonClickEvent) {
+    void onAddButtonClick() {
         // We click the addButton
-        if (!titleTextBox.isEmpty() && !descriptionTextArea.isEmpty()) {
+        if (fieldsGrouping.validate().isValid()) {
             // Create a new todoItem
             TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
                     descriptionTextArea.getValue());
 
             ListItem<TodoItem> listItem = todoItemsListGroup
-                    .createItem(todoItem, todoItem.getDescription()).setHeading(todoItem.getTitle());
+                    .createItem(todoItem, todoItem.getDescription())
+                    .setHeading(todoItem.getTitle());
 
-            // Done button and listener
-            IconButton doneButton = createDoneButton();
-            doneButton.addClickListener(doneButtonClickEvent -> {
-                handleDoneButtonClick(doneButtonClickEvent, doneButton, listItem);
-            });
 
-            listItem.appendContent(doneButton.asElement());
+            IconButton doneButton = IconButton.create(Icons.ALL.check())
+                    .linkify();
+
+            Style.of(doneButton)
+                    .css(Styles.pull_right, BUNDLE.css().doneButton())
+                    .get()
+                    .setColor(Color.GREEN)
+                    .addClickListener(evt -> {
+                        onDoneButtonClick(listItem);
+                        doneButton.asElement().remove();
+                    });
+
+
+            listItem.getBody().appendChild(doneButton.asElement());
+            listItem.getBody().appendChild(createPriorityBadge().asElement());
 
             todoItemsListGroup.appendItem(listItem);
 
-            createTooltip(doneButton);
-
-            // Clear input fields
-            titleTextBox.setValue("");
-            descriptionTextArea.setValue("");
+            //clear all fields
+            fieldsGrouping
+                    .clear()
+                    .clearInvalid();
         }
     }
 
-    void createTooltip(IconButton doneButton) {
-        Tooltip.create(doneButton.asElement(), CONSTANTS.mark_done());
+    private Badge createPriorityBadge() {
+        if ("High".equals(prioritySelect.getValue())) {
+            return Style.of(Badge.create("High"))
+                    .css(Styles.pull_right)
+                    .get()
+                    .setBackground(Color.RED);
+        } else if ("Medium".equals(prioritySelect.getValue())) {
+            return Style.of(Badge.create("Medium"))
+                    .css(Styles.pull_right)
+                    .get().setBackground(Color.ORANGE);
+        } else {
+            return Style.of(Badge.create("Low"))
+                    .css(Styles.pull_right)
+                    .get().setBackground(Color.TEAL);
+        }
     }
 
-    IconButton createDoneButton() {
-        IconButton doneButton = IconButton.create(Icons.ALL.check());
-        doneButton.setButtonType(StyleType.SUCCESS);
-        doneButton.asElement().classList.add(BUNDLE.css().doneButton());
-
-        return doneButton;
-    }
-
-    void handleDoneButtonClick(Event doneButtonClickEvent,
-                               IconButton doneButton, ListItem<TodoItem> listItem) {
+    void onDoneButtonClick(ListItem<TodoItem> listItem) {
         // We click the doneButton
-        doneButtonClickEvent.stopPropagation();
-
         todoItemsListGroup.removeItem(listItem);
         doneItemsListGroup.appendItem(listItem);
-
-        doneButton.asElement().remove();
     }
 
+    @Override
+    public HTMLDivElement asElement() {
+        return root;
+    }
 }

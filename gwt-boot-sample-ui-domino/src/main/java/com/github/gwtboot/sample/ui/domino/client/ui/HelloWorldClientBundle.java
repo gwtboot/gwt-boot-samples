@@ -39,6 +39,9 @@ public interface HelloWorldClientBundle extends ClientBundle {
         @DefaultStringValue("Description")
         String description();
 
+        @DefaultStringValue("Priority")
+        String priority();
+
         @DefaultStringValue("Add")
         String add();
 
@@ -62,6 +65,8 @@ public interface HelloWorldClientBundle extends ClientBundle {
         String addButton();
 
         String doneButton();
+
+        String contentMargin();
     }
 
     @Source("helloworld.gss")

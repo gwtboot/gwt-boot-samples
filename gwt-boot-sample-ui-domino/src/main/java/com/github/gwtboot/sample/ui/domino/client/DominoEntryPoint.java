@@ -34,6 +34,6 @@ public class DominoEntryPoint implements EntryPoint {
         logger.info("Inject clientBundle");
         HelloWorldClientBundle.BUNDLE.css().ensureInjected();
 
-        new HelloWorldView();
+        new HelloWorldApp().run();
     }
 }
