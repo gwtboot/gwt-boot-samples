@@ -6,6 +6,11 @@ Here you can find some samples on how you can use the GWT Boot Starters in
 your project. This quickstart document is based on following sample project: [gwt-boot-sample-basic](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic). If you are looking for GWT Boot Starter for Spring Boot
 check this out: [gwt-boot-sample-basic-with-spring-boot](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic-with-spring-boot) 
 
+# IDE
+
+You can use IntelliJ or Eclipse / STS. To be able to use Java APT correctly please take a look on how
+to [configure Java APT with Maven](https://immutables.github.io/apt.html) in each development environment.
+
 # Quick Start
 
 ## Step 1 - Create a Maven Project
