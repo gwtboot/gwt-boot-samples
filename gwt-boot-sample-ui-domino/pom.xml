@@ -40,9 +40,6 @@
             <artifactId>gwt-boot-starter-ui-domino</artifactId>
         </dependency>
     </dependencies>
-    <properties>
-        <gwt-elemento.version>0.8.6</gwt-elemento.version>
-    </properties>
 
     <build>
         <plugins>

@@ -31,7 +31,7 @@ public class HelloWorldApp {
                 .removeLeftPanel()
                 .show(ColorScheme.BLUE);
 
-        HelloWorldView helloWorldView=new HelloWorldView();
+        HelloWorldView helloWorldView = new HelloWorldView();
 
         layout.getContentPanel()
                 .appendChild(helloWorldView.asElement());
