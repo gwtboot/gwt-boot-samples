@@ -47,6 +47,23 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
    </build>
 ```
 
+Add Sonatype Snapshots repository by extending or creating `<repositories>` section. 
+
+```xml
+        <repositories>
+                <repository>
+                        <id>sonatype-snapshots</id>
+                        <name>Sonatype Snapshots</name>
+                        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                        <snapshots>
+                                <enabled>true</enabled>
+                                <updatePolicy>always</updatePolicy>
+                                <checksumPolicy>fail</checksumPolicy>
+                        </snapshots>
+                </repository>
+        </repositories>
+```
+
 ## Step 2 - Create a GWT Module Descriptor _module.gwt.xml_
 
 Create a GWT module descriptor at _src/main_ directory. In this file
