@@ -21,15 +21,12 @@ package com.github.gwtboot.sample.ui.domino.client.ui;
 import elemental2.dom.HTMLDivElement;
 import org.dominokit.domino.ui.badges.Badge;
 import org.dominokit.domino.ui.button.Button;
-import org.dominokit.domino.ui.button.IconButton;
 import org.dominokit.domino.ui.cards.Card;
 import org.dominokit.domino.ui.forms.*;
-import org.dominokit.domino.ui.icons.Icon;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.lists.ListGroup;
 import org.dominokit.domino.ui.lists.ListItem;
 import org.dominokit.domino.ui.style.Color;
-import org.dominokit.domino.ui.style.Style;
 import org.dominokit.domino.ui.style.Styles;
 import org.jboss.gwt.elemento.core.IsElement;
 
@@ -80,25 +77,24 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
                 .groupBy(fieldsGrouping)
                 .setRequired(true)
                 .setAutoValidation(true)
-                .addOption(SelectOption.create("High", "High"))
-                .addOption(SelectOption.create("Medium", "Medium"))
-                .addOption(SelectOption.create("Low", "Low"));
+                .appendChild(SelectOption.create("High", "High"))
+                .appendChild(SelectOption.create("Medium", "Medium"))
+                .appendChild(SelectOption.create("Low", "Low"));
 
         this.todoItemsListGroup = ListGroup.<TodoItem>create()
                 .setSelectable(false);
         this.doneItemsListGroup = ListGroup.<TodoItem>create()
                 .setSelectable(false);
 
-        this.addButton = Style.of(Button.createPrimary(CONSTANTS.add()))
-                .css(BUNDLE.css().addButton())
-                .get()
+        this.addButton = Button.createPrimary(CONSTANTS.add())
+                .styler(style -> style.add(BUNDLE.css().addButton()))
                 .addClickListener(evt -> onAddButtonClick());
 
         root.appendChild(Card.create(CONSTANTS.new_todo(), CONSTANTS.add_new_todo())
                 .appendChild(titleTextBox)
                 .appendChild(descriptionTextArea)
                 .appendChild(prioritySelect)
-                .appendContent(addButton)
+                .appendChild(addButton)
                 .asElement());
 
         root.appendChild(Card.create(CONSTANTS.todo_items())
@@ -106,7 +102,7 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
                 .asElement());
 
         root.appendChild(Card.create(CONSTANTS.done_items())
-                .appendContent(doneItemsListGroup)
+                .appendChild(doneItemsListGroup)
                 .asElement());
 
     }
@@ -124,12 +120,11 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
                     .setHeading(todoItem.getTitle());
 
 
-            IconButton doneButton = IconButton.create(Icons.ALL.check())
+            Button doneButton = Button.create(Icons.ALL.check())
                     .linkify();
 
-            Style.of(doneButton)
-                    .css(Styles.pull_right, BUNDLE.css().doneButton())
-                    .get()
+            doneButton
+                    .styler(style -> style.add(Styles.pull_right, BUNDLE.css().doneButton()))
                     .setColor(Color.GREEN)
                     .addClickListener(evt -> {
                         onDoneButtonClick(listItem);
@@ -138,9 +133,9 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
 
 
             listItem.getBody().appendChild(doneButton.asElement());
-            listItem.getBody().appendChild(createPriorityBadge().asElement());
+            listItem.getBody().appendChild(createPriorityBadge());
 
-            todoItemsListGroup.appendItem(listItem);
+            todoItemsListGroup.appendChild(listItem);
 
             //clear all fields
             fieldsGrouping
@@ -151,25 +146,24 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
 
     private Badge createPriorityBadge() {
         if ("High".equals(prioritySelect.getValue())) {
-            return Style.of(Badge.create("High"))
-                    .css(Styles.pull_right)
-                    .get()
+            return Badge.create("High")
+                    .styler(style -> style.add(Styles.pull_right))
                     .setBackground(Color.RED);
         } else if ("Medium".equals(prioritySelect.getValue())) {
-            return Style.of(Badge.create("Medium"))
-                    .css(Styles.pull_right)
-                    .get().setBackground(Color.ORANGE);
+            return Badge.create("Medium")
+                    .styler(style -> style.add(Styles.pull_right))
+                    .setBackground(Color.ORANGE);
         } else {
-            return Style.of(Badge.create("Low"))
-                    .css(Styles.pull_right)
-                    .get().setBackground(Color.TEAL);
+            return Badge.create("Low")
+                    .styler(style -> style.add(Styles.pull_right))
+                    .setBackground(Color.TEAL);
         }
     }
 
     void onDoneButtonClick(ListItem<TodoItem> listItem) {
         // We click the doneButton
         todoItemsListGroup.removeItem(listItem);
-        doneItemsListGroup.appendItem(listItem);
+        doneItemsListGroup.appendChild(listItem);
     }
 
     @Override

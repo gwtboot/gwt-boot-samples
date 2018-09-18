@@ -18,14 +18,8 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import java.util.logging.Logger;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
-
+import elemental2.dom.Event;
 import org.dominokit.domino.ui.button.Button;
-import org.dominokit.domino.ui.button.IconButton;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
 import org.dominokit.domino.ui.icons.Icons;
@@ -35,7 +29,10 @@ import org.dominokit.domino.ui.lists.ListItem;
 import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.style.StyleType;
 
-import elemental2.dom.Event;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+import java.util.logging.Logger;
 
 import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
 import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
@@ -75,9 +72,7 @@ public class HelloWorldView {
 		logger.info("Button: " + addButton.toString());
 
 		// Add button and listener
-		this.addButton.addClickListener(addButtonClickEvent -> {
-			handleAddButtonClick(addButtonClickEvent);
-		});
+		this.addButton.addClickListener(this::handleAddButtonClick);
 	}
 
 	void handleAddButtonClick(Event addButtonClickEvent) {
@@ -91,14 +86,14 @@ public class HelloWorldView {
 					.createItem(todoItem, todoItem.getDescription()).setHeading(todoItem.getTitle());
 
 			// Done button and listener
-			IconButton doneButton = createDoneButton();
+			Button doneButton = createDoneButton();
 			doneButton.addClickListener(doneButtonClickEvent -> {
 				handleDoneButtonClick(doneButtonClickEvent, doneButton, listItem);
 			});
 
-			listItem.appendContent(doneButton.asElement());
+			listItem.appendChild(doneButton);
 
-			todoItemsListGroup.appendItem(listItem);
+			todoItemsListGroup.appendChild(listItem);
 
 			createTooltip(doneButton);
 
@@ -108,12 +103,12 @@ public class HelloWorldView {
 		}
 	}
 
-	void createTooltip(IconButton doneButton) {
+	void createTooltip(Button doneButton) {
 		Tooltip.create(doneButton.asElement(), CONSTANTS.mark_done());
 	}
 
-	IconButton createDoneButton() {
-		IconButton doneButton = IconButton.create(Icons.ALL.check());
+	Button createDoneButton() {
+		Button doneButton = Button.create(Icons.ALL.check());
 		doneButton.setButtonType(StyleType.SUCCESS);
 		doneButton.asElement().classList.add(BUNDLE.css().doneButton());
 
@@ -121,12 +116,12 @@ public class HelloWorldView {
 	}
 
 	void handleDoneButtonClick(Event doneButtonClickEvent,
-			IconButton doneButton, ListItem<TodoItem> listItem) {
+							   Button doneButton, ListItem<TodoItem> listItem) {
 		// We click the doneButton
 		doneButtonClickEvent.stopPropagation();
 
 		todoItemsListGroup.removeItem(listItem);
-		doneItemsListGroup.appendItem(listItem);
+		doneItemsListGroup.appendChild(listItem);
 
 		doneButton.asElement().remove();
 	}
