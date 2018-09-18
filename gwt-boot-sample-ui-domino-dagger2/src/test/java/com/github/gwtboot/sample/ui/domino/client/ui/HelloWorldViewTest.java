@@ -18,8 +18,8 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
+import com.google.gwtmockito.GwtMockitoTestRunner;
 import org.dominokit.domino.ui.button.Button;
-import org.dominokit.domino.ui.button.IconButton;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
 import org.dominokit.domino.ui.layout.Layout;
@@ -30,14 +30,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Answers;
 import org.mockito.Mock;
 
-import com.google.gwtmockito.GwtMockitoTestRunner;
-
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @RunWith(GwtMockitoTestRunner.class)
 public class HelloWorldViewTest {
@@ -57,7 +51,7 @@ public class HelloWorldViewTest {
 	ListGroup<TodoItem> doneItemsListGroup;
 
 	@Mock(answer = Answers.RETURNS_DEEP_STUBS)
-	IconButton iconButton;
+	Button iconButton;
 
 	@Mock
 	Button addButton;
