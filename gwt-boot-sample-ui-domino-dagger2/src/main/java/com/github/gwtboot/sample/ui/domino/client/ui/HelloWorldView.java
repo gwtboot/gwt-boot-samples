@@ -72,7 +72,9 @@ public class HelloWorldView {
 		logger.info("Button: " + addButton.toString());
 
 		// Add button and listener
-		this.addButton.addClickListener(this::handleAddButtonClick);
+		this.addButton.addClickListener(addButtonClickEvent -> {
+			handleAddButtonClick(addButtonClickEvent);
+		});
 	}
 
 	void handleAddButtonClick(Event addButtonClickEvent) {
@@ -91,9 +93,9 @@ public class HelloWorldView {
 				handleDoneButtonClick(doneButtonClickEvent, doneButton, listItem);
 			});
 
-			listItem.appendChild(doneButton);
+			listItem.appendContent(doneButton.asElement());
 
-			todoItemsListGroup.appendChild(listItem);
+			todoItemsListGroup.appendItem(listItem);
 
 			createTooltip(doneButton);
 
