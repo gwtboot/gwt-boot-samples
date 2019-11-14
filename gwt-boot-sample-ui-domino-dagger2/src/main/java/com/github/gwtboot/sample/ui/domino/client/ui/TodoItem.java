@@ -21,6 +21,8 @@ package com.github.gwtboot.sample.ui.domino.client.ui;
 import java.io.Serializable;
 
 public class TodoItem implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	private String title;
 
