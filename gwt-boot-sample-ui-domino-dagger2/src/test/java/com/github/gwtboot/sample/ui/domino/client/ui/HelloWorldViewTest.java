@@ -18,20 +18,27 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import com.google.gwtmockito.GwtMockitoTestRunner;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
+import org.dominokit.domino.ui.lists.ListItem;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Answers;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.*;
+import com.google.gwtmockito.GwtMockitoTestRunner;
 
 @RunWith(GwtMockitoTestRunner.class)
 public class HelloWorldViewTest {
@@ -61,14 +68,13 @@ public class HelloWorldViewTest {
 
 	@Before
 	public void setUp() throws Exception {
-		helloWorldView = new HelloWorldView(titleTextBox, descriptionTextArea,
-				todoItemsListGroup, doneItemsListGroup, addButton, layout);
+		helloWorldView = new HelloWorldView(titleTextBox, descriptionTextArea, todoItemsListGroup, doneItemsListGroup,
+				addButton, layout);
 		helloWorldView = spy(helloWorldView);
 	}
 
 	@Test
-	public void testHandleAddButtonClickTitleAndDescriptionNotEmpty()
-			throws Exception {
+	public void testHandleAddButtonClickTitleAndDescriptionNotEmpty() throws Exception {
 		// Prepare
 		doReturn("Title").when(titleTextBox).getValue();
 		doReturn("Description").when(descriptionTextArea).getValue();
@@ -80,7 +86,7 @@ public class HelloWorldViewTest {
 
 		// Asserts
 		verify(helloWorldView, times(1)).createTooltip(any());
-		verify(todoItemsListGroup, times(1)).appendItem(any());
+		verify(todoItemsListGroup, times(1)).appendChild(Matchers.<ListItem<TodoItem>>any());
 	}
 
 }

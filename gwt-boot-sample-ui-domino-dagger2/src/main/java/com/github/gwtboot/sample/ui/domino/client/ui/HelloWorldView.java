@@ -93,9 +93,9 @@ public class HelloWorldView {
 				handleDoneButtonClick(doneButtonClickEvent, doneButton, listItem);
 			});
 
-			listItem.appendContent(doneButton.asElement());
+			listItem.appendChild(doneButton.asElement());
 
-			todoItemsListGroup.appendItem(listItem);
+			todoItemsListGroup.appendChild(listItem);
 
 			createTooltip(doneButton);
 
