@@ -22,7 +22,9 @@ import java.io.Serializable;
 
 public class TodoItem implements Serializable {
 
-    private String title;
+	private static final long serialVersionUID = 1L;
+
+	private String title;
 
     private String description;
 

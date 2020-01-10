@@ -104,12 +104,9 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
         root.appendChild(Card.create(CONSTANTS.done_items())
                 .appendChild(doneItemsListGroup)
                 .asElement());
-
     }
 
-
     void onAddButtonClick() {
-        // We click the addButton
         if (fieldsGrouping.validate().isValid()) {
             // Create a new todoItem
             TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
@@ -137,7 +134,6 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
 
             todoItemsListGroup.appendChild(listItem);
 
-            //clear all fields
             fieldsGrouping
                     .clear()
                     .clearInvalid();
@@ -161,7 +157,6 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
     }
 
     void onDoneButtonClick(ListItem<TodoItem> listItem) {
-        // We click the doneButton
         todoItemsListGroup.removeItem(listItem);
         doneItemsListGroup.appendChild(listItem);
     }

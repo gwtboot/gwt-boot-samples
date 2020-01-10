@@ -18,11 +18,10 @@
  */
 package com.github.gwtboot.sample.ui.domino.client;
 
-import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle;
-import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldView;
-import com.google.gwt.core.client.EntryPoint;
-
 import java.util.logging.Logger;
+
+import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle;
+import com.google.gwt.core.client.EntryPoint;
 
 public class DominoEntryPoint implements EntryPoint {
 
