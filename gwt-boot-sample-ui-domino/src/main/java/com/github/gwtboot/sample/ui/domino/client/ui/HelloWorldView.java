@@ -95,20 +95,19 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
                 .appendChild(descriptionTextArea)
                 .appendChild(prioritySelect)
                 .appendChild(addButton)
-                .asElement());
+                .element());
 
         root.appendChild(Card.create(CONSTANTS.todo_items())
                 .appendChild(todoItemsListGroup)
-                .asElement());
+                .element());
 
         root.appendChild(Card.create(CONSTANTS.done_items())
                 .appendChild(doneItemsListGroup)
-                .asElement());
+                .element());
     }
 
     void onAddButtonClick() {
         if (fieldsGrouping.validate().isValid()) {
-            // Create a new todoItem
             TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
                     descriptionTextArea.getValue());
 
@@ -125,11 +124,10 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
                     .setColor(Color.GREEN)
                     .addClickListener(evt -> {
                         onDoneButtonClick(listItem);
-                        doneButton.asElement().remove();
+                        doneButton.element().remove();
                     });
 
-
-            listItem.getBody().appendChild(doneButton.asElement());
+            listItem.getBody().appendChild(doneButton.element());
             listItem.getBody().appendChild(createPriorityBadge());
 
             todoItemsListGroup.appendChild(listItem);
@@ -162,7 +160,7 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
     }
 
     @Override
-    public HTMLDivElement asElement() {
+    public HTMLDivElement element() {
         return root;
     }
 }

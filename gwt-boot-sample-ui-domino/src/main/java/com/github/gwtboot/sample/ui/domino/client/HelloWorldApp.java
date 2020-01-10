@@ -34,6 +34,6 @@ public class HelloWorldApp {
         HelloWorldView helloWorldView = new HelloWorldView();
 
         layout.getContentPanel()
-                .appendChild(helloWorldView.asElement());
+                .appendChild(helloWorldView.element());
     }
 }
