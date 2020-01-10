@@ -59,13 +59,13 @@ public class HelloWorldUiBinder {
 				.show(Theme.BLUE);
 		layout.getContentPanel().appendChild(
 				Card.create(CONSTANTS.new_todo(), CONSTANTS.add_new_todo())
-						.appendChild(titleTextBox.asElement())
-						.appendChild(descriptionTextArea.asElement())
-						.appendChild(addButton.asElement()).asElement());
+						.appendChild(titleTextBox.element())
+						.appendChild(descriptionTextArea.element())
+						.appendChild(addButton.element()).element());
 		layout.getContentPanel().appendChild(Card.create(CONSTANTS.todo_items())
-				.appendChild(todoItemsListGroup.asElement()).asElement());
+				.appendChild(todoItemsListGroup.element()).element());
 		layout.getContentPanel().appendChild(Card.create(CONSTANTS.done_items())
-				.appendChild(doneItemsListGroup.asElement()).asElement());
+				.appendChild(doneItemsListGroup.element()).element());
 
 		logger.info("Button: " + addButton.toString());
 
@@ -102,7 +102,7 @@ public class HelloWorldUiBinder {
 	@Singleton
 	Button addButton() {
 		Button addButton = Button.createPrimary(CONSTANTS.add());
-		addButton.asElement().classList.add(BUNDLE.css().addButton());
+		addButton.element().classList.add(BUNDLE.css().addButton());
 		return addButton;
 	}
 

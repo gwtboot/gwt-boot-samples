@@ -78,9 +78,7 @@ public class HelloWorldView {
 	}
 
 	void handleAddButtonClick(Event addButtonClickEvent) {
-		// We click the addButton
 		if (!titleTextBox.isEmpty() && !descriptionTextArea.isEmpty()) {
-			// Create a new todoItem
 			TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
 					descriptionTextArea.getValue());
 
@@ -93,7 +91,7 @@ public class HelloWorldView {
 				handleDoneButtonClick(doneButtonClickEvent, doneButton, listItem);
 			});
 
-			listItem.appendChild(doneButton.asElement());
+			listItem.appendChild(doneButton.element());
 
 			todoItemsListGroup.appendChild(listItem);
 
@@ -106,26 +104,25 @@ public class HelloWorldView {
 	}
 
 	void createTooltip(Button doneButton) {
-		Tooltip.create(doneButton.asElement(), CONSTANTS.mark_done());
+		Tooltip.create(doneButton.element(), CONSTANTS.mark_done());
 	}
 
 	Button createDoneButton() {
 		Button doneButton = Button.create(Icons.ALL.check());
 		doneButton.setButtonType(StyleType.SUCCESS);
-		doneButton.asElement().classList.add(BUNDLE.css().doneButton());
+		doneButton.element().classList.add(BUNDLE.css().doneButton());
 
 		return doneButton;
 	}
 
 	void handleDoneButtonClick(Event doneButtonClickEvent,
 							   Button doneButton, ListItem<TodoItem> listItem) {
-		// We click the doneButton
 		doneButtonClickEvent.stopPropagation();
 
 		todoItemsListGroup.removeItem(listItem);
 		doneItemsListGroup.appendChild(listItem);
 
-		doneButton.asElement().remove();
+		doneButton.element().remove();
 	}
 
 }
