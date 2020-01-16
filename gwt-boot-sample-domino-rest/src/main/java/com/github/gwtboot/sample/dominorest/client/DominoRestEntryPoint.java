@@ -18,12 +18,43 @@
  */
 package com.github.gwtboot.sample.dominorest.client;
 
+import java.util.Date;
+import java.util.logging.Logger;
+
+import org.dominokit.domino.rest.DominoRestConfig;
+
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.Button;
 
 public class DominoRestEntryPoint implements EntryPoint {
 
-    public void onModuleLoad() {
-        
+	private static Logger logger = Logger.getLogger(DominoRestEntryPoint.class.getName());
+
+    @Override
+	public void onModuleLoad() {
+    	DominoRestConfig.initDefaults();
+
+		DominoRestConfig.getInstance().setDefaultServiceRoot("http://localhost:9090/server");
+		
+		PersonDto coolPerson = new PersonDto();
+		coolPerson.setDate(new Date());
+		coolPerson.setName("Lofi");
+		coolPerson.setPersonType(PersonType.COOL);
+
+		Button personListButton = new Button("Click me: " + coolPerson.getPersonType().name());
+
+		personListButton.addClickHandler(clickEvent -> {
+			logger.info("Hello World: executePersonList");
+
+			PersonClientFactory.INSTANCE.getPersons().onSuccess(response -> {
+				response.forEach(p -> logger
+						.info("Person: " + p.getName() + " - Date: " + p.getDate() + " - Type: " + p.getPersonType()));
+			}).onFailed(failedResponse -> {
+				logger.info(
+						"Error: " + failedResponse.getStatusCode() + "\nMessages: " + failedResponse.getStatusText());
+			}).send();
+		});
+
     }
 
 }
