@@ -59,6 +59,13 @@
 			<artifactId>gwt-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- This JAXB is needed because of OpenJDK 11 -->
+		<!-- https://groups.google.com/forum/#!topic/google-web-toolkit/MTiIwqrLPRE -->
+		<dependency>
+      		<groupId>javax.xml.bind</groupId>
+      		<artifactId>jaxb-api</artifactId>
+      		<version>2.3.0</version>
+    	</dependency>
 	</dependencies>
 
 	<build>
