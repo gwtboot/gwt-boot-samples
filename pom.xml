@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
  | Licensed to the Apache Software Foundation (ASF) under one
  | or more contributor license agreements.  See the NOTICE file
@@ -17,9 +17,7 @@
  | specific language governing permissions and limitations
  | under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.gwtboot</groupId>
 	<artifactId>gwt-boot-samples</artifactId>
@@ -38,8 +36,9 @@
 		<module>gwt-boot-sample-domino-rest</module>
 		<module>gwt-boot-sample-ui-gwtbootstrap3</module>
 		<module>gwt-boot-sample-ui-gwtmaterial</module>
-        <module>gwt-boot-sample-ui-domino</module>
+		<module>gwt-boot-sample-ui-domino</module>
 		<module>gwt-boot-sample-ui-domino-dagger2</module>
 		<module>gwt-boot-sample-ui-vue-gwt</module>
+		<module>gwt-boot-sample-basic-with-quarkus</module>
 	</modules>
 </project>
