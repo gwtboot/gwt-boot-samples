@@ -35,6 +35,10 @@
 	<description>
 		GWT Boot Sample - Collection RestyGWT Test Mockito Gin etc.
 	</description>
+	
+	<properties>
+        <java.version>11</java.version>
+	</properties>
 
 	<dependencies>
 		<!-- GWT Starters -->

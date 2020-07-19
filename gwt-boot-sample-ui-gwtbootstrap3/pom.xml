@@ -33,6 +33,10 @@
 	<name>gwt-boot-sample-ui-gwtbootstrap3</name>
 	<version>1.0.0-SNAPSHOT</version>
 	<description>GWT Boot Sample - GWTBootstrap3</description>
+	
+	<properties>
+        <java.version>11</java.version>
+	</properties>
 
 	<dependencies>
 		<!-- GWT Starter UI GWTBootstrap3 -->

@@ -37,6 +37,7 @@
 	<!-- We need to add this to use RX version of GWT -->
 	<properties>
 		<gwt.version>2.8.2-rx1</gwt.version>
+		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>
