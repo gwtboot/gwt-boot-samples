@@ -32,6 +32,9 @@ target
 .classpath
 .settings
 
+# Mac
+.DS_STORE
+
 # VSCode
 .factorypath
 .vscode
