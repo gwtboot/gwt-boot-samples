@@ -18,16 +18,37 @@
  */
 package com.github.gwtboot.sample.elemento.client;
 
-import com.google.gwt.core.client.EntryPoint;
-import elemental2.dom.HTMLElement;
+import static com.github.gwtboot.sample.elemento.client.Css.backgroundSecondary;
+import static com.github.gwtboot.sample.elemento.client.Css.backgroundSuccess;
+import static com.github.gwtboot.sample.elemento.client.Css.border;
+import static com.github.gwtboot.sample.elemento.client.Css.card;
+import static com.github.gwtboot.sample.elemento.client.Css.cardBody;
+import static com.github.gwtboot.sample.elemento.client.Css.center;
+import static com.github.gwtboot.sample.elemento.client.Css.container;
+import static com.github.gwtboot.sample.elemento.client.Css.flexCenter;
+import static com.github.gwtboot.sample.elemento.client.Css.flexTop;
+import static com.github.gwtboot.sample.elemento.client.Css.marginRightLarge;
+import static com.github.gwtboot.sample.elemento.client.Css.marginTopLarge;
+import static com.github.gwtboot.sample.elemento.client.Css.paddingLeftLarge;
+import static com.github.gwtboot.sample.elemento.client.Css.paddingRightLarge;
+import static com.github.gwtboot.sample.elemento.client.Css.row;
+import static com.github.gwtboot.sample.elemento.client.Css.shadow;
+import static elemental2.core.Global.encodeURIComponent;
+import static elemental2.dom.DomGlobal.window;
+import static org.jboss.elemento.Elements.body;
+import static org.jboss.elemento.Elements.button;
+import static org.jboss.elemento.Elements.div;
+import static org.jboss.elemento.Elements.h;
+import static org.jboss.elemento.Elements.header;
+import static org.jboss.elemento.Elements.main;
+import static org.jboss.elemento.Elements.p;
+import static org.jboss.elemento.EventType.click;
 
 import java.util.Random;
 
-import static com.github.gwtboot.sample.elemento.client.Css.*;
-import static elemental2.core.Global.encodeURIComponent;
-import static elemental2.dom.DomGlobal.window;
-import static org.jboss.gwt.elemento.core.Elements.*;
-import static org.jboss.gwt.elemento.core.EventType.click;
+import com.google.gwt.core.client.EntryPoint;
+
+import elemental2.dom.HTMLElement;
 
 public class ElementoTemplateEntryPoint implements EntryPoint {
 
@@ -55,7 +76,8 @@ public class ElementoTemplateEntryPoint implements EntryPoint {
 
     private HTMLElement quote;
 
-    public void onModuleLoad() {
+    @Override
+	public void onModuleLoad() {
         body().add(div().css(container)
                 .add(div().css(row, flexTop, flexCenter, marginTopLarge)
                         .add(header().css(shadow, border)
@@ -72,7 +94,7 @@ public class ElementoTemplateEntryPoint implements EntryPoint {
                                 .textContent("Tweet Quote")))
                 .add(div().css(row, flexCenter, marginTopLarge)
                         .add(main().css(card).style("width: 33rem")
-                                .add(quote = p().css(cardBody, center).asElement()))));
+								.add(quote = p().css(cardBody, center).element()))));
     }
 
     private void newQuote() {

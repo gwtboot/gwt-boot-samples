@@ -18,30 +18,36 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import elemental2.dom.HTMLDivElement;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
+import static org.jboss.elemento.Elements.div;
+
+import java.util.logging.Logger;
+
 import org.dominokit.domino.ui.badges.Badge;
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.cards.Card;
-import org.dominokit.domino.ui.forms.*;
+import org.dominokit.domino.ui.forms.FieldsGrouping;
+import org.dominokit.domino.ui.forms.Select;
+import org.dominokit.domino.ui.forms.SelectOption;
+import org.dominokit.domino.ui.forms.TextArea;
+import org.dominokit.domino.ui.forms.TextBox;
+import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.lists.ListGroup;
 import org.dominokit.domino.ui.lists.ListItem;
 import org.dominokit.domino.ui.style.Color;
 import org.dominokit.domino.ui.style.Styles;
-import org.jboss.gwt.elemento.core.IsElement;
+import org.jboss.elemento.IsElement;
 
-import java.util.logging.Logger;
-
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
-import static org.jboss.gwt.elemento.core.Elements.div;
+import elemental2.dom.HTMLDivElement;
 
 public class HelloWorldView implements IsElement<HTMLDivElement> {
 
     private static Logger logger = Logger
             .getLogger(HelloWorldView.class.getName());
 
-    private HTMLDivElement root = div().css(BUNDLE.css().contentMargin()).asElement();
+	private HTMLDivElement root = div().css(BUNDLE.css().contentMargin()).element();
 
     private TextBox titleTextBox;
 
@@ -110,27 +116,14 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
         if (fieldsGrouping.validate().isValid()) {
             TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
                     descriptionTextArea.getValue());
+			
+			todoItemsListGroup.setItemRenderer((listGroup, item) -> {
+				item.appendChild(BlockHeader.create(todoItem.getTitle()));
+				item.appendChild(doneButton(item).element());
+				item.appendChild(priorityBadge());
+			});
 
-            ListItem<TodoItem> listItem = todoItemsListGroup
-                    .createItem(todoItem, todoItem.getDescription())
-                    .setHeading(todoItem.getTitle());
-
-
-            Button doneButton = Button.create(Icons.ALL.check())
-                    .linkify();
-
-            doneButton
-                    .styler(style -> style.add(Styles.pull_right, BUNDLE.css().doneButton()))
-                    .setColor(Color.GREEN)
-                    .addClickListener(evt -> {
-                        onDoneButtonClick(listItem);
-                        doneButton.element().remove();
-                    });
-
-            listItem.getBody().appendChild(doneButton.element());
-            listItem.getBody().appendChild(createPriorityBadge());
-
-            todoItemsListGroup.appendChild(listItem);
+			todoItemsListGroup.addItem(todoItem);
 
             fieldsGrouping
                     .clear()
@@ -138,7 +131,19 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
         }
     }
 
-    private Badge createPriorityBadge() {
+	private Button doneButton(ListItem<TodoItem> listItem) {
+		Button doneButton = Button.create(Icons.ALL.check()).linkify();
+
+		doneButton.styler(style -> style.add(Styles.pull_right, BUNDLE.css().doneButton())).setColor(Color.GREEN)
+				.addClickListener(evt -> {
+					onDoneButtonClick(listItem);
+					doneButton.element().remove();
+				});
+
+		return doneButton;
+	}
+
+    private Badge priorityBadge() {
         if ("High".equals(prioritySelect.getValue())) {
             return Badge.create("High")
                     .styler(style -> style.add(Styles.pull_right))
