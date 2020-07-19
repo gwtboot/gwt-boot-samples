@@ -30,7 +30,6 @@
 
 	<modules>
 		<module>gwt-boot-sample-basic</module>
-		<module>gwt-boot-sample-basic-with-spring-boot</module>
 		<module>gwt-boot-sample-collection</module>
 		<module>gwt-boot-sample-elemento-core</module>
 		<module>gwt-boot-sample-elemento-template</module>
@@ -41,6 +40,5 @@
 		<module>gwt-boot-sample-ui-domino</module>
 		<module>gwt-boot-sample-ui-domino-dagger2</module>
 		<module>gwt-boot-sample-ui-vue-gwt</module>
-		<module>gwt-boot-sample-basic-with-quarkus</module>
 	</modules>
 </project>
