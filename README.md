@@ -3,8 +3,7 @@
 [![Build Status](https://travis-ci.org/gwtboot/gwt-boot-samples.svg?branch=master)](https://travis-ci.org/gwtboot/gwt-boot-samples)
 
 Here you can find some samples on how you can use the GWT Boot Starters in 
-your project. This quickstart document is based on following sample project: [gwt-boot-sample-basic](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic). If you are looking for GWT Boot Starter for Spring Boot
-check this out: [gwt-boot-sample-basic-with-spring-boot](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic-with-spring-boot) 
+your project. This quickstart document is based on following sample project: [gwt-boot-sample-basic](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic).
 
 # IDE
 
