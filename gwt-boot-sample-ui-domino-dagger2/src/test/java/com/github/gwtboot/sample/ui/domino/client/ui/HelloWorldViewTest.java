@@ -19,7 +19,6 @@
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
@@ -30,7 +29,7 @@ import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
-import org.dominokit.domino.ui.lists.ListItem;
+import org.dominokit.domino.ui.popover.Tooltip;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -60,6 +59,9 @@ public class HelloWorldViewTest {
 	@Mock(answer = Answers.RETURNS_DEEP_STUBS)
 	Button iconButton;
 
+	@Mock(answer = Answers.RETURNS_DEEP_STUBS)
+	Tooltip tooltip;
+
 	@Mock
 	Button addButton;
 
@@ -78,15 +80,15 @@ public class HelloWorldViewTest {
 		// Prepare
 		doReturn("Title").when(titleTextBox).getValue();
 		doReturn("Description").when(descriptionTextArea).getValue();
-		doReturn(iconButton).when(helloWorldView).createDoneButton();
-		doNothing().when(helloWorldView).createTooltip(iconButton);
+		doReturn(iconButton).when(helloWorldView).doneButton(any());
+		doReturn(tooltip).when(helloWorldView).tooltip(iconButton);
 
 		// CUT
 		helloWorldView.handleAddButtonClick(null);
 
 		// Asserts
-		verify(helloWorldView, times(1)).createTooltip(any());
-		verify(todoItemsListGroup, times(1)).appendChild(Matchers.<ListItem<TodoItem>>any());
+		verify(helloWorldView, times(0)).tooltip(any());
+		verify(todoItemsListGroup, times(1)).addItem(Matchers.<TodoItem>any());
 	}
 
 }

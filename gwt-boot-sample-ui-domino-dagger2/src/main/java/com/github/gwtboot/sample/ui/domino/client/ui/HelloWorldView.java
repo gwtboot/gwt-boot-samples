@@ -18,10 +18,19 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import elemental2.dom.Event;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
+
+import java.util.logging.Logger;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
+import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
@@ -29,13 +38,7 @@ import org.dominokit.domino.ui.lists.ListItem;
 import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.style.StyleType;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
-import java.util.logging.Logger;
-
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
+import elemental2.dom.Event;
 
 @Singleton
 public class HelloWorldView {
@@ -82,35 +85,33 @@ public class HelloWorldView {
 			TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
 					descriptionTextArea.getValue());
 
-			ListItem<TodoItem> listItem = todoItemsListGroup
-					.createItem(todoItem, todoItem.getDescription()).setHeading(todoItem.getTitle());
+			todoItemsListGroup.setItemRenderer((listGroup, item) -> {
+				item.appendChild(BlockHeader.create(todoItem.getTitle()));
 
-			// Done button and listener
-			Button doneButton = createDoneButton();
-			doneButton.addClickListener(doneButtonClickEvent -> {
-				handleDoneButtonClick(doneButtonClickEvent, doneButton, listItem);
+				Button doneButton = doneButton(item);
+				item.appendChild(doneButton.element());
+				item.appendChild(tooltip(doneButton).element());
 			});
 
-			listItem.appendChild(doneButton.element());
+			todoItemsListGroup.addItem(todoItem);
 
-			todoItemsListGroup.appendChild(listItem);
-
-			createTooltip(doneButton);
-
-			// Clear input fields
 			titleTextBox.setValue("");
 			descriptionTextArea.setValue("");
 		}
 	}
 
-	void createTooltip(Button doneButton) {
-		Tooltip.create(doneButton.element(), CONSTANTS.mark_done());
+	Tooltip tooltip(Button doneButton) {
+		return Tooltip.create(doneButton.element(), CONSTANTS.mark_done());
 	}
 
-	Button createDoneButton() {
+	Button doneButton(ListItem<TodoItem> listItem) {
 		Button doneButton = Button.create(Icons.ALL.check());
 		doneButton.setButtonType(StyleType.SUCCESS);
 		doneButton.element().classList.add(BUNDLE.css().doneButton());
+
+		doneButton.addClickListener(doneButtonClickEvent -> {
+			handleDoneButtonClick(doneButtonClickEvent, doneButton, listItem);
+		});
 
 		return doneButton;
 	}
