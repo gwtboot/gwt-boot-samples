@@ -161,4 +161,6 @@ http://localhost:8888/basic
 
 Just reload your web app and GWT SuperDev mode will transpile your
 Java code to JavaScript on the fly. That's it, now you can develop 
-your web app with GWT incrementally and fast! Enjoy! 
+your web app with GWT incrementally and fast! 
+
+Enjoy! 
