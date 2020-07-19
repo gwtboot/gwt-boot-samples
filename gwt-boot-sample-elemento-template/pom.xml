@@ -33,6 +33,10 @@
 	<name>gwt-boot-sample-elemento-template</name>
 	<version>1.0.0-SNAPSHOT</version>
 	<description>GWT Boot Sample - Elemento Template</description>
+	
+	<properties>
+        <java.version>1.8</java.version>
+	</properties>
 
 	<dependencies>
 		<!-- GWT Starter Elemento Template -->

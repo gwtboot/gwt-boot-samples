@@ -32,7 +32,7 @@
 		<module>gwt-boot-sample-basic</module>
 		<module>gwt-boot-sample-collection</module>
 		<module>gwt-boot-sample-elemento-core</module>
-		<!-- <module>gwt-boot-sample-elemento-template</module> -->
+		<module>gwt-boot-sample-elemento-template</module>
 		<module>gwt-boot-sample-rxgwt</module>
 		<module>gwt-boot-sample-domino-rest</module>
 		<module>gwt-boot-sample-ui-gwtbootstrap3</module>
