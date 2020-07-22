@@ -86,7 +86,7 @@ public class HelloWorldView {
 											.setColor(Color.GREEN)
 											.clickable()
 											.addClickListener(
-												addButtonClickEvent -> complete(listItem.getValue()))
+												addClickEvent -> complete(listItem.getValue()))
 										))
 						);
 		});
