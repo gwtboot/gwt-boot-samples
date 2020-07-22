@@ -104,17 +104,13 @@ public class HelloWorldUiBinder {
 		ListGroup<TodoItem> doneItemsListGroup = ListGroup.create();
 
 		doneItemsListGroup.setItemRenderer((listGroup, listItem) -> {
-			listItem.css(Styles.padding_10)
-					.appendChild(
-							FlexLayout
-									.create().setJustifyContent(
-											FlexJustifyContent.SPACE_AROUND)
-									.appendChild(
-											FlexItem.create().setFlexGrow(1)
-													.appendChild(BlockHeader
-															.create(listItem.getValue().getTitle(),
-																	listItem.getValue().getDescription())
-															.css(Styles.m_b_0))));
+			listItem.css(Styles.padding_10).appendChild(
+				FlexLayout.create().setJustifyContent(FlexJustifyContent.SPACE_AROUND)
+						.appendChild(FlexItem.create().setFlexGrow(1)
+						.appendChild(BlockHeader.create(
+								listItem.getValue().getTitle(),
+								listItem.getValue().getDescription())
+								.css(Styles.m_b_0))));
 		});
 
 		return doneItemsListGroup;
