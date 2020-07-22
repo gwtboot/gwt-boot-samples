@@ -18,6 +18,14 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
+
+import java.util.logging.Logger;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
@@ -31,13 +39,6 @@ import org.dominokit.domino.ui.lists.ListGroup;
 import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.style.Color;
 import org.dominokit.domino.ui.style.Styles;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
-import java.util.logging.Logger;
-
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
 
 @Singleton
 public class HelloWorldView {
@@ -92,6 +93,7 @@ public class HelloWorldView {
 											))
 							);
 				});
+
 		this.doneItemsListGroup
 				.setItemRenderer((listGroup, listItem) -> {
 					listItem

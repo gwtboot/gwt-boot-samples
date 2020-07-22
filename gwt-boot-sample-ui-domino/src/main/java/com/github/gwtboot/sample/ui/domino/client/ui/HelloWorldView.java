@@ -18,8 +18,12 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import com.github.gwtboot.sample.ui.domino.client.ui.TodoItem.Priority;
-import elemental2.dom.HTMLDivElement;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
+import static org.jboss.elemento.Elements.div;
+
+import java.util.logging.Logger;
+
 import org.dominokit.domino.ui.badges.Badge;
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.cards.Card;
@@ -33,16 +37,13 @@ import org.dominokit.domino.ui.grid.flex.FlexLayout;
 import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.lists.ListGroup;
-import org.dominokit.domino.ui.lists.ListItem;
 import org.dominokit.domino.ui.style.Color;
 import org.dominokit.domino.ui.style.Styles;
 import org.jboss.elemento.IsElement;
 
-import java.util.logging.Logger;
+import com.github.gwtboot.sample.ui.domino.client.ui.TodoItem.Priority;
 
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
-import static org.jboss.elemento.Elements.div;
+import elemental2.dom.HTMLDivElement;
 
 public class HelloWorldView implements IsElement<HTMLDivElement> {
 
