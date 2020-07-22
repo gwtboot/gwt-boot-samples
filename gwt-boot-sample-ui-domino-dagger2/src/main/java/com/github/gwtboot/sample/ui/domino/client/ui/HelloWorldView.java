@@ -86,7 +86,7 @@ public class HelloWorldView {
 											.setColor(Color.GREEN)
 											.clickable()
 											.addClickListener(
-												addClickEvent -> complete(listItem.getValue()))
+												addClickEvent -> handleCheckOkClick(listItem.getValue()))
 										))
 						);
 		});
@@ -115,7 +115,7 @@ public class HelloWorldView {
 		return Tooltip.create(doneButton.element(), CONSTANTS.mark_done());
 	}
 
-	void complete(TodoItem todoItem) {
+	void handleCheckOkClick(TodoItem todoItem) {
 		todoItemsListGroup.removeItem(todoItem);
 		doneItemsListGroup.addItem(todoItem);
 	}
