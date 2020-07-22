@@ -18,6 +18,9 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
+
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -28,15 +31,17 @@ import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.cards.Card;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
+import org.dominokit.domino.ui.grid.flex.FlexItem;
+import org.dominokit.domino.ui.grid.flex.FlexJustifyContent;
+import org.dominokit.domino.ui.grid.flex.FlexLayout;
+import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
+import org.dominokit.domino.ui.style.Styles;
 import org.dominokit.domino.ui.themes.Theme;
 
 import dagger.Module;
 import dagger.Provides;
-
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
 
 @Module
 public class HelloWorldUiBinder {
@@ -88,14 +93,31 @@ public class HelloWorldUiBinder {
 	@Provides
 	@Singleton
 	ListGroup<TodoItem> todoItemsListGroup() {
-		return ListGroup.create();
+		ListGroup<TodoItem> todoItemsListGroup = ListGroup.create();
+		return todoItemsListGroup;
 	}
 
 	@Named("doneItemsListGroup")
 	@Provides
 	@Singleton
 	ListGroup<TodoItem> doneItemsListGroup() {
-		return ListGroup.create();
+		ListGroup<TodoItem> doneItemsListGroup = ListGroup.create();
+
+		doneItemsListGroup.setItemRenderer((listGroup, listItem) -> {
+			listItem.css(Styles.padding_10)
+					.appendChild(
+							FlexLayout
+									.create().setJustifyContent(
+											FlexJustifyContent.SPACE_AROUND)
+									.appendChild(
+											FlexItem.create().setFlexGrow(1)
+													.appendChild(BlockHeader
+															.create(listItem.getValue().getTitle(),
+																	listItem.getValue().getDescription())
+															.css(Styles.m_b_0))));
+		});
+
+		return doneItemsListGroup;
 	}
 
 	@Provides

@@ -89,24 +89,9 @@ public class HelloWorldView {
 											.appendChild(Icons.ALL.check_bold_mdi()
 													.setColor(Color.GREEN)
 													.clickable()
-													.addClickListener(evt -> complete(listItem.getValue()))
+															.addClickListener(addButtonClickEvent -> complete(
+																	listItem.getValue()))
 											))
-							);
-				});
-
-		this.doneItemsListGroup
-				.setItemRenderer((listGroup, listItem) -> {
-					listItem
-							.css(Styles.padding_10)
-							.appendChild(FlexLayout.create()
-									.setJustifyContent(FlexJustifyContent.SPACE_AROUND)
-									.appendChild(FlexItem.create()
-											.setFlexGrow(1)
-											.appendChild(BlockHeader
-													.create(listItem.getValue().getTitle(), listItem.getValue().getDescription())
-													.css(Styles.m_b_0)
-											)
-									)
 							);
 				});
 
