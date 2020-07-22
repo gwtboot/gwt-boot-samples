@@ -49,7 +49,7 @@ public class HelloWorldView extends Composite {
 	MaterialButton showButton;
 
 	@UiField
-	MaterialDropDown foodDropDown;
+	MaterialDropDown<?> foodDropDown;
 
 	public HelloWorldView() {
 		initWidget(uiBinder.createAndBindUi(this));

@@ -33,5 +33,7 @@ public class GwtMaterialEntryPoint implements EntryPoint {
 		HelloWorldView helloWorldView = new HelloWorldView();
 
 		RootPanel.get("mainPanel").add(helloWorldView);
+
+		logger.info("Add to mainPanel...");
 	}
 }

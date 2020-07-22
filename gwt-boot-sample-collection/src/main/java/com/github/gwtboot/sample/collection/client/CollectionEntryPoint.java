@@ -41,6 +41,8 @@ public class CollectionEntryPoint implements EntryPoint {
 
 		// Get the Webapp
 		injector.getCollectionWebApp();
+
+		logger.info("Create Collection Webapp...");
 	}
 
 }
