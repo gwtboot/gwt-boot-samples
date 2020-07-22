@@ -18,20 +18,18 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
-import static org.jboss.elemento.Elements.div;
-
-import java.util.logging.Logger;
-
+import com.github.gwtboot.sample.ui.domino.client.ui.TodoItem.Priority;
+import elemental2.dom.HTMLDivElement;
 import org.dominokit.domino.ui.badges.Badge;
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.cards.Card;
 import org.dominokit.domino.ui.forms.FieldsGrouping;
 import org.dominokit.domino.ui.forms.Select;
-import org.dominokit.domino.ui.forms.SelectOption;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
+import org.dominokit.domino.ui.grid.flex.FlexItem;
+import org.dominokit.domino.ui.grid.flex.FlexJustifyContent;
+import org.dominokit.domino.ui.grid.flex.FlexLayout;
 import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.lists.ListGroup;
@@ -40,14 +38,18 @@ import org.dominokit.domino.ui.style.Color;
 import org.dominokit.domino.ui.style.Styles;
 import org.jboss.elemento.IsElement;
 
-import elemental2.dom.HTMLDivElement;
+import java.util.logging.Logger;
+
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
+import static org.jboss.elemento.Elements.div;
 
 public class HelloWorldView implements IsElement<HTMLDivElement> {
 
     private static Logger logger = Logger
             .getLogger(HelloWorldView.class.getName());
 
-	private HTMLDivElement root = div().css(BUNDLE.css().contentMargin()).element();
+    private HTMLDivElement root = div().css(BUNDLE.css().contentMargin()).element();
 
     private TextBox titleTextBox;
 
@@ -57,7 +59,7 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
 
     private ListGroup<TodoItem> doneItemsListGroup;
 
-    private Select<String> prioritySelect;
+    private Select<Priority> prioritySelect;
 
     private Button addButton;
 
@@ -79,18 +81,58 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
                 .setAutoValidation(true)
                 .setRows(1);
 
-        this.prioritySelect = Select.<String>create(CONSTANTS.priority())
+        this.prioritySelect = Select.ofEnum(CONSTANTS.priority(), Priority.values())
                 .groupBy(fieldsGrouping)
                 .setRequired(true)
-                .setAutoValidation(true)
-                .appendChild(SelectOption.create("High", "High"))
-                .appendChild(SelectOption.create("Medium", "Medium"))
-                .appendChild(SelectOption.create("Low", "Low"));
+                .setAutoValidation(true);
 
         this.todoItemsListGroup = ListGroup.<TodoItem>create()
-                .setSelectable(false);
+                .setSelectable(false)
+                .setItemRenderer((listGroup, listItem) -> {
+                    listItem
+                            .css(Styles.padding_10)
+                            .appendChild(FlexLayout.create()
+                                    .setJustifyContent(FlexJustifyContent.SPACE_AROUND)
+                                    .appendChild(FlexItem.create()
+                                            .setFlexGrow(1)
+                                            .appendChild(BlockHeader
+                                                    .create(listItem.getValue().getTitle(), listItem.getValue().getDescription())
+                                                    .css(Styles.m_b_0)
+                                            )
+                                    )
+                                    .appendChild(FlexItem.create()
+                                            .css(Styles.m_l_10, Styles.m_r_10, Styles.m_t_10)
+                                            .appendChild(priorityBadge(listItem.getValue().getPriority()))
+                                    )
+                                    .appendChild(FlexItem.create()
+                                            .appendChild(Icons.ALL.check_bold_mdi()
+                                                    .setColor(Color.GREEN)
+                                                    .clickable()
+                                                    .addClickListener(evt -> complete(listItem.getValue()))
+                                            ))
+                            );
+                });
+
         this.doneItemsListGroup = ListGroup.<TodoItem>create()
-                .setSelectable(false);
+                .setSelectable(false)
+                .setItemRenderer((listGroup, listItem) -> {
+                    listItem
+                            .css(Styles.padding_10)
+                            .appendChild(FlexLayout.create()
+                                    .setJustifyContent(FlexJustifyContent.SPACE_AROUND)
+                                    .appendChild(FlexItem.create()
+                                            .setFlexGrow(1)
+                                            .appendChild(BlockHeader
+                                                    .create(listItem.getValue().getTitle(), listItem.getValue().getDescription())
+                                                    .css(Styles.m_b_0)
+                                            )
+                                    )
+                                    .appendChild(FlexItem.create()
+                                            .css(Styles.m_l_10, Styles.m_r_10, Styles.m_t_10)
+                                            .appendChild(priorityBadge(listItem.getValue().getPriority()))
+                                    )
+                            );
+                });
 
         this.addButton = Button.createPrimary(CONSTANTS.add())
                 .styler(style -> style.add(BUNDLE.css().addButton()))
@@ -114,16 +156,13 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
 
     void onAddButtonClick() {
         if (fieldsGrouping.validate().isValid()) {
-            TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
-                    descriptionTextArea.getValue());
-			
-			todoItemsListGroup.setItemRenderer((listGroup, item) -> {
-				item.appendChild(BlockHeader.create(todoItem.getTitle()));
-				item.appendChild(doneButton(item).element());
-				item.appendChild(priorityBadge());
-			});
+            TodoItem todoItem = new TodoItem(
+                    titleTextBox.getValue(),
+                    descriptionTextArea.getValue(),
+                    prioritySelect.getValue()
+            );
 
-			todoItemsListGroup.addItem(todoItem);
+            todoItemsListGroup.addItem(todoItem);
 
             fieldsGrouping
                     .clear()
@@ -131,37 +170,25 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
         }
     }
 
-	private Button doneButton(ListItem<TodoItem> listItem) {
-		Button doneButton = Button.create(Icons.ALL.check()).linkify();
-
-		doneButton.styler(style -> style.add(Styles.pull_right, BUNDLE.css().doneButton())).setColor(Color.GREEN)
-				.addClickListener(evt -> {
-					onDoneButtonClick(listItem);
-					doneButton.element().remove();
-				});
-
-		return doneButton;
-	}
-
-    private Badge priorityBadge() {
-        if ("High".equals(prioritySelect.getValue())) {
-            return Badge.create("High")
-                    .styler(style -> style.add(Styles.pull_right))
-                    .setBackground(Color.RED);
-        } else if ("Medium".equals(prioritySelect.getValue())) {
-            return Badge.create("Medium")
-                    .styler(style -> style.add(Styles.pull_right))
-                    .setBackground(Color.ORANGE);
-        } else {
-            return Badge.create("Low")
-                    .styler(style -> style.add(Styles.pull_right))
-                    .setBackground(Color.TEAL);
+    private Badge priorityBadge(Priority priority) {
+        switch (priority) {
+            case High:
+                return Badge.create("High")
+                        .setBackground(Color.RED);
+            case Medium:
+                return Badge.create("Medium")
+                        .setBackground(Color.ORANGE);
+            case Low:
+            default:
+                return Badge.create("Low")
+                        .setBackground(Color.TEAL);
         }
+
     }
 
-    void onDoneButtonClick(ListItem<TodoItem> listItem) {
-        todoItemsListGroup.removeItem(listItem);
-        doneItemsListGroup.appendChild(listItem);
+    void complete(TodoItem todoItem) {
+        todoItemsListGroup.removeItem(todoItem);
+        doneItemsListGroup.addItem(todoItem);
     }
 
     @Override

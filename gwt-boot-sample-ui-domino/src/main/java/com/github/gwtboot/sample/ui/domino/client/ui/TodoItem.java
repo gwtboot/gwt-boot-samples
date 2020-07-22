@@ -27,13 +27,15 @@ public class TodoItem implements Serializable {
 	private String title;
 
     private String description;
+    private Priority priority;
 
     public TodoItem() {
     }
 
-    public TodoItem(String title, String description) {
+    public TodoItem(String title, String description, Priority priority) {
         this.title = title;
         this.description = description;
+        this.priority = priority;
     }
 
     public String getTitle() {
@@ -50,5 +52,17 @@ public class TodoItem implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public enum Priority {
+        High, Medium, Low;
     }
 }

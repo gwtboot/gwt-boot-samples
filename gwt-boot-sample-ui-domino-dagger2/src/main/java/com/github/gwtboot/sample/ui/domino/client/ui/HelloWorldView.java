@@ -18,27 +18,26 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.BUNDLE;
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
-
-import java.util.logging.Logger;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
-
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
+import org.dominokit.domino.ui.grid.flex.FlexItem;
+import org.dominokit.domino.ui.grid.flex.FlexJustifyContent;
+import org.dominokit.domino.ui.grid.flex.FlexLayout;
 import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
-import org.dominokit.domino.ui.lists.ListItem;
 import org.dominokit.domino.ui.popover.Tooltip;
-import org.dominokit.domino.ui.style.StyleType;
+import org.dominokit.domino.ui.style.Color;
+import org.dominokit.domino.ui.style.Styles;
 
-import elemental2.dom.Event;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+import java.util.logging.Logger;
+
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
 
 @Singleton
 public class HelloWorldView {
@@ -72,26 +71,55 @@ public class HelloWorldView {
 		this.addButton = addButton;
 		this.layout = layout;
 
+		this.todoItemsListGroup
+				.setItemRenderer((listGroup, listItem) -> {
+					listItem
+							.css(Styles.padding_10)
+							.appendChild(FlexLayout.create()
+									.setJustifyContent(FlexJustifyContent.SPACE_AROUND)
+									.appendChild(FlexItem.create()
+											.setFlexGrow(1)
+											.appendChild(BlockHeader
+													.create(listItem.getValue().getTitle(), listItem.getValue().getDescription())
+													.css(Styles.m_b_0)
+											)
+									)
+									.appendChild(FlexItem.create()
+											.appendChild(Icons.ALL.check_bold_mdi()
+													.setColor(Color.GREEN)
+													.clickable()
+													.addClickListener(evt -> complete(listItem.getValue()))
+											))
+							);
+				});
+		this.doneItemsListGroup
+				.setItemRenderer((listGroup, listItem) -> {
+					listItem
+							.css(Styles.padding_10)
+							.appendChild(FlexLayout.create()
+									.setJustifyContent(FlexJustifyContent.SPACE_AROUND)
+									.appendChild(FlexItem.create()
+											.setFlexGrow(1)
+											.appendChild(BlockHeader
+													.create(listItem.getValue().getTitle(), listItem.getValue().getDescription())
+													.css(Styles.m_b_0)
+											)
+									)
+							);
+				});
+
 		logger.info("Button: " + addButton.toString());
 
 		// Add button and listener
 		this.addButton.addClickListener(addButtonClickEvent -> {
-			handleAddButtonClick(addButtonClickEvent);
+			handleAddButtonClick();
 		});
 	}
 
-	void handleAddButtonClick(Event addButtonClickEvent) {
+	void handleAddButtonClick() {
 		if (!titleTextBox.isEmpty() && !descriptionTextArea.isEmpty()) {
 			TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
 					descriptionTextArea.getValue());
-
-			todoItemsListGroup.setItemRenderer((listGroup, item) -> {
-				item.appendChild(BlockHeader.create(todoItem.getTitle()));
-
-				Button doneButton = doneButton(item);
-				item.appendChild(doneButton.element());
-				item.appendChild(tooltip(doneButton).element());
-			});
 
 			todoItemsListGroup.addItem(todoItem);
 
@@ -104,26 +132,9 @@ public class HelloWorldView {
 		return Tooltip.create(doneButton.element(), CONSTANTS.mark_done());
 	}
 
-	Button doneButton(ListItem<TodoItem> listItem) {
-		Button doneButton = Button.create(Icons.ALL.check());
-		doneButton.setButtonType(StyleType.SUCCESS);
-		doneButton.element().classList.add(BUNDLE.css().doneButton());
-
-		doneButton.addClickListener(doneButtonClickEvent -> {
-			handleDoneButtonClick(doneButtonClickEvent, doneButton, listItem);
-		});
-
-		return doneButton;
-	}
-
-	void handleDoneButtonClick(Event doneButtonClickEvent,
-							   Button doneButton, ListItem<TodoItem> listItem) {
-		doneButtonClickEvent.stopPropagation();
-
-		todoItemsListGroup.removeItem(listItem);
-		doneItemsListGroup.appendChild(listItem);
-
-		doneButton.element().remove();
+	void complete(TodoItem todoItem) {
+		todoItemsListGroup.removeItem(todoItem);
+		doneItemsListGroup.addItem(todoItem);
 	}
 
 }
