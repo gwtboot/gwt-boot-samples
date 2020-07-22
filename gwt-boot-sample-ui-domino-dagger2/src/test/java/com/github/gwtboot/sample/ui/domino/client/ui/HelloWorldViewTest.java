@@ -80,15 +80,16 @@ public class HelloWorldViewTest {
 		// Prepare
 		doReturn("Title").when(titleTextBox).getValue();
 		doReturn("Description").when(descriptionTextArea).getValue();
-		doReturn(iconButton).when(helloWorldView).doneButton(any());
 		doReturn(tooltip).when(helloWorldView).tooltip(iconButton);
 
 		// CUT
-		helloWorldView.handleAddButtonClick(null);
+		helloWorldView.handleAddButtonClick();
 
 		// Asserts
 		verify(helloWorldView, times(0)).tooltip(any());
 		verify(todoItemsListGroup, times(1)).addItem(Matchers.<TodoItem>any());
+		verify(titleTextBox, times(1)).setValue("");
+		verify(descriptionTextArea, times(1)).setValue("");
 	}
 
 }
