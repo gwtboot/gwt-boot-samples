@@ -68,10 +68,13 @@ public class HelloWorldViewTest {
 	@Mock
 	Layout layout;
 
+	@Mock
+	ToDoItemRenderer toDoItemRenderer;
+
 	@Before
 	public void setUp() throws Exception {
 		helloWorldView = new HelloWorldView(titleTextBox, descriptionTextArea, todoItemsListGroup, doneItemsListGroup,
-				addButton, layout);
+				toDoItemRenderer, addButton, layout);
 		helloWorldView = spy(helloWorldView);
 	}
 

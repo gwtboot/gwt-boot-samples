@@ -97,6 +97,13 @@ public class HelloWorldUiBinder {
 		return todoItemsListGroup;
 	}
 
+	@Named("todoItemRenderer")
+	@Provides
+	@Singleton
+	ToDoItemRenderer todoItemRenderer() {
+		return new ToDoItemRenderer();
+	}
+
 	@Named("doneItemsListGroup")
 	@Provides
 	@Singleton

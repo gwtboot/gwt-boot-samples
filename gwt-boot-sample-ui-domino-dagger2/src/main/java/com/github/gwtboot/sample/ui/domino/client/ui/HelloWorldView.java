@@ -18,106 +18,83 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
-
-import java.util.logging.Logger;
+import org.dominokit.domino.ui.button.Button;
+import org.dominokit.domino.ui.forms.TextArea;
+import org.dominokit.domino.ui.forms.TextBox;
+import org.dominokit.domino.ui.layout.Layout;
+import org.dominokit.domino.ui.lists.ListGroup;
+import org.dominokit.domino.ui.popover.Tooltip;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+import java.util.logging.Logger;
 
-import org.dominokit.domino.ui.button.Button;
-import org.dominokit.domino.ui.forms.TextArea;
-import org.dominokit.domino.ui.forms.TextBox;
-import org.dominokit.domino.ui.grid.flex.FlexItem;
-import org.dominokit.domino.ui.grid.flex.FlexJustifyContent;
-import org.dominokit.domino.ui.grid.flex.FlexLayout;
-import org.dominokit.domino.ui.header.BlockHeader;
-import org.dominokit.domino.ui.icons.Icons;
-import org.dominokit.domino.ui.layout.Layout;
-import org.dominokit.domino.ui.lists.ListGroup;
-import org.dominokit.domino.ui.popover.Tooltip;
-import org.dominokit.domino.ui.style.Color;
-import org.dominokit.domino.ui.style.Styles;
+import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
 
 @Singleton
 public class HelloWorldView {
 
-	private static Logger logger = Logger
-			.getLogger(HelloWorldView.class.getName());
+    private static Logger logger = Logger
+            .getLogger(HelloWorldView.class.getName());
 
-	TextBox titleTextBox;
+    TextBox titleTextBox;
 
-	TextArea descriptionTextArea;
+    TextArea descriptionTextArea;
 
-	ListGroup<TodoItem> todoItemsListGroup;
+    ListGroup<TodoItem> todoItemsListGroup;
 
-	ListGroup<TodoItem> doneItemsListGroup;
+    ListGroup<TodoItem> doneItemsListGroup;
 
-	Button addButton;
+    Button addButton;
 
-	Layout layout;
+    Layout layout;
 
-	@Inject
-	public HelloWorldView(TextBox titleTextBox, TextArea descriptionTextArea,
-			@Named("todoItemsListGroup") ListGroup<TodoItem> todoItemsListGroup,
-			@Named("doneItemsListGroup") ListGroup<TodoItem> doneItemsListGroup,
-			Button addButton, Layout layout) {
-		logger.info("Create HelloWorldView");
+    @Inject
+    public HelloWorldView(TextBox titleTextBox, TextArea descriptionTextArea,
+                          @Named("todoItemsListGroup") ListGroup<TodoItem> todoItemsListGroup,
+                          @Named("doneItemsListGroup") ListGroup<TodoItem> doneItemsListGroup,
+                          @Named("todoItemRenderer") ToDoItemRenderer toDoItemRenderer,
+                          Button addButton, Layout layout) {
+        logger.info("Create HelloWorldView");
 
-		this.titleTextBox = titleTextBox;
-		this.descriptionTextArea = descriptionTextArea;
-		this.todoItemsListGroup = todoItemsListGroup;
-		this.doneItemsListGroup = doneItemsListGroup;
-		this.addButton = addButton;
-		this.layout = layout;
+        this.titleTextBox = titleTextBox;
+        this.descriptionTextArea = descriptionTextArea;
+        this.todoItemsListGroup = todoItemsListGroup;
+        this.doneItemsListGroup = doneItemsListGroup;
+        this.addButton = addButton;
+        this.layout = layout;
 
-		this.todoItemsListGroup.setItemRenderer((listGroup, listItem) -> {
-					listItem.css(Styles.padding_10)
-						.appendChild(FlexLayout.create().setJustifyContent(
-								FlexJustifyContent.SPACE_AROUND)
-							.appendChild(FlexItem.create().setFlexGrow(1)
-								.appendChild(BlockHeader.create(
-										listItem.getValue().getTitle(), 
-										listItem.getValue().getDescription())
-								.css(Styles.m_b_0)))
-								.appendChild(FlexItem.create()
-										.appendChild(Icons.ALL.check_bold_mdi()
-											.setColor(Color.GREEN)
-											.clickable()
-											.addClickListener(
-												addClickEvent -> handleCheckOkClick(listItem.getValue()))
-										))
-						);
-		});
+        toDoItemRenderer.setOnCheckHandler(this::handleCheckOkClick);
+        this.todoItemsListGroup.setItemRenderer(toDoItemRenderer);
 
-		logger.info("Button: " + addButton.toString());
+        logger.info("Button: " + addButton.toString());
 
-		// Add button and listener
-		this.addButton.addClickListener(addButtonClickEvent -> {
-			handleAddButtonClick();
-		});
-	}
+        // Add button and listener
+        this.addButton.addClickListener(addButtonClickEvent -> {
+            handleAddButtonClick();
+        });
+    }
 
-	void handleAddButtonClick() {
-		if (!titleTextBox.isEmpty() && !descriptionTextArea.isEmpty()) {
-			TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
-					descriptionTextArea.getValue());
+    void handleAddButtonClick() {
+        if (!titleTextBox.isEmpty() && !descriptionTextArea.isEmpty()) {
+            TodoItem todoItem = new TodoItem(titleTextBox.getValue(),
+                    descriptionTextArea.getValue());
 
-			todoItemsListGroup.addItem(todoItem);
+            todoItemsListGroup.addItem(todoItem);
 
-			titleTextBox.setValue("");
-			descriptionTextArea.setValue("");
-		}
-	}
+            titleTextBox.setValue("");
+            descriptionTextArea.setValue("");
+        }
+    }
 
-	Tooltip tooltip(Button doneButton) {
-		return Tooltip.create(doneButton.element(), CONSTANTS.mark_done());
-	}
+    Tooltip tooltip(Button doneButton) {
+        return Tooltip.create(doneButton.element(), CONSTANTS.mark_done());
+    }
 
-	void handleCheckOkClick(TodoItem todoItem) {
-		todoItemsListGroup.removeItem(todoItem);
-		doneItemsListGroup.addItem(todoItem);
-	}
+    void handleCheckOkClick(TodoItem todoItem) {
+        todoItemsListGroup.removeItem(todoItem);
+        doneItemsListGroup.addItem(todoItem);
+    }
 
 }
