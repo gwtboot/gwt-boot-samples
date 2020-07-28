@@ -90,28 +90,26 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
         this.todoItemsListGroup = ListGroup.<TodoItem>create()
                 .setSelectable(false)
                 .setItemRenderer((listGroup, listItem) -> {
-                    listItem
-                            .css(Styles.padding_10)
-                            .appendChild(FlexLayout.create()
-                                    .setJustifyContent(FlexJustifyContent.SPACE_AROUND)
-                                    .appendChild(FlexItem.create()
-                                            .setFlexGrow(1)
-                                            .appendChild(BlockHeader
-                                                    .create(listItem.getValue().getTitle(), listItem.getValue().getDescription())
-                                                    .css(Styles.m_b_0)
-                                            )
-                                    )
-                                    .appendChild(FlexItem.create()
-                                            .css(Styles.m_l_10, Styles.m_r_10, Styles.m_t_10)
-                                            .appendChild(priorityBadge(listItem.getValue().getPriority()))
-                                    )
-                                    .appendChild(FlexItem.create()
-                                            .appendChild(Icons.ALL.check_bold_mdi()
-                                                    .setColor(Color.GREEN)
-                                                    .clickable()
-                                                    .addClickListener(evt -> complete(listItem.getValue()))
-                                            ))
-                            );
+                    listItem.css(Styles.padding_10)
+                          .appendChild(FlexLayout.create()
+                                .setJustifyContent(FlexJustifyContent.SPACE_AROUND)
+                                .appendChild(FlexItem.create().setFlexGrow(1)
+                                       .appendChild(BlockHeader
+                                             .create(listItem.getValue().getTitle(), listItem.getValue().getDescription())
+                                             .css(Styles.m_b_0)
+                                       )
+                                )
+                                .appendChild(FlexItem.create()
+                                       .css(Styles.m_l_10, Styles.m_r_10, Styles.m_t_10)
+                                       .appendChild(priorityBadge(listItem.getValue().getPriority()))
+                                )
+                                .appendChild(FlexItem.create()
+                                       .appendChild(Icons.ALL.check_bold_mdi()
+                                             .setColor(Color.GREEN)
+                                             .clickable()
+                                             .addClickListener(evt -> handleCheckOkClick(listItem.getValue()))
+                                       ))
+                          );
                 });
 
         this.doneItemsListGroup = ListGroup.<TodoItem>create()
@@ -121,23 +119,22 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
                             .css(Styles.padding_10)
                             .appendChild(FlexLayout.create()
                                     .setJustifyContent(FlexJustifyContent.SPACE_AROUND)
-                                    .appendChild(FlexItem.create()
-                                            .setFlexGrow(1)
-                                            .appendChild(BlockHeader
-                                                    .create(listItem.getValue().getTitle(), listItem.getValue().getDescription())
-                                                    .css(Styles.m_b_0)
+                                    .appendChild(FlexItem.create().setFlexGrow(1)
+                                         .appendChild(BlockHeader
+                                                 .create(listItem.getValue().getTitle(), listItem.getValue().getDescription())
+                                                 .css(Styles.m_b_0)
                                             )
                                     )
                                     .appendChild(FlexItem.create()
-                                            .css(Styles.m_l_10, Styles.m_r_10, Styles.m_t_10)
-                                            .appendChild(priorityBadge(listItem.getValue().getPriority()))
+                                         .css(Styles.m_l_10, Styles.m_r_10, Styles.m_t_10)
+                                         .appendChild(priorityBadge(listItem.getValue().getPriority()))
                                     )
                             );
                 });
 
         this.addButton = Button.createPrimary(CONSTANTS.add())
                 .styler(style -> style.add(BUNDLE.css().addButton()))
-                .addClickListener(evt -> onAddButtonClick());
+                .addClickListener(evt -> handleAddButtonClick());
 
         root.appendChild(Card.create(CONSTANTS.new_todo(), CONSTANTS.add_new_todo())
                 .appendChild(titleTextBox)
@@ -155,7 +152,7 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
                 .element());
     }
 
-    void onAddButtonClick() {
+    void handleAddButtonClick() {
         if (fieldsGrouping.validate().isValid()) {
             TodoItem todoItem = new TodoItem(
                     titleTextBox.getValue(),
@@ -187,7 +184,7 @@ public class HelloWorldView implements IsElement<HTMLDivElement> {
 
     }
 
-    void complete(TodoItem todoItem) {
+    void handleCheckOkClick(TodoItem todoItem) {
         todoItemsListGroup.removeItem(todoItem);
         doneItemsListGroup.addItem(todoItem);
     }
