@@ -18,8 +18,6 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import static com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldClientBundle.CONSTANTS;
-
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -31,7 +29,6 @@ import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
-import org.dominokit.domino.ui.popover.Tooltip;
 
 @Singleton
 public class HelloWorldComposite {
@@ -88,10 +85,6 @@ public class HelloWorldComposite {
             titleTextBox.setValue("");
             descriptionTextArea.setValue("");
         }
-    }
-
-    Tooltip tooltip(Button doneButton) {
-        return Tooltip.create(doneButton.element(), CONSTANTS.mark_done());
     }
 
     void handleCheckOkClick(TodoItem todoItem) {

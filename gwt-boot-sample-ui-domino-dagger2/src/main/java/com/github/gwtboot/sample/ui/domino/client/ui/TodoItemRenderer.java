@@ -57,4 +57,5 @@ public class TodoItemRenderer implements ListGroup.ItemRenderer<TodoItem> {
     public void setOnCheckHandler(Consumer<TodoItem> onCheckHandler) {
         this.onCheckHandler = onCheckHandler;
     }
+    
 }

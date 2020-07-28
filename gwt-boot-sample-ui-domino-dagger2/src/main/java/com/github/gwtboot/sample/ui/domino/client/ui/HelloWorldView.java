@@ -37,6 +37,7 @@ import org.dominokit.domino.ui.grid.flex.FlexLayout;
 import org.dominokit.domino.ui.header.BlockHeader;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
+import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.style.Styles;
 import org.dominokit.domino.ui.themes.Theme;
 
@@ -127,7 +128,12 @@ public class HelloWorldView {
 	Button addButton() {
 		Button addButton = Button.createPrimary(CONSTANTS.add());
 		addButton.element().classList.add(BUNDLE.css().addButton());
+		tooltip(addButton);
 		return addButton;
 	}
+	
+	Tooltip tooltip(Button addButton) {
+        return Tooltip.create(addButton.element(), CONSTANTS.add());
+    }
 
 }

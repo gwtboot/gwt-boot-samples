@@ -18,7 +18,6 @@
  */
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
@@ -29,7 +28,6 @@ import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.forms.TextBox;
 import org.dominokit.domino.ui.layout.Layout;
 import org.dominokit.domino.ui.lists.ListGroup;
-import org.dominokit.domino.ui.popover.Tooltip;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,40 +40,34 @@ import com.google.gwtmockito.GwtMockitoTestRunner;
 @RunWith(GwtMockitoTestRunner.class)
 public class HelloWorldCompositeTest {
 
-	private HelloWorldComposite helloWorldView;
+	private HelloWorldComposite helloWorldComposite;
 
 	@Mock
-	TextBox titleTextBox;
+	private TextBox titleTextBox;
 
 	@Mock
-	TextArea descriptionTextArea;
+	private TextArea descriptionTextArea;
 
 	@Mock(answer = Answers.RETURNS_DEEP_STUBS)
-	ListGroup<TodoItem> todoItemsListGroup;
+	private ListGroup<TodoItem> todoItemsListGroup;
 
 	@Mock(answer = Answers.RETURNS_DEEP_STUBS)
-	ListGroup<TodoItem> doneItemsListGroup;
-
-	@Mock(answer = Answers.RETURNS_DEEP_STUBS)
-	Button iconButton;
-
-	@Mock(answer = Answers.RETURNS_DEEP_STUBS)
-	Tooltip tooltip;
+	private ListGroup<TodoItem> doneItemsListGroup;
 
 	@Mock
-	Button addButton;
+	private Button addButton;
 
 	@Mock
-	Layout layout;
+	private Layout layout;
 
 	@Mock
-	TodoItemRenderer toDoItemRenderer;
+	private TodoItemRenderer toDoItemRenderer;
 
 	@Before
 	public void setUp() throws Exception {
-		helloWorldView = new HelloWorldComposite(titleTextBox, descriptionTextArea, todoItemsListGroup, doneItemsListGroup,
+		helloWorldComposite = new HelloWorldComposite(titleTextBox, descriptionTextArea, todoItemsListGroup, doneItemsListGroup,
 				toDoItemRenderer, addButton, layout);
-		helloWorldView = spy(helloWorldView);
+		helloWorldComposite = spy(helloWorldComposite);
 	}
 
 	@Test
@@ -83,13 +75,11 @@ public class HelloWorldCompositeTest {
 		// Prepare
 		doReturn("Title").when(titleTextBox).getValue();
 		doReturn("Description").when(descriptionTextArea).getValue();
-		doReturn(tooltip).when(helloWorldView).tooltip(iconButton);
 
 		// CUT
-		helloWorldView.handleAddButtonClick();
+		helloWorldComposite.handleAddButtonClick();
 
 		// Asserts
-		verify(helloWorldView, times(0)).tooltip(any());
 		verify(todoItemsListGroup, times(1)).addItem(Matchers.<TodoItem>any());
 		verify(titleTextBox, times(1)).setValue("");
 		verify(descriptionTextArea, times(1)).setValue("");

@@ -27,6 +27,7 @@ public class TodoItem implements Serializable {
 	private String title;
 
     private String description;
+    
     private Priority priority;
 
     public TodoItem() {
