@@ -21,15 +21,15 @@ package com.github.gwtboot.sample.ui.domino.client;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldView;
+import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldComposite;
 
 @Singleton
 public class DominoWebApp {
 
-	private HelloWorldView helloWorldView;
+	private HelloWorldComposite helloWorldView;
 
 	@Inject
-	public DominoWebApp(HelloWorldView helloWorldView) {
+	public DominoWebApp(HelloWorldComposite helloWorldView) {
 		this.helloWorldView = helloWorldView;
 	}
 }

@@ -40,9 +40,9 @@ import org.mockito.Mock;
 import com.google.gwtmockito.GwtMockitoTestRunner;
 
 @RunWith(GwtMockitoTestRunner.class)
-public class HelloWorldViewTest {
+public class HelloWorldCompositeTest {
 
-	private HelloWorldView helloWorldView;
+	private HelloWorldComposite helloWorldView;
 
 	@Mock
 	TextBox titleTextBox;
@@ -69,11 +69,11 @@ public class HelloWorldViewTest {
 	Layout layout;
 
 	@Mock
-	ToDoItemRenderer toDoItemRenderer;
+	TodoItemRenderer toDoItemRenderer;
 
 	@Before
 	public void setUp() throws Exception {
-		helloWorldView = new HelloWorldView(titleTextBox, descriptionTextArea, todoItemsListGroup, doneItemsListGroup,
+		helloWorldView = new HelloWorldComposite(titleTextBox, descriptionTextArea, todoItemsListGroup, doneItemsListGroup,
 				toDoItemRenderer, addButton, layout);
 		helloWorldView = spy(helloWorldView);
 	}

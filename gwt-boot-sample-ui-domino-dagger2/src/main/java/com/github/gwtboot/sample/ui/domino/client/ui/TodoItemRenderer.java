@@ -1,5 +1,7 @@
 package com.github.gwtboot.sample.ui.domino.client.ui;
 
+import java.util.function.Consumer;
+
 import org.dominokit.domino.ui.grid.flex.FlexItem;
 import org.dominokit.domino.ui.grid.flex.FlexJustifyContent;
 import org.dominokit.domino.ui.grid.flex.FlexLayout;
@@ -10,9 +12,7 @@ import org.dominokit.domino.ui.lists.ListItem;
 import org.dominokit.domino.ui.style.Color;
 import org.dominokit.domino.ui.style.Styles;
 
-import java.util.function.Consumer;
-
-public class ToDoItemRenderer implements ListGroup.ItemRenderer<TodoItem> {
+public class TodoItemRenderer implements ListGroup.ItemRenderer<TodoItem> {
 
     private Consumer<TodoItem> onCheckHandler = todoItem -> {};
 
@@ -34,10 +34,6 @@ public class ToDoItemRenderer implements ListGroup.ItemRenderer<TodoItem> {
                                                 addClickEvent -> onCheckHandler.accept(listItem.getValue()))
                                 ))
                 );
-    }
-
-    public Consumer<TodoItem> getOnCheckHandler() {
-        return onCheckHandler;
     }
 
     public void setOnCheckHandler(Consumer<TodoItem> onCheckHandler) {
