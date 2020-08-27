@@ -40,5 +40,6 @@
 		<module>gwt-boot-sample-ui-domino</module>
 		<module>gwt-boot-sample-ui-domino-dagger2</module>
 		<module>gwt-boot-sample-ui-vue-gwt</module>
+		<module>gwt-boot-sample-ui-dncomponents</module>
 	</modules>
 </project>
