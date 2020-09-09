@@ -31,7 +31,6 @@ public class DncomponentsEntryPoint implements EntryPoint {
     public void onModuleLoad() {
         //to work with java/html pairs use intellij dncomponents plugin https://plugins.jetbrains.com/plugin/13486-dn-components
         Ui.set(new BootstrapUi());
-        //first you must run mvn compile to generate AppTemplates class then run app with mvn gwt:devmode
         AppTemplates.register();
         MainApp mainApp = new MainApp();
         DomGlobal.document.body.appendChild(mainApp.asElement());
