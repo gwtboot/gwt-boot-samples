@@ -51,41 +51,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <executions>
-                    <execution>
-                        <id>process-annotations</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <excludes>
-                                <!--Here exclude EntryPoint java file from compilation-->
-                                <!--Either exclude with full path to file that implements EntryPoint interface
-                                 or follow name convention that contains EntryPoint word like AppEntryPoint-->
-                                <exclude>**/*EntryPoint*.*</exclude>
-                            </excludes>
-                            <compilerArgs>
-                                <arg>-Aregister=AppTemplates</arg>
-                                <arg>-proc:only</arg>
-                                <arg>-processor</arg>
-                                <arg>com.dncomponents.TemplateProcessor</arg>
-                            </compilerArgs>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>default-compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <compilerArgs>
-                                <arg>-proc:none</arg>
-                            </compilerArgs>
-                        </configuration>
-                    </execution>
-                </executions>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-Aregister=AppTemplates</arg>
+                    </compilerArgs>
+                    <annotationProcessors>
+                        <annotationProcessor>com.dncomponents.TemplateProcessor</annotationProcessor>
+                    </annotationProcessors>
+                </configuration>
             </plugin>
             <!-- GWT Maven Plugin -->
             <plugin>
