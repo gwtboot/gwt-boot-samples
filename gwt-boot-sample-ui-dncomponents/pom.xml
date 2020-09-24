@@ -45,35 +45,34 @@
 		</dependency>
 	</dependencies>
 
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <compilerArgs>
-                        <arg>-Aregister=AppTemplates</arg>
-                    </compilerArgs>
-                    <annotationProcessors>
-                        <annotationProcessor>com.dncomponents.TemplateProcessor</annotationProcessor>
-                    </annotationProcessors>
-                </configuration>
-            </plugin>
-            <!-- GWT Maven Plugin -->
-            <plugin>
-                <groupId>net.ltgt.gwt.maven</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <configuration>
-                    <moduleName>
-                        com.github.gwtboot.sample.ui.dncomponents.Dncomponents
-                    </moduleName>
-                    <startupUrls>
-                        <url>/dncomponents/</url>
-                    </startupUrls>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<compilerArgs>
+						<arg>-Aregister=AppTemplates</arg>
+					</compilerArgs>
+					<annotationProcessors>
+						<annotationProcessor>com.dncomponents.TemplateProcessor</annotationProcessor>
+					</annotationProcessors>
+				</configuration>
+			</plugin>
+			<!-- GWT Maven Plugin -->
+			<plugin>
+				<groupId>net.ltgt.gwt.maven</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<configuration>
+					<moduleName>
+						com.github.gwtboot.sample.ui.dncomponents.Dncomponents
+					</moduleName>
+					<startupUrls>
+						<url>/dncomponents/</url>
+					</startupUrls>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
