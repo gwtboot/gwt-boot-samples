@@ -45,62 +45,35 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<executions>
-					<execution>
-						<id>process-annotations</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-						<configuration>
-							<excludes>
-								<!-- Here exclude EntryPoint Java file from compilation -->
-								<!-- Either exclude with full path to file that implements EntryPoint -->
-								<!-- Interface or follow name convention that contains EntryPoint word like AppEntryPoint -->
-								<exclude>**/*EntryPoint*.*</exclude>
-							</excludes>
-							<compilerArgs>
-								<arg>-Aregister=AppTemplates</arg>
-								<arg>-proc:only</arg>
-								<arg>-processor</arg>
-								<arg>com.dncomponents.TemplateProcessor</arg>
-							</compilerArgs>
-						</configuration>
-					</execution>
-					<execution>
-						<id>default-compile</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-						<configuration>
-							<compilerArgs>
-								<arg>-proc:none</arg>
-							</compilerArgs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 
-			<!-- GWT Maven Plugin -->
-			<plugin>
-				<groupId>net.ltgt.gwt.maven</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<configuration>
-					<moduleName>
-						com.github.gwtboot.sample.ui.dncomponents.Dncomponents
-					</moduleName>
-					<startupUrls>
-						<url>/dncomponents/</url>
-					</startupUrls>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-Aregister=AppTemplates</arg>
+                    </compilerArgs>
+                    <annotationProcessors>
+                        <annotationProcessor>com.dncomponents.TemplateProcessor</annotationProcessor>
+                    </annotationProcessors>
+                </configuration>
+            </plugin>
+            <!-- GWT Maven Plugin -->
+            <plugin>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <configuration>
+                    <moduleName>
+                        com.github.gwtboot.sample.ui.dncomponents.Dncomponents
+                    </moduleName>
+                    <startupUrls>
+                        <url>/dncomponents/</url>
+                    </startupUrls>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

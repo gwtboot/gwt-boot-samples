@@ -39,6 +39,14 @@ public class DncomponentsEntryPoint implements EntryPoint {
 
 		MainApp mainApp = new MainApp();
 
-		DomGlobal.document.body.appendChild(mainApp.asElement());
-	}
+
+    @Override
+    public void onModuleLoad() {
+        //to work with java/html pairs use intellij dncomponents plugin https://plugins.jetbrains.com/plugin/13486-dn-components
+        Ui.set(new BootstrapUi());
+        AppTemplates.register();
+        MainApp mainApp = new MainApp();
+        DomGlobal.document.body.appendChild(mainApp.asElement());
+    }
 }
+
