@@ -26,10 +26,10 @@ import com.github.gwtboot.sample.ui.domino.client.ui.HelloWorldComposite;
 @Singleton
 public class DominoWebApp {
 
-	private HelloWorldComposite helloWorldView;
+	private HelloWorldComposite helloWorldComposite;
 
 	@Inject
-	public DominoWebApp(HelloWorldComposite helloWorldView) {
-		this.helloWorldView = helloWorldView;
+	public DominoWebApp(HelloWorldComposite helloWorldComposite) {
+		this.helloWorldComposite = helloWorldComposite;
 	}
 }
