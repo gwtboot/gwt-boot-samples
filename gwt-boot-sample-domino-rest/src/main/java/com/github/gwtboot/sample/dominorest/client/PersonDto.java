@@ -21,7 +21,7 @@ package com.github.gwtboot.sample.dominorest.client;
 import java.util.Date;
 import java.util.logging.Logger;
 
-import org.dominokit.jacksonapt.annotation.JSONMapper;
+import org.dominokit.jackson.annotation.JSONMapper;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

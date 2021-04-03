@@ -21,7 +21,7 @@ package com.github.gwtboot.sample.dominorest.client;
 import java.util.Date;
 import java.util.logging.Logger;
 
-import org.dominokit.domino.rest.DominoRestConfig;
+import org.dominokit.rest.DominoRestConfig;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.Button;

@@ -23,7 +23,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-import org.dominokit.domino.rest.shared.request.service.annotations.RequestFactory;
+import org.dominokit.rest.shared.request.service.annotations.RequestFactory;
 
 @RequestFactory
 public interface PersonClient {
