@@ -46,7 +46,7 @@ need to add _gwt-maven-plugin_ and add your GWT module name.
    </build>
 ```
 
-Add Sonatype Snapshots repository by extending or creating `<repositories>` section since the `gwtboot-modules` are not released yet, so the example needs to access the SNAPSHOT version of `gwtboot-modules`. 
+*If you are using the SNAPSHOT version of the starter* you need to add Sonatype Snapshots repository by extending or creating `<repositories>` section since the `gwtboot-modules` are not released yet, so the example needs to access the SNAPSHOT version of `gwtboot-modules`. 
 
 ```xml
    <repositories>
