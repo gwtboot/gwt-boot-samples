@@ -133,7 +133,7 @@ Now you are ready to start your GWT basic sample app for the first time.
 
 The application _[gwt-boot-sample-basic](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic)_ 
 uses integrated Jetty server from GWT to deliver the HTML host file. 
-This can be done with other Servlet app as well.
+This can be done with other Servlet apps as well.
 
 ## Step 1 - Run GWT DevMode to automatically compile the code
 
