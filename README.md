@@ -155,7 +155,7 @@ mvn gwt:devmode
 
 ## Step 2 - Run the App in your Browser
 
-Run it on:
+Now you can copy&paste the "Copy to Clipboard" result of the GWT Development Mode UI above. Run it on:
 
 ```java
 http://localhost:8888/basic
