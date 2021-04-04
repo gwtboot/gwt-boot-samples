@@ -151,6 +151,8 @@ You can just generate the module once and after that just run:
 mvn gwt:devmode
 ```
 
+![GWT Development Mode](gwt-boot-sample-development-mode.png?raw=true "GWT Development Mode")
+
 ## Step 2 - Run the App in your Browser
 
 Run it on:
@@ -162,5 +164,11 @@ http://localhost:8888/basic
 Just reload your web app and GWT SuperDev mode will transpile your
 Java code to JavaScript on the fly. That's it, now you can develop 
 your web app with GWT incrementally and fast! 
+
+## Step 3 - Debug the App in your Browser
+
+You can debug the Java code on the browser with the help of source maps. In this example we use Google Chrome.
+
+![GWT Debug Chrome](gwt-boot-sample-debugging.png?raw=true "GWT Debug Chrome")
 
 Enjoy! 
