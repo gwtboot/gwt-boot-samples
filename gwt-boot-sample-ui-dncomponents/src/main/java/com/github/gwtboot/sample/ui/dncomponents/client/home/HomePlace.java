@@ -31,7 +31,7 @@ public class HomePlace extends Place {
 		}
 
 		@Override
-		public AbstractActivity getActivity(HomePlace place) {
+		public AbstractActivity<?, ?> getActivity(HomePlace place) {
 			return new DefaultActivity(HomeViewImpl.getInstance(), place);
 		}
 

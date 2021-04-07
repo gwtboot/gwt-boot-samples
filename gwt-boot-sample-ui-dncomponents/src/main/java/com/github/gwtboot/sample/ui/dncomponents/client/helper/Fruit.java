@@ -64,32 +64,32 @@ public class Fruit {
 		TreeNode<Object> root = new TreeNode<>("root");
 		{
 			TreeNode<Object> node = new TreeNode<>("Non-sweet");
-			node.add(new TreeNode(new Fruit("Avocado", "fruit")));
-			node.add(new TreeNode(new Fruit("Bell pepper", "fruit")));
-			node.add(new TreeNode(new Fruit("Cucumber", "fruit")));
-			node.add(new TreeNode(new Fruit("Tomato", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Avocado", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Bell pepper", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Cucumber", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Tomato", "fruit")));
 			root.add(node);
 		}
 		{
 			TreeNode<Object> node = new TreeNode<>("Sub-acid");
-			node.add(new TreeNode(new Fruit("Apple", "fruit")));
-			node.add(new TreeNode(new Fruit("Apricot", "fruit")));
-			node.add(new TreeNode(new Fruit("Blackberry", "fruit")));
-			node.add(new TreeNode(new Fruit("Cherry", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Apple", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Apricot", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Blackberry", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Cherry", "fruit")));
 			root.add(node);
 		}
 		{
 			TreeNode<Object> node = new TreeNode<>("Sweet");
-			node.add(new TreeNode(new Fruit("Banana", "fruit")));
-			node.add(new TreeNode(new Fruit("Papaya", "fruit")));
-			node.add(new TreeNode(new Fruit("Prune", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Banana", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Papaya", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Prune", "fruit")));
 			root.add(node);
 		}
 		{
 			TreeNode<Object> node = new TreeNode<>("Acid");
-			node.add(new TreeNode(new Fruit("Kiwi", "fruit")));
-			node.add(new TreeNode(new Fruit("Lemon", "fruit")));
-			node.add(new TreeNode(new Fruit("Orange", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Kiwi", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Lemon", "fruit")));
+			node.add(new TreeNode<Object>(new Fruit("Orange", "fruit")));
 			root.add(node);
 		}
 		return root;

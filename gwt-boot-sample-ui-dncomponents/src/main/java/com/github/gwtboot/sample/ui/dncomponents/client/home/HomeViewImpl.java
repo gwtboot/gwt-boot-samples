@@ -16,21 +16,27 @@ import com.github.gwtboot.sample.ui.dncomponents.client.helper.Fruit;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 
-public class HomeViewImpl implements IsElement {
+public class HomeViewImpl implements IsElement<HTMLElement> {
 	private static HomeViewImpl instance;
 
 	@UiField
 	HTMLElement root;
+	
 	@UiField
-	public Button btnPrimary;
+	public Button<?> btnPrimary;
+	
 	@UiField
-	public Button btnSecondary;
+	public Button<?> btnSecondary;
+	
 	@UiField
 	public HTMLDivElement divElement;
+	
 	@UiField
 	RadioSelectionGroup<ItemId> radioGroup;
+	
 	@UiField
 	HTMLElement checkBoxPanel;
+	
 	@UiField
 	public TextArea eventsTa;
 
