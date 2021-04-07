@@ -18,13 +18,8 @@
  */
 package com.github.gwtboot.sample.ui.dncomponents.client.cell;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import com.dncomponents.UiField;
 import com.dncomponents.client.components.ColumnConfig;
-import com.dncomponents.client.components.HasCellComponents;
 import com.dncomponents.client.components.Table;
 import com.dncomponents.client.components.autocomplete.AutoCompleteEditor;
 import com.dncomponents.client.components.core.HtmlBinder;
@@ -34,75 +29,93 @@ import com.dncomponents.client.views.IsElement;
 import com.github.gwtboot.sample.ui.dncomponents.client.helper.Data;
 import com.github.gwtboot.sample.ui.dncomponents.client.helper.Person;
 import com.github.gwtboot.sample.ui.dncomponents.client.helper.TestingHelper;
-
 import elemental2.dom.HTMLElement;
 
-public class TableAppView implements IsElement, HasCellComponents {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-	@UiField
-	HTMLElement root;
-	@UiField
-	Table<Person> table;
+public class TableAppView implements IsElement {
 
-	public TableAppView() {
-		HtmlBinder.get(TableAppView.class, this).bind();
-		init();
-	}
+    @UiField
+    HTMLElement root;
+    @UiField
+    Table<Person> table;
 
-	private void init() {
-		final ArrayList<Person> people = Data.getPeople();
-		Data.setNulls(people);
-		table.setMultiSorting(true);
-		table.setEditable(true);
+    public TableAppView() {
+        HtmlBinder.get(TableAppView.class, this).bind();
+        init();
+    }
 
-		ColumnConfig<Person, String> nameColumn = new ColumnConfig<>(Person::getName, Person::setName)
-				.setColumnName("Name").setHeaderCellFactory(() -> new HeaderTableFilterCell()).setColumnWidth("300px")
-				.setEditable(true).setClazz(String.class);
+    private void init() {
+        final ArrayList<Person> people = Data.getPeople();
+        Data.setNulls(people);
+        table.setMultiSorting(true);
+        table.setEditable(true);
 
-		ColumnConfig<Person, Boolean> activeColumn = new ColumnConfig<>(Person::isActive, Person::setActive)
-				.setColumnName("Active").setHeaderCellFactory(() -> new HeaderTableFilterCell()).setColumnWidth("150px")
-				.setClazz(Boolean.class);
+        ColumnConfig<Person, String> nameColumn =
+                new ColumnConfig.Builder<>(Person::getName, Person::setName)
+                        .setName("Name")
+                        .setHeaderCellFactory(()
+                                -> new HeaderTableFilterCell())
+                        .setColumnWidth("300px")
+                        .setEditable(true)
+                        .setClazz(String.class)
+                        .build();
 
-		ColumnConfig<Person, Integer> ageColumn = new ColumnConfig<>(Person::getAge, Person::setAge)
-				.setColumnName("Age").setHeaderCellFactory(() -> new HeaderTableFilterCell()).setColumnWidth("150px")
-				.setClazz(Integer.class);
+        ColumnConfig<Person, Boolean> activeColumn =
+                new ColumnConfig.Builder<>(Person::isActive, Person::setActive)
+                        .setName("Active")
+                        .setHeaderCellFactory(() -> new HeaderTableFilterCell())
+                        .setColumnWidth("150px")
+                        .setClazz(Boolean.class)
+                        .build();
 
-		List<String> colors = Arrays.asList(TestingHelper.colors);
 
-		final ColumnConfig<Person, String> colorColumn = new ColumnConfig<>(Person::getCurrentColor,
-				Person::setCurrentColor)
-						.setColumnName("Color")
-						.setHeaderCellFactory(
-								() -> new HeaderTableFilterCell().setFilterPanel(new FilterPanelList(colors)))
-						.setColumnWidth("250px");
+        ColumnConfig<Person, Integer> ageColumn =
+                new ColumnConfig.Builder<>(Person::getAge, Person::setAge)
+                        .setName("Age")
+                        .setHeaderCellFactory(() -> new HeaderTableFilterCell())
+                        .setColumnWidth("150px")
+                        .setClazz(Integer.class)
+                        .build();
 
-		AutoCompleteEditor<String> acEditor = new AutoCompleteEditor<>(TestingHelper.getColors());
+        List<String> colors = Arrays.asList(TestingHelper.colors);
 
-		colorColumn.setCellFactory(c -> c.createDefaultCell().setCellEditor(acEditor).setRenderer(r -> {
-			r.valuePanel.style.background = "" + r.value;
-			r.valuePanel.innerHTML = r.value + "";
-		}));
+        final ColumnConfig<Person, String> colorColumn =
+                new ColumnConfig.Builder<>(Person::getCurrentColor, Person::setCurrentColor)
+                        .setName("Color")
+                        .setHeaderCellFactory(() ->
+                                new HeaderTableFilterCell()
+                                        .setFilterPanel(new FilterPanelList(colors))
+                        ).setColumnWidth("250px")
+                        .build();
 
-		table.addColumn(nameColumn, activeColumn, ageColumn, colorColumn);
-		table.setRowsData(people);
-		table.drawData();
-	}
+        AutoCompleteEditor<String> acEditor = new AutoCompleteEditor<>(TestingHelper.getColors());
 
-	@Override
-	public HTMLElement asElement() {
-		return root;
-	}
+        colorColumn.setCellFactory(c -> c.createDefaultCell()
+                .setCellEditor(acEditor)
+                .setRenderer(r -> {
+                    r.valuePanel.style.background = "" + r.value;
+                    r.valuePanel.innerHTML = r.value + "";
+                }));
 
-	private static TableAppView instance;
+        table.addColumn(nameColumn, activeColumn, ageColumn, colorColumn);
+        table.setRowsData(people);
+        table.drawData();
+    }
 
-	public static TableAppView getInstance() {
-		if (instance == null)
-			instance = new TableAppView();
-		return instance;
-	}
+    @Override
+    public HTMLElement asElement() {
+        return root;
+    }
 
-	@Override
-	public void resetScrollPosition() {
-		HasCellComponents.resetAll(table);
-	}
+    private static TableAppView instance;
+
+    public static TableAppView getInstance() {
+        if (instance == null)
+            instance = new TableAppView();
+        return instance;
+    }
+
 }
