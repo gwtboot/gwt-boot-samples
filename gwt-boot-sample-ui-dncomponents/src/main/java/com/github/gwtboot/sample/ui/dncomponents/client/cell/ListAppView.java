@@ -26,17 +26,23 @@ import com.dncomponents.client.components.textarea.TextArea;
 import com.dncomponents.client.views.IsElement;
 import com.github.gwtboot.sample.ui.dncomponents.client.helper.Data;
 import com.github.gwtboot.sample.ui.dncomponents.client.helper.Person;
+
 import elemental2.dom.HTMLElement;
 
 public class ListAppView implements IsElement {
+	
     @UiField
     HTMLElement root;
+    
     @UiField
     ListData<ItemId, String> list;
+    
     @UiField
     ListData<Person, String> listPeople;
+    
     @UiField
     TextArea logTa;
+    
     @UiField
     TextArea logTa2;
 
