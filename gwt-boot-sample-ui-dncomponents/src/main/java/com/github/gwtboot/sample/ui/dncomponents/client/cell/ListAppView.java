@@ -29,7 +29,7 @@ import com.github.gwtboot.sample.ui.dncomponents.client.helper.Person;
 
 import elemental2.dom.HTMLElement;
 
-public class ListAppView implements IsElement {
+public class ListAppView implements IsElement<HTMLElement> {
 	
     @UiField
     HTMLElement root;

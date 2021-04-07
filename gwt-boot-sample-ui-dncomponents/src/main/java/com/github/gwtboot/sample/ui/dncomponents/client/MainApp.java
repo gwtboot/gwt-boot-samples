@@ -30,6 +30,7 @@ import com.dncomponents.client.views.appview.PlaceManager;
 import com.github.gwtboot.sample.ui.dncomponents.client.cell.CellPlace;
 import com.github.gwtboot.sample.ui.dncomponents.client.greeting.GreetingPlace;
 import com.github.gwtboot.sample.ui.dncomponents.client.home.HomePlace;
+
 import elemental2.dom.HTMLElement;
 import elemental2.dom.Node;
 

@@ -18,6 +18,10 @@
  */
 package com.github.gwtboot.sample.ui.dncomponents.client.cell;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import com.dncomponents.UiField;
 import com.dncomponents.client.components.ColumnConfig;
 import com.dncomponents.client.components.Table;
@@ -29,16 +33,14 @@ import com.dncomponents.client.views.IsElement;
 import com.github.gwtboot.sample.ui.dncomponents.client.helper.Data;
 import com.github.gwtboot.sample.ui.dncomponents.client.helper.Person;
 import com.github.gwtboot.sample.ui.dncomponents.client.helper.TestingHelper;
+
 import elemental2.dom.HTMLElement;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class TableAppView implements IsElement {
+public class TableAppView implements IsElement<HTMLElement> {
 
     @UiField
     HTMLElement root;
+    
     @UiField
     Table<Person> table;
 

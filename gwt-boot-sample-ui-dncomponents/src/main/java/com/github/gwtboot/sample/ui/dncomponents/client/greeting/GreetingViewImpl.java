@@ -30,6 +30,7 @@ import elemental2.dom.HTMLElement;
 import elemental2.dom.HTMLHeadingElement;
 
 public class GreetingViewImpl extends AbstractView<GreetingActivity> implements GreetingView {
+	
 	private static GreetingViewImpl instance;
 
 	@UiField

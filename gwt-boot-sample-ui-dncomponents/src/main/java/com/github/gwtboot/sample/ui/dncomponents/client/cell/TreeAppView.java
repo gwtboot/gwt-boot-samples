@@ -27,11 +27,14 @@ import com.github.gwtboot.sample.ui.dncomponents.client.helper.Fruit;
 
 import elemental2.dom.HTMLElement;
 
-public class TreeAppView implements IsElement {
+public class TreeAppView implements IsElement<HTMLElement> {
+	
 	@UiField
 	HTMLElement root;
+	
 	@UiField
 	Tree<Object> tree;
+	
 	@UiField
 	TextArea logTa;
 

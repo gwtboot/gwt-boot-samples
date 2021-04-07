@@ -48,7 +48,7 @@ public class GreetingPlace extends Place {
 		}
 
 		@Override
-		public AbstractActivity getActivity(GreetingPlace place) {
+		public AbstractActivity<?, ?> getActivity(GreetingPlace place) {
 			return new GreetingActivity(GreetingViewImpl.getInstance(), place);
 		}
 
