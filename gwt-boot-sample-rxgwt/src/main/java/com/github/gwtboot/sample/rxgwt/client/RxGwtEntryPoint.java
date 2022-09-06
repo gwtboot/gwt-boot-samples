@@ -18,20 +18,27 @@
  */
 package com.github.gwtboot.sample.rxgwt.client;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.intendia.rxgwt2.elemento.RxElemento;
-import elemental2.dom.HTMLButtonElement;
-import elemental2.dom.HTMLDivElement;
-import elemental2.dom.HTMLInputElement;
-import io.reactivex.Observable;
-import org.jboss.gwt.elemento.core.Elements;
+import static org.jboss.elemento.Elements.button;
+import static org.jboss.elemento.Elements.div;
+import static org.jboss.elemento.Elements.input;
+import static org.jboss.elemento.Elements.table;
+import static org.jboss.elemento.Elements.td;
+import static org.jboss.elemento.Elements.tr;
+import static org.jboss.elemento.EventType.click;
+import static org.jboss.elemento.InputType.number;
 
 import java.util.function.DoubleUnaryOperator;
 import java.util.logging.Logger;
 
-import static org.jboss.gwt.elemento.core.Elements.*;
-import static org.jboss.gwt.elemento.core.EventType.click;
-import static org.jboss.gwt.elemento.core.InputType.number;
+import org.jboss.elemento.Elements;
+
+import com.google.gwt.core.client.EntryPoint;
+import com.intendia.rxgwt2.elemento.RxElemento;
+
+import elemental2.dom.HTMLButtonElement;
+import elemental2.dom.HTMLDivElement;
+import elemental2.dom.HTMLInputElement;
+import io.reactivex.Observable;
 
 public class RxGwtEntryPoint implements EntryPoint {
 

@@ -1,6 +1,6 @@
 # GWT Boot Samples
 
-[![Build Status](https://travis-ci.org/gwtboot/gwt-boot-samples.svg?branch=master)](https://travis-ci.org/gwtboot/gwt-boot-samples)
+![Build Status](https://github.com/gwtboot/gwt-boot-samples/actions/workflows/maven.yml/badge.svg)
 
 Here you can find some samples on how you can use the GWT Boot Starters in 
 your project. This quickstart document is based on following sample project: [gwt-boot-sample-basic](https://github.com/gwtboot/gwt-boot-samples/tree/master/gwt-boot-sample-basic).
