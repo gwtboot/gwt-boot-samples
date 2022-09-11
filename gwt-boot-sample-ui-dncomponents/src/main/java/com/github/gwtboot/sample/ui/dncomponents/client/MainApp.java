@@ -23,7 +23,6 @@ import com.dncomponents.client.components.AbstractCellComponent;
 import com.dncomponents.client.components.core.HtmlBinder;
 import com.dncomponents.client.components.core.entities.ItemId;
 import com.dncomponents.client.components.sidemenu.SideMenu;
-import com.dncomponents.client.dom.History;
 import com.dncomponents.client.views.IsElement;
 import com.dncomponents.client.views.appview.AcceptsOneElement;
 import com.dncomponents.client.views.appview.PlaceManager;
