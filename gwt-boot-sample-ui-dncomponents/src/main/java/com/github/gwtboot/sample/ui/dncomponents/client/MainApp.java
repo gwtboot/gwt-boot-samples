@@ -58,7 +58,7 @@ public class MainApp implements AcceptsOneElement {
         placeManager.register(GreetingPlace.GreetingPlaceRegister.instance);
         placeManager.register(CellPlace.CellPlaceRegister.instance);
         placeManager.setHomePlace(HomePlace.class);
-        History.fireCurrentHistoryState();
+        placeManager.goTo(new HomePlace(), true);
     }
 
     @Override
