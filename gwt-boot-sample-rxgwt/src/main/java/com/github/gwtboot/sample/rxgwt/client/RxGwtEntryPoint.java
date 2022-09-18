@@ -42,8 +42,7 @@ import io.reactivex.Observable;
 
 public class RxGwtEntryPoint implements EntryPoint {
 
-    private static Logger logger = Logger
-            .getLogger(RxGwtEntryPoint.class.getName());
+    private static Logger logger = Logger.getLogger(RxGwtEntryPoint.class.getName());
 
     HTMLInputElement addInputElement;
     HTMLButtonElement addButtonElement;
@@ -56,14 +55,14 @@ public class RxGwtEntryPoint implements EntryPoint {
     public void onModuleLoad() {
         Elements.body().add(table()
                 .add(tr()
-                        .add(td().add(addInputElement = input(number).apply(el -> el.valueAsNumber = 1).get()))
-                        .add(td().add(addButtonElement = button("add").get())))
+                        .add(td().add(addInputElement = input(number).apply(el -> el.valueAsNumber = 1).element()))
+                        .add(td().add(addButtonElement = button("add").element())))
                 .add(tr()
-                        .add(td().add(subInputElement = input(number).apply(el -> el.valueAsNumber = 1).get()))
-                        .add(td().add(subButtonElement = button("sub").get())))
+                        .add(td().add(subInputElement = input(number).apply(el -> el.valueAsNumber = 1).element()))
+                        .add(td().add(subButtonElement = button("sub").element())))
                 .add(tr()
-                        .add(td().add(resultDivElement = div().get()))
-                        .add(td().add(resetButtonElement = button("reset").get()))));
+                        .add(td().add(resultDivElement = div().element()))
+                        .add(td().add(resetButtonElement = button("reset").element()))));
 
         Observable<DoubleUnaryOperator> action$ = Observable.merge(
                 RxElemento.fromEvent(addButtonElement, click).map(ev -> addInputElement.valueAsNumber).map(val -> n1 -> n1 + val),
