@@ -23,7 +23,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.gwtboot</groupId>
 	<artifactId>gwt-boot-samples</artifactId>
-	<version>1.1.0</version>
+	<version>1.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>gwt-boot-samples</name>
 	<description>GWT Boot Samples</description>
@@ -32,7 +32,7 @@
 		<module>gwt-boot-sample-basic</module>
 		<module>gwt-boot-sample-collection</module>
 		<module>gwt-boot-sample-elemento-core</module>
-		 <module>gwt-boot-sample-rxgwt</module>
+		<module>gwt-boot-sample-rxgwt</module>
 		<module>gwt-boot-sample-domino-rest</module>
 		<module>gwt-boot-sample-ui-gwtbootstrap3</module>
 		<module>gwt-boot-sample-ui-gwtmaterial</module>
