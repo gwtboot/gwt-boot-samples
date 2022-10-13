@@ -25,13 +25,13 @@
 		<!-- Using gwt-boot-starter-parent -->
 		<groupId>com.github.gwtboot</groupId>
 		<artifactId>gwt-boot-starter-parent</artifactId>
-		<version>1.1.0-SNAPSHOT</version>
+		<version>1.1.0</version>
 		<relativePath/>
 	</parent>
 	<artifactId>gwt-boot-sample-ui-gwtbootstrap3</artifactId>
 	<packaging>jar</packaging>
 	<name>gwt-boot-sample-ui-gwtbootstrap3</name>
-	<version>1.1.0-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<description>GWT Boot Sample - GWTBootstrap3</description>
 	
 	<properties>
